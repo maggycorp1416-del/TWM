@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plataforma de Nutrición y Entrenamiento</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
         :root {
             --bg-dark: #090d16;
@@ -22,451 +23,75 @@
             --glow-color: rgba(0, 242, 254, 0.15);
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg-dark); color: var(--text-main); min-height: 100vh; padding: 24px; display: flex; flex-direction: column; align-items: center; }
+        .container { max-width: 1200px; width: 100%; }
 
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            min-height: 100vh;
-            padding: 24px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+        .header { display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; margin-bottom: 24px; }
+        .brand { display: flex; align-items: center; gap: 12px; }
+        .brand-logo { width: 40px; height: 40px; background: linear-gradient(135deg, #00f2fe, #4facfe); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 800; color: #090d16; font-size: 22px; }
+        .brand-title h1 { font-size: 18px; font-weight: 700; color: #ffffff; }
+        .brand-title p { font-size: 11px; color: var(--accent-cyan); letter-spacing: 1.5px; text-transform: uppercase; }
 
-        .container {
-            max-width: 1200px;
-            width: 100%;
-        }
+        .user-nav { display: flex; align-items: center; gap: 12px; }
+        .trial-badge { background: rgba(139, 92, 246, 0.15); border: 1px solid var(--accent-purple); color: #c084fc; padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; display: flex; align-items: center; gap: 6px; }
+        .auth-btn { background: linear-gradient(135deg, #00f2fe, #3b82f6); color: #090d16; border: none; padding: 8px 16px; border-radius: 8px; font-weight: 700; font-size: 13px; cursor: pointer; transition: all 0.2s; }
+        .auth-btn:hover { box-shadow: 0 0 12px rgba(0, 242, 254, 0.4); }
 
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px 24px;
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            margin-bottom: 24px;
-        }
+        .nav-tabs { display: flex; gap: 12px; margin-bottom: 24px; }
+        .tab-btn { background: var(--card-bg); border: 1px solid var(--border-color); color: var(--text-muted); padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+        .tab-btn.active { background: rgba(0, 242, 254, 0.1); border-color: var(--accent-cyan); color: var(--accent-cyan); box-shadow: 0 0 15px var(--glow-color); }
 
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
+        .main-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 28px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); margin-bottom: 32px; }
+        .card-header-title { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
+        .card-header-sub { font-size: 13px; color: var(--text-muted); margin-bottom: 24px; }
 
-        .brand-logo {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, #00f2fe, #4facfe);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            color: #090d16;
-            font-size: 22px;
-        }
+        .calculator-grid { display: grid; grid-template-columns: 360px 1fr; gap: 28px; }
+        @media (max-width: 900px) { .calculator-grid { grid-template-columns: 1fr; } }
 
-        .brand-title h1 {
-            font-size: 18px;
-            font-weight: 700;
-            color: #ffffff;
-        }
+        .input-panel { background: var(--panel-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; }
+        .panel-title { font-size: 12px; font-weight: 700; color: var(--text-muted); letter-spacing: 1px; margin-bottom: 16px; text-transform: uppercase; }
+        .form-group { margin-bottom: 18px; }
+        .form-label { display: block; font-size: 12px; font-weight: 600; color: #d1d5db; margin-bottom: 8px; }
+        .gender-selector { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .gender-btn { background: var(--input-bg); border: 1px solid var(--border-color); color: var(--text-muted); padding: 10px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 13px; text-align: center; }
+        .gender-btn.active { background: rgba(139, 92, 246, 0.2); border-color: var(--accent-purple); color: #ffffff; }
 
-        .brand-title p {
-            font-size: 11px;
-            color: var(--accent-cyan);
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-        }
+        .input-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+        .form-input, .form-select { width: 100%; background: var(--input-bg); border: 1px solid var(--border-color); color: #ffffff; padding: 10px 12px; border-radius: 8px; font-size: 14px; outline: none; }
 
-        .trial-badge {
-            background: rgba(139, 92, 246, 0.15);
-            border: 1px solid var(--accent-purple);
-            color: #c084fc;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
+        .results-panel { display: flex; flex-direction: column; gap: 20px; }
+        .energy-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .energy-card { background: var(--panel-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; }
+        .energy-card-title { font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 8px; }
+        .energy-value { font-size: 32px; font-weight: 800; color: #ffffff; }
+        .energy-unit { font-size: 14px; font-weight: 500; color: var(--text-muted); margin-left: 4px; }
 
-        .nav-tabs {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 24px;
-        }
-
-        .tab-btn {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            color: var(--text-muted);
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .tab-btn.active {
-            background: rgba(0, 242, 254, 0.1);
-            border-color: var(--accent-cyan);
-            color: var(--accent-cyan);
-            box-shadow: 0 0 15px var(--glow-color);
-        }
-
-        .main-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 28px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            margin-bottom: 32px;
-        }
-
-        .card-header-title {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 6px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .card-header-sub {
-            font-size: 13px;
-            color: var(--text-muted);
-            margin-bottom: 24px;
-        }
-
-        .calculator-grid {
-            display: grid;
-            grid-template-columns: 360px 1fr;
-            gap: 28px;
-        }
-
-        @media (max-width: 900px) {
-            .calculator-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .input-panel {
-            background: var(--panel-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 20px;
-        }
-
-        .panel-title {
-            font-size: 12px;
-            font-weight: 700;
-            color: var(--text-muted);
-            letter-spacing: 1px;
-            margin-bottom: 16px;
-            text-transform: uppercase;
-        }
-
-        .form-group {
-            margin-bottom: 18px;
-        }
-
-        .form-label {
-            display: block;
-            font-size: 12px;
-            font-weight: 600;
-            color: #d1d5db;
-            margin-bottom: 8px;
-        }
-
-        .gender-selector {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-        }
-
-        .gender-btn {
-            background: var(--input-bg);
-            border: 1px solid var(--border-color);
-            color: var(--text-muted);
-            padding: 10px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 13px;
-            transition: all 0.2s;
-            text-align: center;
-        }
-
-        .gender-btn.active {
-            background: rgba(139, 92, 246, 0.2);
-            border-color: var(--accent-purple);
-            color: #ffffff;
-            box-shadow: 0 0 10px rgba(139, 92, 246, 0.3);
-        }
-
-        .input-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 10px;
-        }
-
-        .form-input, .form-select {
-            width: 100%;
-            background: var(--input-bg);
-            border: 1px solid var(--border-color);
-            color: #ffffff;
-            padding: 10px 12px;
-            border-radius: 8px;
-            font-size: 14px;
-            outline: none;
-            transition: border-color 0.2s;
-        }
-
-        .form-input:focus, .form-select:focus {
-            border-color: var(--accent-cyan);
-        }
-
-        .results-panel {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .energy-cards {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-        }
-
-        .energy-card {
-            background: var(--panel-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 20px;
-        }
-
-        .energy-card-title {
-            font-size: 11px;
-            font-weight: 700;
-            color: var(--text-muted);
-            letter-spacing: 0.8px;
-            text-transform: uppercase;
-            margin-bottom: 8px;
-        }
-
-        .energy-value {
-            font-size: 32px;
-            font-weight: 800;
-            color: #ffffff;
-            line-height: 1;
-        }
-
-        .energy-unit {
-            font-size: 14px;
-            font-weight: 500;
-            color: var(--text-muted);
-            margin-left: 4px;
-        }
-
-        .macros-card {
-            background: var(--panel-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 20px;
-        }
-
-        .macro-row {
-            margin-bottom: 18px;
-        }
-
-        .macro-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 6px;
-            font-size: 13px;
-            font-weight: 600;
-        }
-
-        .macro-bar-bg {
-            width: 100%;
-            height: 8px;
-            background: var(--input-bg);
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        .macro-bar-fill {
-            height: 100%;
-            border-radius: 4px;
-            transition: width 0.4s ease;
-        }
-
+        .macros-card { background: var(--panel-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; }
+        .macro-row { margin-bottom: 18px; }
+        .macro-header { display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 13px; font-weight: 600; }
+        .macro-bar-bg { width: 100%; height: 8px; background: var(--input-bg); border-radius: 4px; overflow: hidden; }
+        .macro-bar-fill { height: 100%; border-radius: 4px; transition: width 0.4s ease; }
         .bar-carbs { background: linear-gradient(90deg, #00f2fe, #4facfe); }
         .bar-protein { background: linear-gradient(90deg, #ec4899, #8b5cf6); }
         .bar-fats { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
 
-        .diet-options-box {
-            background: rgba(0, 242, 254, 0.03);
-            border: 1px dashed rgba(0, 242, 254, 0.3);
-            border-radius: 12px;
-            padding: 20px;
-            margin-top: 10px;
-        }
-
-        .diet-options-title {
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--accent-cyan);
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .diet-buttons-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-        }
-
-        .diet-btn {
-            padding: 12px;
-            border-radius: 8px;
-            font-size: 13px;
-            font-weight: 600;
-            cursor: pointer;
-            text-align: center;
-            border: none;
-            transition: all 0.2s;
-            text-decoration: none;
-            display: block;
-        }
-
-        .btn-primary-glow {
-            background: linear-gradient(135deg, #00f2fe, #3b82f6);
-            color: #090d16;
-            font-weight: 700;
-        }
-
-        .btn-primary-glow:hover {
-            box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
-            transform: translateY(-1px);
-        }
-
-        .btn-outline {
-            background: var(--input-bg);
-            border: 1px solid var(--border-color);
-            color: #ffffff;
-        }
-
-        .btn-outline:hover {
-            border-color: var(--accent-purple);
-            color: #c084fc;
-        }
-
-        .training-section-title {
-            font-size: 22px;
-            font-weight: 800;
-            margin-bottom: 8px;
-        }
-
-        .training-section-sub {
-            font-size: 14px;
-            color: var(--text-muted);
-            margin-bottom: 24px;
-        }
-
-        .training-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 20px;
-        }
-
-        .training-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 14px;
-            padding: 24px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .training-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--accent-cyan);
-            box-shadow: 0 10px 25px rgba(0, 242, 254, 0.1);
-        }
-
-        .training-badge {
-            display: inline-block;
-            font-size: 10px;
-            font-weight: 700;
-            text-transform: uppercase;
-            padding: 4px 8px;
-            border-radius: 4px;
-            margin-bottom: 12px;
-            width: fit-content;
-        }
-
+        .training-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
+        .training-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 14px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; }
+        .training-badge { font-size: 10px; font-weight: 700; text-transform: uppercase; padding: 4px 8px; border-radius: 4px; margin-bottom: 12px; display: inline-block; }
         .badge-cyan { background: rgba(0,242,254,0.15); color: var(--accent-cyan); }
-        .badge-purple { background: rgba(139,92,246,0.15); color: var(--accent-purple); }
-        .badge-orange { background: rgba(245,158,11,0.15); color: var(--accent-orange); }
 
-        .training-card-title {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: #ffffff;
-        }
+        /* Estilos del Modal Popup */
+        .modal-overlay { position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(9, 13, 22, 0.85); backdrop-filter: blur(8px); display: none; justify-content: center; align-items: center; z-index: 1000; }
+        .modal-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 32px; width: 100%; max-width: 420px; box-shadow: 0 20px 40px rgba(0,0,0,0.8); position: relative; }
+        .modal-close { position: absolute; top: 16px; right: 20px; background: none; border: none; color: var(--text-muted); font-size: 20px; cursor: pointer; }
+        .modal-title { font-size: 20px; font-weight: 800; margin-bottom: 8px; text-align: center; }
+        .modal-sub { font-size: 13px; color: var(--text-muted); text-align: center; margin-bottom: 20px; }
+        .modal-submit-btn { width: 100%; background: linear-gradient(135deg, #00f2fe, #3b82f6); color: #090d16; border: none; padding: 12px; border-radius: 8px; font-weight: 700; font-size: 14px; cursor: pointer; margin-top: 10px; }
+        .modal-toggle { text-align: center; font-size: 12px; color: var(--text-muted); margin-top: 16px; }
+        .modal-toggle span { color: var(--accent-cyan); cursor: pointer; font-weight: 600; }
 
-        .training-card-desc {
-            font-size: 13px;
-            color: var(--text-muted);
-            line-height: 1.5;
-            margin-bottom: 20px;
-        }
-
-        .training-card-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-top: 1px solid var(--border-color);
-            padding-top: 16px;
-        }
-
-        .start-btn {
-            background: transparent;
-            border: none;
-            color: var(--accent-cyan);
-            font-weight: 700;
-            font-size: 13px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .start-btn:hover {
-            text-decoration: underline;
-        }
+        .vip-toggle-btn { background: none; border: none; color: var(--accent-purple); font-size: 12px; font-weight: 600; cursor: pointer; margin-bottom: 12px; display: block; text-decoration: underline; }
     </style>
 </head>
 <body>
@@ -480,8 +105,9 @@
                     <p>Plataforma de Alto Rendimiento</p>
                 </div>
             </div>
-            <div class="trial-badge">
-                ⚡ 4 Días de Prueba Gratuita Activa
+            <div class="user-nav">
+                <div class="trial-badge" id="trial-badge-text">⚡ Modo Invitado</div>
+                <button class="auth-btn" id="btn-login-modal" onclick="openModal('login')">Inicia Sesión</button>
             </div>
         </header>
 
@@ -492,17 +118,12 @@
 
         <div id="nutrition-tab" class="tab-content">
             <div class="main-card">
-                <div class="card-header-title">
-                    📊 Planificador Metabólico de Macronutrientes
-                </div>
-                <div class="card-header-sub">
-                    Calcula tu TMB (Mifflin-St Jeor Ajustado), TDEE y reparto óptimo de proteínas, grasas y carbohidratos.
-                </div>
+                <div class="card-header-title">📊 Planificador Metabólico de Macronutrientes</div>
+                <div class="card-header-sub">Calcula tu TMB, TDEE y reparto óptimo de macronutrientes.</div>
 
                 <div class="calculator-grid">
                     <div class="input-panel">
                         <div class="panel-title">Ajustes del Atleta</div>
-
                         <div class="form-group">
                             <label class="form-label">Género</label>
                             <div class="gender-selector">
@@ -510,24 +131,13 @@
                                 <button type="button" id="btn-male" class="gender-btn" onclick="setGender('hombre')">♂ Hombre</button>
                             </div>
                         </div>
-
                         <div class="form-group">
                             <div class="input-row">
-                                <div>
-                                    <label class="form-label">Peso (kg)</label>
-                                    <input type="number" id="input-weight" class="form-input" value="70" oninput="calculate()">
-                                </div>
-                                <div>
-                                    <label class="form-label">Altura (cm)</label>
-                                    <input type="number" id="input-height" class="form-input" value="165" oninput="calculate()">
-                                </div>
-                                <div>
-                                    <label class="form-label">Edad (años)</label>
-                                    <input type="number" id="input-age" class="form-input" value="25" oninput="calculate()">
-                                </div>
+                                <div><label class="form-label">Peso (kg)</label><input type="number" id="input-weight" class="form-input" value="70" oninput="calculate()"></div>
+                                <div><label class="form-label">Altura (cm)</label><input type="number" id="input-height" class="form-input" value="165" oninput="calculate()"></div>
+                                <div><label class="form-label">Edad (años)</label><input type="number" id="input-age" class="form-input" value="25" oninput="calculate()"></div>
                             </div>
                         </div>
-
                         <div class="form-group">
                             <label class="form-label">Objetivo Corporal</label>
                             <select id="select-goal" class="form-select" onchange="calculate()">
@@ -535,7 +145,6 @@
                                 <option value="fatloss" selected>Pérdida de Grasa (-15%)</option>
                             </select>
                         </div>
-
                         <div class="form-group">
                             <label class="form-label">Factor de Actividad (TDEE)</label>
                             <select id="select-activity" class="form-select" onchange="calculate()">
@@ -543,165 +152,211 @@
                                 <option value="1.375">1.375 = Ligero (1 a 3 días/sem)</option>
                                 <option value="1.55" selected>1.55 = Moderado (3 a 5 días/sem)</option>
                                 <option value="1.75">1.75 = Muy Activo (+6 días/sem)</option>
-                                <option value="1.9">1.9 = Atleta Élite</option>
                             </select>
                         </div>
                     </div>
 
                     <div class="results-panel">
                         <div class="panel-title">Diagnóstico Energético y Macronutrientes</div>
-
                         <div class="energy-cards">
                             <div class="energy-card">
-                                <div class="energy-card-title">Gasto Metabólico Reposo (TMB)</div>
+                                <div class="energy-card-title">Gasto Metabólico (TMB)</div>
                                 <div class="energy-value" id="val-tmb">1445<span class="energy-unit">kcal</span></div>
                             </div>
                             <div class="energy-card">
-                                <div class="energy-card-title">Calorías Totales Diarias (TDEE)</div>
+                                <div class="energy-card-title">Calorías Totales (TDEE)</div>
                                 <div class="energy-value" id="val-tdee" style="color: var(--accent-cyan);">1901<span class="energy-unit">kcal</span></div>
                             </div>
                         </div>
-
                         <div class="macros-card">
-                            <div class="panel-title" style="margin-bottom: 12px;">Distribución de Macronutrientes</div>
-
+                            <div class="panel-title">Distribución de Macronutrientes</div>
                             <div class="macro-row">
-                                <div class="macro-header">
-                                    <span style="color: var(--accent-cyan);">🌾 Carbohidratos</span>
-                                    <span id="text-carbs">205 g / 820 kcal</span>
-                                </div>
-                                <div class="macro-bar-bg">
-                                    <div id="bar-carbs" class="macro-bar-fill bar-carbs" style="width: 43%;"></div>
-                                </div>
+                                <div class="macro-header"><span style="color: var(--accent-cyan);">🌾 Carbohidratos</span><span id="text-carbs">205 g / 820 kcal</span></div>
+                                <div class="macro-bar-bg"><div id="bar-carbs" class="macro-bar-fill bar-carbs" style="width: 43%;"></div></div>
                             </div>
-
                             <div class="macro-row">
-                                <div class="macro-header">
-                                    <span style="color: var(--accent-magenta);">🥩 Proteínas</span>
-                                    <span id="text-protein">182 g / 728 kcal</span>
-                                </div>
-                                <div class="macro-bar-bg">
-                                    <div id="bar-protein" class="macro-bar-fill bar-protein" style="width: 38%;"></div>
-                                </div>
+                                <div class="macro-header"><span style="color: var(--accent-magenta);">🥩 Proteínas</span><span id="text-protein">182 g / 728 kcal</span></div>
+                                <div class="macro-bar-bg"><div id="bar-protein" class="macro-bar-fill bar-protein" style="width: 38%;"></div></div>
                             </div>
-
                             <div class="macro-row">
-                                <div class="macro-header">
-                                    <span style="color: var(--accent-orange);">🥑 Grasas</span>
-                                    <span id="text-fats">56 g / 504 kcal</span>
-                                </div>
-                                <div class="macro-bar-bg">
-                                    <div id="bar-fats" class="macro-bar-fill bar-fats" style="width: 26%;"></div>
-                                </div>
+                                <div class="macro-header"><span style="color: var(--accent-orange);">🥑 Grasas</span><span id="text-fats">56 g / 504 kcal</span></div>
+                                <div class="macro-bar-bg"><div id="bar-fats" class="macro-bar-fill bar-fats" style="width: 26%;"></div></div>
                             </div>
                         </div>
-
-                        <div class="diet-options-box">
-                            <div class="diet-options-title">
-                                💡 ¿Cómo deseas continuar con tu alimentación?
-                            </div>
-                            <div class="diet-buttons-grid">
-                                <button class="diet-btn btn-primary-glow" onclick="alert('Solicitaste tu dieta personalizada con el entrenador. ¡Pronto te contactaremos!')">
-                                    ✨ Solicitar Dieta Personalizada (Extra)
-                                </button>
-                                <a href="https://tusitio-nutriciondeportiva.com" target="_blank" class="diet-btn btn-outline">
-                                    🛠️ Armar mi propia Dieta
-                                </a>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
             </div>
         </div>
 
         <div id="training-tab" class="tab-content" style="display: none;">
-            <div class="training-section-title">Elige tu Programa de Entrenamiento</div>
-            <div class="training-section-sub">Módulos adaptados según tus objetivos físicos y nivel de condición actual.</div>
-
             <div class="training-grid">
                 <div class="training-card">
-                    <div>
-                        <span class="training-badge badge-cyan">Rendimiento General</span>
-                        <div class="training-card-title">Entrenamiento Funcional</div>
-                        <div class="training-card-desc">Mejora tu fuerza aplicada, agilidad y coordinación con rutinas dinámicas enfocadas en movimientos patrones de la vida cotidiana.</div>
-                    </div>
-                    <div class="training-card-footer">
-                        <span style="font-size:12px; color:var(--text-muted);">4 Semanas | Todos los niveles</span>
-                        <button class="start-btn">Comenzar →</button>
-                    </div>
-                </div>
-
-                <div class="training-card">
-                    <div>
-                        <span class="training-badge badge-orange">Quema Metabólica</span>
-                        <div class="training-card-title">Cardio HIIT (Moderado / Alto)</div>
-                        <div class="training-card-desc">Intervalos de alta intensidad diseñados para maximizar la quema de calorías en poco tiempo e incrementar tu capacidad VO2 máx.</div>
-                    </div>
-                    <div class="training-card-footer">
-                        <span style="font-size:12px; color:var(--text-muted);">20-30 min/sesión</span>
-                        <button class="start-btn">Comenzar →</button>
-                    </div>
-                </div>
-
-                <div class="training-card">
-                    <div>
-                        <span class="training-badge badge-purple">Híbrido / Atleta</span>
-                        <div class="training-card-title">Entrenamiento Híbrido (Resistencia + Fuerza)</div>
-                        <div class="training-card-desc">La combinación perfecta entre ganancia muscular y potencia cardiovascular. Para quienes buscan ser fuertes y resistentes al mismo tiempo.</div>
-                    </div>
-                    <div class="training-card-footer">
-                        <span style="font-size:12px; color:var(--text-muted);">Avanzado | 5 días/semana</span>
-                        <button class="start-btn">Comenzar →</button>
-                    </div>
-                </div>
-
-                <div class="training-card">
-                    <div>
-                        <span class="training-badge badge-purple">Hipertrofia & Potencia</span>
-                        <div class="training-card-title">Entrenamiento de Fuerza</div>
-                        <div class="training-card-desc">Enfocado en la sobrecarga progresiva, aumento de masa muscular y desarrollo de fuerza bruta en ejercicios fundamentales.</div>
-                    </div>
-                    <div class="training-card-footer">
-                        <span style="font-size:12px; color:var(--text-muted);">Gimnasio / Pesas</span>
-                        <button class="start-btn">Comenzar →</button>
-                    </div>
-                </div>
-
-                <div class="training-card">
-                    <div>
-                        <span class="training-badge badge-cyan">Calistenia & Bodyweight</span>
-                        <div class="training-card-title">Entrenamiento en Casa sin Material</div>
-                        <div class="training-card-desc">Cero excusas. Rutinas 100% efectivas utilizando únicamente el peso corporal para tonificar y quemar grasa desde cualquier sitio.</div>
-                    </div>
-                    <div class="training-card-footer">
-                        <span style="font-size:12px; color:var(--text-muted);">Sin equipo necesario</span>
-                        <button class="start-btn">Comenzar →</button>
-                    </div>
-                </div>
-
-                <div class="training-card">
-                    <div>
-                        <span class="training-badge badge-orange">Salud & Recuperación</span>
-                        <div class="training-card-title">Te Ayudo con tu Movilidad</div>
-                        <div class="training-card-desc">Prevención de lesiones, descompresión articular y mejora de rangos de movimiento para optimizar tu postura y recuperación.</div>
-                    </div>
-                    <div class="training-card-footer">
-                        <span style="font-size:12px; color:var(--text-muted);">Rutinas diarias de 15 min</span>
-                        <button class="start-btn">Comenzar →</button>
-                    </div>
+                    <span class="training-badge badge-cyan">Rendimiento</span>
+                    <h3>Entrenamiento Funcional</h3>
+                    <p style="font-size:13px; color:var(--text-muted); margin: 12px 0;">Rutinas dinámicas enfocadas en fuerza aplicada.</p>
+                    <button class="auth-btn" style="width: 100%;" onclick="alert('Acceso verificado para tu usuario.')">Ver Rutina Completa</button>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- MODAL POPUP DE AUTENTICACIÓN Y CÓDIGO VIP -->
+    <div class="modal-overlay" id="auth-modal">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeModal()">✕</button>
+            <div class="modal-title" id="modal-title-text">Crear tu Cuenta</div>
+            <div class="modal-sub" id="modal-sub-text">Obtén 4 días de prueba gratis completa sin tarjeta.</div>
+            
+            <form id="auth-form" onsubmit="handleAuth(event)">
+                <div class="form-group" id="group-name">
+                    <label class="form-label">Nombre Completo</label>
+                    <input type="text" id="auth-name" class="form-input" placeholder="Tu nombre">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Correo Electrónico</label>
+                    <input type="email" id="auth-email" class="form-input" placeholder="tu@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Contraseña</label>
+                    <input type="password" id="auth-password" class="form-input" placeholder="••••••••" required>
+                </div>
+
+                <!-- SECCIÓN CÓDIGO ESPECIAL VIP -->
+                <div id="vip-section">
+                    <button type="button" class="vip-toggle-btn" onclick="toggleVipInput()">🎁 ¿Tienes un Código Especial / VIP?</button>
+                    <div class="form-group" id="group-vip" style="display: none;">
+                        <label class="form-label" style="color: var(--accent-purple);">Código de Acceso VIP</label>
+                        <input type="text" id="auth-vip-code" class="form-input" placeholder="Ej: VIP1416M" style="border-color: var(--accent-purple); text-transform: uppercase;">
+                    </div>
+                </div>
+
+                <button type="submit" class="modal-submit-btn" id="modal-submit-btn">Comenzar 4 Días Gratis</button>
+            </form>
+
+            <div class="modal-toggle" id="modal-toggle-text">
+                ¿Ya tienes cuenta? <span onclick="switchAuthMode('login')">Inicia Sesión</span>
+            </div>
+        </div>
+    </div>
+
     <script>
+        const SUPABASE_URL = "https://kcasbojmakirccxorxqy.supabase.co";
+        const SUPABASE_ANON_KEY = "sb_publishable_..."; // Tu clave anon
+        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        const MASTER_VIP_CODE = "VIP1416M"; // CÓDIGO MAESTRO CONFIGURADO
+        let currentAuthMode = 'register';
         let selectedGender = 'mujer';
+
+        function openModal(mode) {
+            switchAuthMode(mode);
+            document.getElementById('auth-modal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('auth-modal').style.display = 'none';
+        }
+
+        function toggleVipInput() {
+            const el = document.getElementById('group-vip');
+            el.style.display = el.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function switchAuthMode(mode) {
+            currentAuthMode = mode;
+            if (mode === 'register') {
+                document.getElementById('modal-title-text').innerText = "Crear tu Cuenta";
+                document.getElementById('modal-sub-text').innerText = "Obtén 4 días de prueba gratis completa sin tarjeta.";
+                document.getElementById('group-name').style.display = 'block';
+                document.getElementById('vip-section').style.display = 'block';
+                document.getElementById('modal-submit-btn').innerText = "Comenzar Registro";
+                document.getElementById('modal-toggle-text').innerHTML = '¿Ya tienes cuenta? <span onclick="switchAuthMode(\'login\')">Inicia Sesión</span>';
+            } else {
+                document.getElementById('modal-title-text').innerText = "Iniciar Sesión";
+                document.getElementById('modal-sub-text').innerText = "Accede a tu panel y rutinas activas.";
+                document.getElementById('group-name').style.display = 'none';
+                document.getElementById('vip-section').style.display = 'none';
+                document.getElementById('modal-submit-btn').innerText = "Entrar a mi Cuenta";
+                document.getElementById('modal-toggle-text').innerHTML = '¿No tienes cuenta? <span onclick="switchAuthMode(\'register\')">Regístrate gratis</span>';
+            }
+        }
+
+        async function handleAuth(e) {
+            e.preventDefault();
+            const email = document.getElementById('auth-email').value;
+            const password = document.getElementById('auth-password').value;
+            const name = document.getElementById('auth-name').value;
+            const vipCode = document.getElementById('auth-vip-code').value.trim().toUpperCase();
+
+            if (currentAuthMode === 'register') {
+                let isVip = (vipCode === MASTER_VIP_CODE);
+                let subscriptionType = isVip ? 'vip_lifetime' : 'trial';
+
+                const { data, error } = await supabaseClient.auth.signUp({
+                    email: email,
+                    password: password,
+                    options: { 
+                        data: { 
+                            full_name: name,
+                            subscription_status: subscriptionType
+                        } 
+                    }
+                });
+
+                if (error) {
+                    alert("Error al registrarse: " + error.message);
+                } else {
+                    if (isVip) {
+                        alert("🎉 ¡Código VIP1416M Activado con éxito! Tienes Acceso Ilimitado De Por Vida.");
+                    } else {
+                        alert("¡Cuenta creada! Has comenzado tus 4 días de prueba gratuita.");
+                    }
+                    closeModal();
+                    checkUserSession();
+                }
+            } else {
+                const { data, error } = await supabaseClient.auth.signInWithPassword({
+                    email: email,
+                    password: password
+                });
+                if (error) {
+                    alert("Error al iniciar sesión: " + error.message);
+                } else {
+                    alert("¡Bienvenido de nuevo!");
+                    closeModal();
+                    checkUserSession();
+                }
+            }
+        }
+
+        async function checkUserSession() {
+            const { data: { session } } = await supabaseClient.auth.getSession();
+            if (session) {
+                const user = session.user;
+                const status = user.user_metadata.subscription_status || 'trial';
+
+                if (status === 'vip_lifetime') {
+                    document.getElementById('trial-badge-text').innerText = "💎 Pase VIP de por Vida";
+                    document.getElementById('trial-badge-text').style.borderColor = "#00f2fe";
+                    document.getElementById('trial-badge-text').style.color = "#00f2fe";
+                } else {
+                    document.getElementById('trial-badge-text').innerText = "⚡ 4 Días de Prueba Activa";
+                }
+
+                document.getElementById('btn-login-modal').innerText = "Salir (" + (user.user_metadata.full_name || 'Atleta') + ")";
+                document.getElementById('btn-login-modal').onclick = logout;
+            }
+        }
+
+        async function logout() {
+            await supabaseClient.auth.signOut();
+            alert("Has cerrado sesión.");
+            location.reload();
+        }
 
         function switchTab(tab) {
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
             document.querySelectorAll('.tab-content').forEach(c => c.style.display = 'none');
-
             if (tab === 'nutrition') {
                 document.querySelectorAll('.tab-btn')[0].classList.add('active');
                 document.getElementById('nutrition-tab').style.display = 'block';
@@ -713,13 +368,8 @@
 
         function setGender(gender) {
             selectedGender = gender;
-            if (gender === 'mujer') {
-                document.getElementById('btn-female').classList.add('active');
-                document.getElementById('btn-male').classList.remove('active');
-            } else {
-                document.getElementById('btn-female').classList.remove('active');
-                document.getElementById('btn-male').classList.add('active');
-            }
+            document.getElementById('btn-female').classList.toggle('active', gender === 'mujer');
+            document.getElementById('btn-male').classList.toggle('active', gender === 'hombre');
             calculate();
         }
 
@@ -730,51 +380,25 @@
             const goal = document.getElementById('select-goal').value;
             const activityFactor = parseFloat(document.getElementById('select-activity').value);
 
-            let tmb = 0;
-            if (selectedGender === 'hombre') {
-                tmb = (10 * weight) + (6.25 * height) - (5 * age) + 5;
-            } else {
-                tmb = (10 * weight) + (6.25 * height) - (5 * age) - 161;
-            }
+            let tmb = (selectedGender === 'hombre') 
+                ? (10 * weight) + (6.25 * height) - (5 * age) + 5
+                : (10 * weight) + (6.25 * height) - (5 * age) - 161;
 
-            let tdeeMaintenance = tmb * activityFactor;
-            let tdee = tdeeMaintenance;
-            if (goal === 'recomp') {
-                tdee = tdeeMaintenance * 0.90;
-            } else if (goal === 'fatloss') {
-                tdee = tdeeMaintenance * 0.85;
-            }
-
-            let proteinMultiplier = (activityFactor >= 1.55) ? 2.6 : 2.4;
-            let proteinGrams = weight * proteinMultiplier;
-            let proteinKcal = proteinGrams * 4;
-
-            let fatMultiplier = (selectedGender === 'hombre') ? 1.0 : 0.8;
-            let fatGrams = weight * fatMultiplier;
-            let fatKcal = fatGrams * 9;
-
-            let carbsKcal = tdee - (proteinKcal + fatKcal);
-            if (carbsKcal < 0) carbsKcal = 0;
+            let tdee = tmb * activityFactor * (goal === 'recomp' ? 0.90 : 0.85);
+            let proteinGrams = weight * (activityFactor >= 1.55 ? 2.6 : 2.4);
+            let fatGrams = weight * (selectedGender === 'hombre' ? 1.0 : 0.8);
+            let carbsKcal = Math.max(0, tdee - ((proteinGrams * 4) + (fatGrams * 9)));
             let carbsGrams = carbsKcal / 4;
 
             document.getElementById('val-tmb').innerHTML = `${Math.round(tmb)} <span class="energy-unit">kcal</span>`;
             document.getElementById('val-tdee').innerHTML = `${Math.round(tdee)} <span class="energy-unit">kcal</span>`;
-
             document.getElementById('text-carbs').innerText = `${Math.round(carbsGrams)} g / ${Math.round(carbsKcal)} kcal`;
-            document.getElementById('text-protein').innerText = `${Math.round(proteinGrams)} g / ${Math.round(proteinKcal)} kcal (x${proteinMultiplier})`;
-            document.getElementById('text-fats').innerText = `${Math.round(fatGrams)} g / ${Math.round(fatKcal)} kcal (x${fatMultiplier})`;
-
-            let totalKcalCalculated = proteinKcal + fatKcal + carbsKcal;
-            let pctCarbs = Math.min(100, Math.round((carbsKcal / totalKcalCalculated) * 100)) || 0;
-            let pctProtein = Math.min(100, Math.round((proteinKcal / totalKcalCalculated) * 100)) || 0;
-            let pctFats = Math.min(100, Math.round((fatKcal / totalKcalCalculated) * 100)) || 0;
-
-            document.getElementById('bar-carbs').style.width = pctCarbs + '%';
-            document.getElementById('bar-protein').style.width = pctProtein + '%';
-            document.getElementById('bar-fats').style.width = pctFats + '%';
+            document.getElementById('text-protein').innerText = `${Math.round(proteinGrams)} g / ${Math.round(proteinGrams * 4)} kcal`;
+            document.getElementById('text-fats').innerText = `${Math.round(fatGrams)} g / ${Math.round(fatGrams * 9)} kcal`;
         }
 
         calculate();
+        checkUserSession();
     </script>
 </body>
 </html>
