@@ -20,42 +20,50 @@
             --text-main: #f3f4f6;
             --text-muted: #9ca3af;
             --border-color: #1e293b;
-            --glow-color: rgba(0, 242, 254, 0.15);
+            --sidebar-width: 260px;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
-        body { background-color: var(--bg-dark); color: var(--text-main); min-height: 100vh; padding: 24px; display: flex; flex-direction: column; align-items: center; }
-        .container { max-width: 1240px; width: 100%; }
+        
+        /* ESTRUCTURA DASHBOARD SÁAS */
+        body { background-color: var(--bg-dark); color: var(--text-main); height: 100vh; display: flex; overflow: hidden; }
+        
+        /* SIDEBAR (MENÚ LATERAL) */
+        .sidebar { width: var(--sidebar-width); background: var(--card-bg); border-right: 1px solid var(--border-color); display: flex; flex-direction: column; padding: 24px; flex-shrink: 0; }
+        
+        .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 40px; }
+        .brand-logo { width: 36px; height: 36px; background: linear-gradient(135deg, #00f2fe, #3b82f6); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 800; color: #090d16; font-size: 18px; flex-shrink: 0; }
+        .brand-title h1 { font-size: 15px; font-weight: 700; color: #ffffff; line-height: 1.2; }
+        .brand-title p { font-size: 10px; color: var(--accent-cyan); letter-spacing: 1px; text-transform: uppercase; margin-top: 2px; }
 
-        /* HEADER DASHBOARD */
-        .header { display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; margin-bottom: 24px; }
-        .brand { display: flex; align-items: center; gap: 12px; }
-        .brand-logo { width: 40px; height: 40px; background: linear-gradient(135deg, #00f2fe, #3b82f6); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 800; color: #090d16; font-size: 22px; }
-        .brand-title h1 { font-size: 18px; font-weight: 700; color: #ffffff; }
-        .brand-title p { font-size: 11px; color: var(--accent-cyan); letter-spacing: 1.5px; text-transform: uppercase; }
+        .sidebar-nav { display: flex; flex-direction: column; gap: 8px; flex: 1; }
+        .tab-btn { background: transparent; border: none; color: var(--text-muted); padding: 12px 16px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s; text-align: left; display: flex; align-items: center; gap: 12px; }
+        .tab-btn:hover { background: rgba(255,255,255,0.03); color: #ffffff; }
+        .tab-btn.active { background: rgba(0, 242, 254, 0.1); color: var(--accent-cyan); border-left: 3px solid var(--accent-cyan); border-radius: 0 8px 8px 0; }
 
-        .user-nav { display: flex; align-items: center; gap: 12px; }
+        /* ÁREA PRINCIPAL */
+        .main-area { flex: 1; display: flex; flex-direction: column; overflow-y: auto; background: var(--bg-dark); }
+        
+        /* BARRA SUPERIOR */
+        .top-bar { display: flex; justify-content: flex-end; align-items: center; padding: 16px 40px; border-bottom: 1px solid var(--border-color); background: var(--bg-dark); position: sticky; top: 0; z-index: 10; }
+        .user-nav { display: flex; align-items: center; gap: 16px; }
         .trial-badge { background: rgba(139, 92, 246, 0.15); border: 1px solid var(--accent-purple); color: #c084fc; padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; display: flex; align-items: center; gap: 6px; }
-        .auth-btn { background: linear-gradient(135deg, #00f2fe, #3b82f6); color: #090d16; border: none; padding: 8px 16px; border-radius: 8px; font-weight: 700; font-size: 13px; cursor: pointer; transition: all 0.2s; }
+        .auth-btn { background: linear-gradient(135deg, #00f2fe, #3b82f6); color: #090d16; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 700; font-size: 13px; cursor: pointer; transition: all 0.2s; }
         .auth-btn:hover { box-shadow: 0 0 12px rgba(0, 242, 254, 0.4); }
 
-        /* NAVEGACIÓN DASHBOARD */
-        .nav-tabs { display: flex; gap: 12px; margin-bottom: 28px; border-bottom: 1px solid var(--border-color); padding-bottom: 12px; }
-        .tab-btn { background: transparent; border: 1px solid transparent; color: var(--text-muted); padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
-        .tab-btn:hover { color: #ffffff; background: rgba(255,255,255,0.03); }
-        .tab-btn.active { background: var(--card-bg); border-color: var(--border-color); color: var(--accent-cyan); box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+        /* CONTENEDOR DE PESTAÑAS */
+        .content-wrapper { padding: 40px; max-width: 1200px; margin: 0 auto; width: 100%; }
 
-        /* TÍTULOS DE SECCIÓN */
-        .dashboard-header { margin-bottom: 24px; }
-        .dashboard-header h2 { font-size: 22px; font-weight: 800; color: #ffffff; display: flex; align-items: center; gap: 10px; }
-        .dashboard-header p { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
+        .dashboard-header { margin-bottom: 32px; }
+        .dashboard-header h2 { font-size: 24px; font-weight: 800; color: #ffffff; display: flex; align-items: center; gap: 10px; }
+        .dashboard-header p { font-size: 14px; color: var(--text-muted); margin-top: 6px; }
 
-        /* GRID PRINCIPAL DEL DASHBOARD */
-        .dashboard-grid { display: grid; grid-template-columns: 360px 1fr; gap: 24px; }
+        /* GRID PRINCIPAL (NUTRICIÓN) */
+        .dashboard-grid { display: grid; grid-template-columns: 340px 1fr; gap: 28px; }
         @media (max-width: 960px) { .dashboard-grid { grid-template-columns: 1fr; } }
 
-        /* WIDGETS Y TARJETAS */
-        .widget-card { background: var(--panel-bg); border: 1px solid var(--border-color); border-radius: 14px; padding: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.25); }
+        /* WIDGETS */
+        .widget-card { background: var(--panel-bg); border: 1px solid var(--border-color); border-radius: 14px; padding: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
         .panel-title { font-size: 11px; font-weight: 700; color: var(--accent-cyan); letter-spacing: 1px; margin-bottom: 20px; text-transform: uppercase; }
 
         .form-group { margin-bottom: 18px; }
@@ -69,13 +77,14 @@
 
         .results-panel { display: flex; flex-direction: column; gap: 24px; }
         .energy-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-        .energy-card { background: var(--panel-bg); border: 1px solid var(--border-color); border-radius: 14px; padding: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
-        .energy-card-title { font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 8px; }
+        .energy-card { background: var(--panel-bg); border: 1px solid var(--border-color); border-radius: 14px; padding: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
+        .energy-card-title { font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 12px; }
         .energy-value { font-size: 36px; font-weight: 800; color: #ffffff; }
         .energy-unit { font-size: 14px; font-weight: 500; color: var(--text-muted); margin-left: 4px; }
 
-        .macros-card { background: var(--panel-bg); border: 1px solid var(--border-color); border-radius: 14px; padding: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
-        .macro-row { margin-bottom: 20px; }
+        .macros-card { background: var(--panel-bg); border: 1px solid var(--border-color); border-radius: 14px; padding: 28px; box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
+        .macro-row { margin-bottom: 22px; }
+        .macro-row:last-child { margin-bottom: 0; }
         .macro-header { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 13px; font-weight: 600; }
         .macro-bar-bg { width: 100%; height: 10px; background: var(--input-bg); border-radius: 6px; overflow: hidden; }
         .macro-bar-fill { height: 100%; border-radius: 6px; transition: width 0.4s ease; }
@@ -88,8 +97,8 @@
         .training-badge { font-size: 10px; font-weight: 700; text-transform: uppercase; padding: 4px 8px; border-radius: 4px; margin-bottom: 12px; display: inline-block; }
         .badge-cyan { background: rgba(0,242,254,0.15); color: var(--accent-cyan); }
 
-        .placeholder-card { background: var(--panel-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 60px 20px; text-align: center; }
-        .placeholder-icon { font-size: 48px; margin-bottom: 16px; }
+        .placeholder-card { background: var(--panel-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 80px 20px; text-align: center; }
+        .placeholder-icon { font-size: 54px; margin-bottom: 20px; }
 
         /* MODAL POPUP DE AUTENTICACIÓN */
         .modal-overlay { position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(9, 13, 22, 0.85); backdrop-filter: blur(8px); display: none; justify-content: center; align-items: center; z-index: 1000; }
@@ -100,174 +109,178 @@
         .modal-submit-btn { width: 100%; background: linear-gradient(135deg, #00f2fe, #3b82f6); color: #090d16; border: none; padding: 12px; border-radius: 8px; font-weight: 700; font-size: 14px; cursor: pointer; margin-top: 10px; }
         .modal-toggle { text-align: center; font-size: 12px; color: var(--text-muted); margin-top: 16px; }
         .modal-toggle span { color: var(--accent-cyan); cursor: pointer; font-weight: 600; }
-
         .vip-toggle-btn { background: none; border: none; color: var(--accent-purple); font-size: 12px; font-weight: 600; cursor: pointer; margin-bottom: 12px; display: block; text-decoration: underline; }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <!-- HEADER PRINCIPAL -->
-        <header class="header">
-            <div class="brand">
-                <div class="brand-logo">M</div>
-                <div class="brand-title">
-                    <h1>Nutrición & Entrenamiento Pro</h1>
-                    <p>Plataforma de Alto Rendimiento</p>
-                </div>
+    <!-- MENÚ LATERAL (SIDEBAR) -->
+    <div class="sidebar">
+        <div class="brand">
+            <div class="brand-logo">M</div>
+            <div class="brand-title">
+                <h1>Nutrición & <br>Entrenamiento Pro</h1>
+                <p>Alto Rendimiento</p>
             </div>
+        </div>
+        <div class="sidebar-nav">
+            <button class="tab-btn active" onclick="switchTab('nutrition')">🥗 Calculadora Nutrición</button>
+            <button class="tab-btn" onclick="switchTab('training')">🏋️ Mis Programas</button>
+            <button class="tab-btn" onclick="switchTab('campus')">🎓 Campus Virtual</button>
+            <button class="tab-btn" onclick="switchTab('slack')">💬 Comunidad Slack</button>
+        </div>
+    </div>
+
+    <!-- ÁREA PRINCIPAL -->
+    <div class="main-area">
+        <!-- BARRA SUPERIOR -->
+        <div class="top-bar">
             <div class="user-nav">
                 <div class="trial-badge" id="trial-badge-text">⚡ Modo Invitado</div>
                 <button class="auth-btn" id="btn-login-modal" onclick="openModal('login')">Inicia Sesión</button>
             </div>
-        </header>
-
-        <!-- NAVEGACIÓN DASHBOARD -->
-        <div class="nav-tabs">
-            <button class="tab-btn active" onclick="switchTab('nutrition')">🥗 Nutrición</button>
-            <button class="tab-btn" onclick="switchTab('training')">🏋️ Programas</button>
-            <button class="tab-btn" onclick="switchTab('campus')">🎓 Campus</button>
-            <button class="tab-btn" onclick="switchTab('slack')">💬 Slack</button>
         </div>
 
-        <!-- 1. PESTAÑA NUTRICIÓN (ESTILO DASHBOARD INTEGRADO) -->
-        <div id="nutrition-tab" class="tab-content">
-            <div class="dashboard-header">
-                <h2>📊 Planificador Metabólico de Macronutrientes</h2>
-                <p>Calcula tu TMB, TDEE y reparto óptimo de macronutrientes en tiempo real.</p>
-            </div>
-
-            <div class="dashboard-grid">
-                <!-- WIDGET IZQUIERDO: AJUSTES -->
-                <div class="widget-card">
-                    <div class="panel-title">Ajustes del Atleta</div>
-                    <div class="form-group">
-                        <label class="form-label">Género</label>
-                        <div class="gender-selector">
-                            <button type="button" id="btn-female" class="gender-btn active" onclick="setGender('mujer')">♀ Mujer</button>
-                            <button type="button" id="btn-male" class="gender-btn" onclick="setGender('hombre')">♂ Hombre</button>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="input-row">
-                            <div><label class="form-label">Peso (kg)</label><input type="number" id="input-weight" class="form-input" value="70" oninput="calculate()"></div>
-                            <div><label class="form-label">Altura (cm)</label><input type="number" id="input-height" class="form-input" value="165" oninput="calculate()"></div>
-                            <div><label class="form-label">Edad (años)</label><input type="number" id="input-age" class="form-input" value="25" oninput="calculate()"></div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Objetivo Corporal</label>
-                        <select id="select-goal" class="form-select" onchange="calculate()">
-                            <option value="recomp">Recomposición Corporal (-10%)</option>
-                            <option value="fatloss" selected>Pérdida de Grasa (-15%)</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Factor de Actividad (TDEE)</label>
-                        <select id="select-activity" class="form-select" onchange="calculate()">
-                            <option value="1.2">1.2 = Sedentario</option>
-                            <option value="1.375">1.375 = Ligero (1 a 3 días/sem)</option>
-                            <option value="1.55" selected>1.55 = Moderado (3 a 5 días/sem)</option>
-                            <option value="1.75">1.75 = Muy Activo (+6 días/sem)</option>
-                        </select>
-                    </div>
+        <!-- CONTENIDO CAMBIANTE -->
+        <div class="content-wrapper">
+            
+            <!-- 1. PESTAÑA NUTRICIÓN -->
+            <div id="nutrition-tab" class="tab-content">
+                <div class="dashboard-header">
+                    <h2>📊 Planificador Metabólico de Macronutrientes</h2>
+                    <p>Calcula tu TMB, TDEE y reparto óptimo de macronutrientes en tiempo real.</p>
                 </div>
 
-                <!-- WIDGETS DERECHOS: RESULTADOS METABÓLICOS -->
-                <div class="results-panel">
-                    <div class="energy-cards">
-                        <div class="energy-card">
-                            <div class="energy-card-title">Gasto Metabólico Base (TMB)</div>
-                            <div class="energy-value" id="val-tmb">1445<span class="energy-unit">kcal</span></div>
+                <div class="dashboard-grid">
+                    <div class="widget-card">
+                        <div class="panel-title">Ajustes del Atleta</div>
+                        <div class="form-group">
+                            <label class="form-label">Género</label>
+                            <div class="gender-selector">
+                                <button type="button" id="btn-female" class="gender-btn active" onclick="setGender('mujer')">♀ Mujer</button>
+                                <button type="button" id="btn-male" class="gender-btn" onclick="setGender('hombre')">♂ Hombre</button>
+                            </div>
                         </div>
-                        <div class="energy-card">
-                            <div class="energy-card-title">Calorías Totales (TDEE)</div>
-                            <div class="energy-value" id="val-tdee" style="color: var(--accent-cyan);">1904<span class="energy-unit">kcal</span></div>
+                        <div class="form-group">
+                            <div class="input-row">
+                                <div><label class="form-label">Peso (kg)</label><input type="number" id="input-weight" class="form-input" value="70" oninput="calculate()"></div>
+                                <div><label class="form-label">Altura (cm)</label><input type="number" id="input-height" class="form-input" value="165" oninput="calculate()"></div>
+                                <div><label class="form-label">Edad (años)</label><input type="number" id="input-age" class="form-input" value="25" oninput="calculate()"></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Objetivo Corporal</label>
+                            <select id="select-goal" class="form-select" onchange="calculate()">
+                                <option value="recomp">Recomposición Corporal (-10%)</option>
+                                <option value="fatloss" selected>Pérdida de Grasa (-15%)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Factor de Actividad (TDEE)</label>
+                            <select id="select-activity" class="form-select" onchange="calculate()">
+                                <option value="1.2">1.2 = Sedentario</option>
+                                <option value="1.375">1.375 = Ligero (1 a 3 días/sem)</option>
+                                <option value="1.55" selected>1.55 = Moderado (3 a 5 días/sem)</option>
+                                <option value="1.75">1.75 = Muy Activo (+6 días/sem)</option>
+                            </select>
                         </div>
                     </div>
 
-                    <div class="macros-card">
-                        <div class="panel-title">Distribución de Macronutrientes</div>
-                        <div class="macro-row">
-                            <div class="macro-header"><span style="color: var(--accent-cyan);">🌾 Carbohidratos</span><span id="text-carbs">168 g / 672 kcal</span></div>
-                            <div class="macro-bar-bg"><div id="bar-carbs" class="macro-bar-fill bar-carbs" style="width: 43%;"></div></div>
+                    <div class="results-panel">
+                        <div class="energy-cards">
+                            <div class="energy-card">
+                                <div class="energy-card-title">Gasto Metabólico Base (TMB)</div>
+                                <div class="energy-value" id="val-tmb">1445<span class="energy-unit">kcal</span></div>
+                            </div>
+                            <div class="energy-card">
+                                <div class="energy-card-title">Calorías Totales (TDEE)</div>
+                                <div class="energy-value" id="val-tdee" style="color: var(--accent-cyan);">1904<span class="energy-unit">kcal</span></div>
+                            </div>
                         </div>
-                        <div class="macro-row">
-                            <div class="macro-header"><span style="color: var(--accent-magenta);">🥩 Proteínas</span><span id="text-protein">182 g / 728 kcal</span></div>
-                            <div class="macro-bar-bg"><div id="bar-protein" class="macro-bar-fill bar-protein" style="width: 38%;"></div></div>
-                        </div>
-                        <div class="macro-row">
-                            <div class="macro-header"><span style="color: var(--accent-orange);">🥑 Grasas</span><span id="text-fats">56 g / 504 kcal</span></div>
-                            <div class="macro-bar-bg"><div id="bar-fats" class="macro-bar-fill bar-fats" style="width: 26%;"></div></div>
+
+                        <div class="macros-card">
+                            <div class="panel-title">Distribución de Macronutrientes</div>
+                            <div class="macro-row">
+                                <div class="macro-header"><span style="color: var(--accent-cyan);">🌾 Carbohidratos</span><span id="text-carbs">168 g / 672 kcal</span></div>
+                                <div class="macro-bar-bg"><div id="bar-carbs" class="macro-bar-fill bar-carbs" style="width: 43%;"></div></div>
+                            </div>
+                            <div class="macro-row">
+                                <div class="macro-header"><span style="color: var(--accent-magenta);">🥩 Proteínas</span><span id="text-protein">182 g / 728 kcal</span></div>
+                                <div class="macro-bar-bg"><div id="bar-protein" class="macro-bar-fill bar-protein" style="width: 38%;"></div></div>
+                            </div>
+                            <div class="macro-row">
+                                <div class="macro-header"><span style="color: var(--accent-orange);">🥑 Grasas</span><span id="text-fats">56 g / 504 kcal</span></div>
+                                <div class="macro-bar-bg"><div id="bar-fats" class="macro-bar-fill bar-fats" style="width: 26%;"></div></div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- 2. PESTAÑA PROGRAMAS -->
+            <div id="training-tab" class="tab-content" style="display: none;">
+                <div class="dashboard-header">
+                    <h2>🏋️ Programas de Entrenamiento</h2>
+                    <p>Accede a tus planes personalizados de acondicionamiento y fuerza.</p>
+                </div>
+                <div class="training-grid">
+                    <div class="training-card">
+                        <span class="training-badge badge-cyan">Rendimiento</span>
+                        <h3>Entrenamiento Funcional</h3>
+                        <p style="font-size:13px; color:var(--text-muted); margin: 12px 0;">Rutinas dinámicas enfocadas en fuerza aplicada, movilidad y acondicionamiento general.</p>
+                        <button class="auth-btn" style="width: 100%;" onclick="alert('Acceso verificado. Sección de vídeos en desarrollo.')">Ver Rutina Completa</button>
+                    </div>
+
+                    <div class="training-card">
+                        <span class="training-badge" style="background: rgba(236,72,153,0.15); color: var(--accent-magenta);">Masa Muscular</span>
+                        <h3>Hipertrofia & Fuerza</h3>
+                        <p style="font-size:13px; color:var(--text-muted); margin: 12px 0;">Programación basada en sobrecarga progresiva para ganancia muscular eficiente.</p>
+                        <button class="auth-btn" style="width: 100%;" onclick="alert('Acceso verificado. Sección de vídeos en desarrollo.')">Ver Rutina Completa</button>
+                    </div>
+
+                    <div class="training-card">
+                        <span class="training-badge" style="background: rgba(245,158,11,0.15); color: var(--accent-orange);">Quema Energética</span>
+                        <h3>Pérdida de Grasa & HIIT</h3>
+                        <p style="font-size:13px; color:var(--text-muted); margin: 12px 0;">Circuitos de alta intensidad para maximizar el gasto calórico postural.</p>
+                        <button class="auth-btn" style="width: 100%;" onclick="alert('Acceso verificado. Sección de vídeos en desarrollo.')">Ver Rutina Completa</button>
+                    </div>
+
+                    <div class="training-card">
+                        <span class="training-badge" style="background: rgba(139,92,246,0.15); color: var(--accent-purple);">Salud Integral</span>
+                        <h3>Movilidad & Postural</h3>
+                        <p style="font-size:13px; color:var(--text-muted); margin: 12px 0;">Sesiones dirigidas a mejorar rango articular, flexibilidad y salud de la espalda.</p>
+                        <button class="auth-btn" style="width: 100%;" onclick="alert('Acceso verificado. Sección de vídeos en desarrollo.')">Ver Rutina Completa</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. PESTAÑA CAMPUS -->
+            <div id="campus-tab" class="tab-content" style="display: none;">
+                <div class="dashboard-header">
+                    <h2>🎓 Campus Virtual</h2>
+                    <p>Recursos académicos, guías y módulos teóricos.</p>
+                </div>
+                <div class="placeholder-card">
+                    <div class="placeholder-icon">🎓</div>
+                    <h2>Campus en Desarrollo</h2>
+                    <p style="color: var(--text-muted); margin-top: 8px;">Próximamente encontrarás aquí todo el contenido educativo y recursos exclusivos.</p>
+                </div>
+            </div>
+
+            <!-- 4. PESTAÑA SLACK -->
+            <div id="slack-tab" class="tab-content" style="display: none;">
+                <div class="dashboard-header">
+                    <h2>💬 Comunidad Slack</h2>
+                    <p>Canal directo de comunicación y resolución de dudas.</p>
+                </div>
+                <div class="placeholder-card">
+                    <div class="placeholder-icon">💬</div>
+                    <h2>Comunidad Exclusiva</h2>
+                    <p style="color: var(--text-muted); margin-top: 8px;">En cuanto esté activo el espacio, aquí aparecerá tu botón de acceso directo al grupo.</p>
+                </div>
+            </div>
+
         </div>
-
-        <!-- 2. PESTAÑA PROGRAMAS -->
-        <div id="training-tab" class="tab-content" style="display: none;">
-            <div class="dashboard-header">
-                <h2>🏋️ Programas de Entrenamiento</h2>
-                <p>Accede a tus planes personalizados de acondicionamiento y fuerza.</p>
-            </div>
-            <div class="training-grid">
-                <div class="training-card">
-                    <span class="training-badge badge-cyan">Rendimiento</span>
-                    <h3>Entrenamiento Funcional</h3>
-                    <p style="font-size:13px; color:var(--text-muted); margin: 12px 0;">Rutinas dinámicas enfocadas en fuerza aplicada, movilidad y acondicionamiento general.</p>
-                    <button class="auth-btn" style="width: 100%;" onclick="alert('Acceso verificado. Sección de vídeos en desarrollo.')">Ver Rutina Completa</button>
-                </div>
-
-                <div class="training-card">
-                    <span class="training-badge" style="background: rgba(236,72,153,0.15); color: var(--accent-magenta);">Masa Muscular</span>
-                    <h3>Hipertrofia & Fuerza</h3>
-                    <p style="font-size:13px; color:var(--text-muted); margin: 12px 0;">Programación basada en sobrecarga progresiva para ganancia muscular eficiente.</p>
-                    <button class="auth-btn" style="width: 100%;" onclick="alert('Acceso verificado. Sección de vídeos en desarrollo.')">Ver Rutina Completa</button>
-                </div>
-
-                <div class="training-card">
-                    <span class="training-badge" style="background: rgba(245,158,11,0.15); color: var(--accent-orange);">Quema Energética</span>
-                    <h3>Pérdida de Grasa & HIIT</h3>
-                    <p style="font-size:13px; color:var(--text-muted); margin: 12px 0;">Circuitos de alta intensidad para maximizar el gasto calórico postural.</p>
-                    <button class="auth-btn" style="width: 100%;" onclick="alert('Acceso verificado. Sección de vídeos en desarrollo.')">Ver Rutina Completa</button>
-                </div>
-
-                <div class="training-card">
-                    <span class="training-badge" style="background: rgba(139,92,246,0.15); color: var(--accent-purple);">Salud Integral</span>
-                    <h3>Movilidad & Postural</h3>
-                    <p style="font-size:13px; color:var(--text-muted); margin: 12px 0;">Sesiones dirigidas a mejorar rango articular, flexibilidad y salud de la espalda.</p>
-                    <button class="auth-btn" style="width: 100%;" onclick="alert('Acceso verificado. Sección de vídeos en desarrollo.')">Ver Rutina Completa</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- 3. PESTAÑA CAMPUS -->
-        <div id="campus-tab" class="tab-content" style="display: none;">
-            <div class="dashboard-header">
-                <h2>🎓 Campus Informativo</h2>
-                <p>Recursos académicos, guías y módulos teóricos.</p>
-            </div>
-            <div class="placeholder-card">
-                <div class="placeholder-icon">🎓</div>
-                <h2>Campus en Desarrollo</h2>
-                <p style="color: var(--text-muted); margin-top: 8px;">Próximamente encontrarás aquí todo el contenido educativo y recursos exclusivos.</p>
-            </div>
-        </div>
-
-        <!-- 4. PESTAÑA SLACK -->
-        <div id="slack-tab" class="tab-content" style="display: none;">
-            <div class="dashboard-header">
-                <h2>💬 Comunidad Slack</h2>
-                <p>Canal directo de comunicación y resolución de dudas.</p>
-            </div>
-            <div class="placeholder-card">
-                <div class="placeholder-icon">💬</div>
-                <h2>Comunidad en Slack</h2>
-                <p style="color: var(--text-muted); margin-top: 8px;">En cuanto esté activo el espacio, aquí aparecerá tu botón de acceso directo al grupo.</p>
-            </div>
-        </div>
-
     </div>
 
     <!-- MODAL POPUP DE AUTENTICACIÓN -->
@@ -310,6 +323,7 @@
 
     <script>
         const SUPABASE_URL = "https://kcasbojmakirccxorxqy.supabase.co";
+        // ¡Tu clave ya está integrada aquí!
         const SUPABASE_ANON_KEY = "sb_publishable_eY7BuhBUPfOShDFJSUYvcA_F0mZm-Da";
         const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
