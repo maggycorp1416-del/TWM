@@ -10,8 +10,8 @@
         :root {
             --bg-dark: #090d16;
             --card-bg: #111827;
-            --panel-bg: #172033;
-            --input-bg: #0d1322;
+            --panel-bg: #131b2e;
+            --input-bg: #0b101d;
             --accent-cyan: #00f2fe;
             --accent-blue: #3b82f6;
             --accent-purple: #8b5cf6;
@@ -19,17 +19,18 @@
             --accent-orange: #f59e0b;
             --text-main: #f3f4f6;
             --text-muted: #9ca3af;
-            --border-color: #1f293d;
+            --border-color: #1e293b;
             --glow-color: rgba(0, 242, 254, 0.15);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
         body { background-color: var(--bg-dark); color: var(--text-main); min-height: 100vh; padding: 24px; display: flex; flex-direction: column; align-items: center; }
-        .container { max-width: 1200px; width: 100%; }
+        .container { max-width: 1240px; width: 100%; }
 
+        /* HEADER DASHBOARD */
         .header { display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; margin-bottom: 24px; }
         .brand { display: flex; align-items: center; gap: 12px; }
-        .brand-logo { width: 40px; height: 40px; background: linear-gradient(135deg, #00f2fe, #4facfe); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 800; color: #090d16; font-size: 22px; }
+        .brand-logo { width: 40px; height: 40px; background: linear-gradient(135deg, #00f2fe, #3b82f6); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 800; color: #090d16; font-size: 22px; }
         .brand-title h1 { font-size: 18px; font-weight: 700; color: #ffffff; }
         .brand-title p { font-size: 11px; color: var(--accent-cyan); letter-spacing: 1.5px; text-transform: uppercase; }
 
@@ -38,20 +39,25 @@
         .auth-btn { background: linear-gradient(135deg, #00f2fe, #3b82f6); color: #090d16; border: none; padding: 8px 16px; border-radius: 8px; font-weight: 700; font-size: 13px; cursor: pointer; transition: all 0.2s; }
         .auth-btn:hover { box-shadow: 0 0 12px rgba(0, 242, 254, 0.4); }
 
-        /* NAVEGACIÓN PRINCIPAL DE 4 PESTAÑAS */
-        .nav-tabs { display: flex; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; }
-        .tab-btn { background: var(--card-bg); border: 1px solid var(--border-color); color: var(--text-muted); padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
-        .tab-btn.active { background: rgba(0, 242, 254, 0.1); border-color: var(--accent-cyan); color: var(--accent-cyan); box-shadow: 0 0 15px var(--glow-color); }
+        /* NAVEGACIÓN DASHBOARD */
+        .nav-tabs { display: flex; gap: 12px; margin-bottom: 28px; border-bottom: 1px solid var(--border-color); padding-bottom: 12px; }
+        .tab-btn { background: transparent; border: 1px solid transparent; color: var(--text-muted); padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+        .tab-btn:hover { color: #ffffff; background: rgba(255,255,255,0.03); }
+        .tab-btn.active { background: var(--card-bg); border-color: var(--border-color); color: var(--accent-cyan); box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
 
-        .main-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 28px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); margin-bottom: 32px; }
-        .card-header-title { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
-        .card-header-sub { font-size: 13px; color: var(--text-muted); margin-bottom: 24px; }
+        /* TÍTULOS DE SECCIÓN */
+        .dashboard-header { margin-bottom: 24px; }
+        .dashboard-header h2 { font-size: 22px; font-weight: 800; color: #ffffff; display: flex; align-items: center; gap: 10px; }
+        .dashboard-header p { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
 
-        .calculator-grid { display: grid; grid-template-columns: 360px 1fr; gap: 28px; }
-        @media (max-width: 900px) { .calculator-grid { grid-template-columns: 1fr; } }
+        /* GRID PRINCIPAL DEL DASHBOARD */
+        .dashboard-grid { display: grid; grid-template-columns: 360px 1fr; gap: 24px; }
+        @media (max-width: 960px) { .dashboard-grid { grid-template-columns: 1fr; } }
 
-        .input-panel { background: var(--panel-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; }
-        .panel-title { font-size: 12px; font-weight: 700; color: var(--text-muted); letter-spacing: 1px; margin-bottom: 16px; text-transform: uppercase; }
+        /* WIDGETS Y TARJETAS */
+        .widget-card { background: var(--panel-bg); border: 1px solid var(--border-color); border-radius: 14px; padding: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.25); }
+        .panel-title { font-size: 11px; font-weight: 700; color: var(--accent-cyan); letter-spacing: 1px; margin-bottom: 20px; text-transform: uppercase; }
+
         .form-group { margin-bottom: 18px; }
         .form-label { display: block; font-size: 12px; font-weight: 600; color: #d1d5db; margin-bottom: 8px; }
         .gender-selector { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
@@ -61,31 +67,31 @@
         .input-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
         .form-input, .form-select { width: 100%; background: var(--input-bg); border: 1px solid var(--border-color); color: #ffffff; padding: 10px 12px; border-radius: 8px; font-size: 14px; outline: none; }
 
-        .results-panel { display: flex; flex-direction: column; gap: 20px; }
+        .results-panel { display: flex; flex-direction: column; gap: 24px; }
         .energy-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-        .energy-card { background: var(--panel-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; }
+        .energy-card { background: var(--panel-bg); border: 1px solid var(--border-color); border-radius: 14px; padding: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
         .energy-card-title { font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 8px; }
-        .energy-value { font-size: 32px; font-weight: 800; color: #ffffff; }
+        .energy-value { font-size: 36px; font-weight: 800; color: #ffffff; }
         .energy-unit { font-size: 14px; font-weight: 500; color: var(--text-muted); margin-left: 4px; }
 
-        .macros-card { background: var(--panel-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; }
-        .macro-row { margin-bottom: 18px; }
-        .macro-header { display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 13px; font-weight: 600; }
-        .macro-bar-bg { width: 100%; height: 8px; background: var(--input-bg); border-radius: 4px; overflow: hidden; }
-        .macro-bar-fill { height: 100%; border-radius: 4px; transition: width 0.4s ease; }
+        .macros-card { background: var(--panel-bg); border: 1px solid var(--border-color); border-radius: 14px; padding: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
+        .macro-row { margin-bottom: 20px; }
+        .macro-header { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 13px; font-weight: 600; }
+        .macro-bar-bg { width: 100%; height: 10px; background: var(--input-bg); border-radius: 6px; overflow: hidden; }
+        .macro-bar-fill { height: 100%; border-radius: 6px; transition: width 0.4s ease; }
         .bar-carbs { background: linear-gradient(90deg, #00f2fe, #4facfe); }
         .bar-protein { background: linear-gradient(90deg, #ec4899, #8b5cf6); }
         .bar-fats { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
 
-        .training-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
-        .training-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 14px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; }
+        .training-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .training-card { background: var(--panel-bg); border: 1px solid var(--border-color); border-radius: 14px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; }
         .training-badge { font-size: 10px; font-weight: 700; text-transform: uppercase; padding: 4px 8px; border-radius: 4px; margin-bottom: 12px; display: inline-block; }
         .badge-cyan { background: rgba(0,242,254,0.15); color: var(--accent-cyan); }
 
-        .placeholder-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 40px; text-align: center; }
+        .placeholder-card { background: var(--panel-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 60px 20px; text-align: center; }
         .placeholder-icon { font-size: 48px; margin-bottom: 16px; }
 
-        /* ESTILOS MODAL POPUP */
+        /* MODAL POPUP DE AUTENTICACIÓN */
         .modal-overlay { position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(9, 13, 22, 0.85); backdrop-filter: blur(8px); display: none; justify-content: center; align-items: center; z-index: 1000; }
         .modal-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 32px; width: 100%; max-width: 420px; box-shadow: 0 20px 40px rgba(0,0,0,0.8); position: relative; }
         .modal-close { position: absolute; top: 16px; right: 20px; background: none; border: none; color: var(--text-muted); font-size: 20px; cursor: pointer; }
@@ -101,7 +107,7 @@
 <body>
 
     <div class="container">
-        <!-- HEADER -->
+        <!-- HEADER PRINCIPAL -->
         <header class="header">
             <div class="brand">
                 <div class="brand-logo">M</div>
@@ -116,7 +122,7 @@
             </div>
         </header>
 
-        <!-- PESTAÑAS DE NAVEGACIÓN SOLICITADAS -->
+        <!-- NAVEGACIÓN DASHBOARD -->
         <div class="nav-tabs">
             <button class="tab-btn active" onclick="switchTab('nutrition')">🥗 Nutrición</button>
             <button class="tab-btn" onclick="switchTab('training')">🏋️ Programas</button>
@@ -124,81 +130,87 @@
             <button class="tab-btn" onclick="switchTab('slack')">💬 Slack</button>
         </div>
 
-        <!-- 1. BLOQUE NUTRICIÓN -->
+        <!-- 1. PESTAÑA NUTRICIÓN (ESTILO DASHBOARD INTEGRADO) -->
         <div id="nutrition-tab" class="tab-content">
-            <div class="main-card">
-                <div class="card-header-title">📊 Planificador Metabólico de Macronutrientes</div>
-                <div class="card-header-sub">Calcula tu TMB, TDEE y reparto óptimo de macronutrientes.</div>
+            <div class="dashboard-header">
+                <h2>📊 Planificador Metabólico de Macronutrientes</h2>
+                <p>Calcula tu TMB, TDEE y reparto óptimo de macronutrientes en tiempo real.</p>
+            </div>
 
-                <div class="calculator-grid">
-                    <div class="input-panel">
-                        <div class="panel-title">Ajustes del Atleta</div>
-                        <div class="form-group">
-                            <label class="form-label">Género</label>
-                            <div class="gender-selector">
-                                <button type="button" id="btn-female" class="gender-btn active" onclick="setGender('mujer')">♀ Mujer</button>
-                                <button type="button" id="btn-male" class="gender-btn" onclick="setGender('hombre')">♂ Hombre</button>
-                            </div>
+            <div class="dashboard-grid">
+                <!-- WIDGET IZQUIERDO: AJUSTES -->
+                <div class="widget-card">
+                    <div class="panel-title">Ajustes del Atleta</div>
+                    <div class="form-group">
+                        <label class="form-label">Género</label>
+                        <div class="gender-selector">
+                            <button type="button" id="btn-female" class="gender-btn active" onclick="setGender('mujer')">♀ Mujer</button>
+                            <button type="button" id="btn-male" class="gender-btn" onclick="setGender('hombre')">♂ Hombre</button>
                         </div>
-                        <div class="form-group">
-                            <div class="input-row">
-                                <div><label class="form-label">Peso (kg)</label><input type="number" id="input-weight" class="form-input" value="70" oninput="calculate()"></div>
-                                <div><label class="form-label">Altura (cm)</label><input type="number" id="input-height" class="form-input" value="165" oninput="calculate()"></div>
-                                <div><label class="form-label">Edad (años)</label><input type="number" id="input-age" class="form-input" value="25" oninput="calculate()"></div>
-                            </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-row">
+                            <div><label class="form-label">Peso (kg)</label><input type="number" id="input-weight" class="form-input" value="70" oninput="calculate()"></div>
+                            <div><label class="form-label">Altura (cm)</label><input type="number" id="input-height" class="form-input" value="165" oninput="calculate()"></div>
+                            <div><label class="form-label">Edad (años)</label><input type="number" id="input-age" class="form-input" value="25" oninput="calculate()"></div>
                         </div>
-                        <div class="form-group">
-                            <label class="form-label">Objetivo Corporal</label>
-                            <select id="select-goal" class="form-select" onchange="calculate()">
-                                <option value="recomp">Recomposición Corporal (-10%)</option>
-                                <option value="fatloss" selected>Pérdida de Grasa (-15%)</option>
-                            </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Objetivo Corporal</label>
+                        <select id="select-goal" class="form-select" onchange="calculate()">
+                            <option value="recomp">Recomposición Corporal (-10%)</option>
+                            <option value="fatloss" selected>Pérdida de Grasa (-15%)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Factor de Actividad (TDEE)</label>
+                        <select id="select-activity" class="form-select" onchange="calculate()">
+                            <option value="1.2">1.2 = Sedentario</option>
+                            <option value="1.375">1.375 = Ligero (1 a 3 días/sem)</option>
+                            <option value="1.55" selected>1.55 = Moderado (3 a 5 días/sem)</option>
+                            <option value="1.75">1.75 = Muy Activo (+6 días/sem)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- WIDGETS DERECHOS: RESULTADOS METABÓLICOS -->
+                <div class="results-panel">
+                    <div class="energy-cards">
+                        <div class="energy-card">
+                            <div class="energy-card-title">Gasto Metabólico Base (TMB)</div>
+                            <div class="energy-value" id="val-tmb">1445<span class="energy-unit">kcal</span></div>
                         </div>
-                        <div class="form-group">
-                            <label class="form-label">Factor de Actividad (TDEE)</label>
-                            <select id="select-activity" class="form-select" onchange="calculate()">
-                                <option value="1.2">1.2 = Sedentario</option>
-                                <option value="1.375">1.375 = Ligero (1 a 3 días/sem)</option>
-                                <option value="1.55" selected>1.55 = Moderado (3 a 5 días/sem)</option>
-                                <option value="1.75">1.75 = Muy Activo (+6 días/sem)</option>
-                            </select>
+                        <div class="energy-card">
+                            <div class="energy-card-title">Calorías Totales (TDEE)</div>
+                            <div class="energy-value" id="val-tdee" style="color: var(--accent-cyan);">1904<span class="energy-unit">kcal</span></div>
                         </div>
                     </div>
 
-                    <div class="results-panel">
-                        <div class="panel-title">Diagnóstico Energético y Macronutrientes</div>
-                        <div class="energy-cards">
-                            <div class="energy-card">
-                                <div class="energy-card-title">Gasto Metabólico (TMB)</div>
-                                <div class="energy-value" id="val-tmb">1445<span class="energy-unit">kcal</span></div>
-                            </div>
-                            <div class="energy-card">
-                                <div class="energy-card-title">Calorías Totales (TDEE)</div>
-                                <div class="energy-value" id="val-tdee" style="color: var(--accent-cyan);">1901<span class="energy-unit">kcal</span></div>
-                            </div>
+                    <div class="macros-card">
+                        <div class="panel-title">Distribución de Macronutrientes</div>
+                        <div class="macro-row">
+                            <div class="macro-header"><span style="color: var(--accent-cyan);">🌾 Carbohidratos</span><span id="text-carbs">168 g / 672 kcal</span></div>
+                            <div class="macro-bar-bg"><div id="bar-carbs" class="macro-bar-fill bar-carbs" style="width: 43%;"></div></div>
                         </div>
-                        <div class="macros-card">
-                            <div class="panel-title">Distribución de Macronutrientes</div>
-                            <div class="macro-row">
-                                <div class="macro-header"><span style="color: var(--accent-cyan);">🌾 Carbohidratos</span><span id="text-carbs">205 g / 820 kcal</span></div>
-                                <div class="macro-bar-bg"><div id="bar-carbs" class="macro-bar-fill bar-carbs" style="width: 43%;"></div></div>
-                            </div>
-                            <div class="macro-row">
-                                <div class="macro-header"><span style="color: var(--accent-magenta);">🥩 Proteínas</span><span id="text-protein">182 g / 728 kcal</span></div>
-                                <div class="macro-bar-bg"><div id="bar-protein" class="macro-bar-fill bar-protein" style="width: 38%;"></div></div>
-                            </div>
-                            <div class="macro-row">
-                                <div class="macro-header"><span style="color: var(--accent-orange);">🥑 Grasas</span><span id="text-fats">56 g / 504 kcal</span></div>
-                                <div class="macro-bar-bg"><div id="bar-fats" class="macro-bar-fill bar-fats" style="width: 26%;"></div></div>
-                            </div>
+                        <div class="macro-row">
+                            <div class="macro-header"><span style="color: var(--accent-magenta);">🥩 Proteínas</span><span id="text-protein">182 g / 728 kcal</span></div>
+                            <div class="macro-bar-bg"><div id="bar-protein" class="macro-bar-fill bar-protein" style="width: 38%;"></div></div>
+                        </div>
+                        <div class="macro-row">
+                            <div class="macro-header"><span style="color: var(--accent-orange);">🥑 Grasas</span><span id="text-fats">56 g / 504 kcal</span></div>
+                            <div class="macro-bar-bg"><div id="bar-fats" class="macro-bar-fill bar-fats" style="width: 26%;"></div></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- 2. BLOQUE PROGRAMAS -->
+        <!-- 2. PESTAÑA PROGRAMAS -->
         <div id="training-tab" class="tab-content" style="display: none;">
+            <div class="dashboard-header">
+                <h2>🏋️ Programas de Entrenamiento</h2>
+                <p>Accede a tus planes personalizados de acondicionamiento y fuerza.</p>
+            </div>
             <div class="training-grid">
                 <div class="training-card">
                     <span class="training-badge badge-cyan">Rendimiento</span>
@@ -230,21 +242,29 @@
             </div>
         </div>
 
-        <!-- 3. BLOQUE CAMPUS -->
+        <!-- 3. PESTAÑA CAMPUS -->
         <div id="campus-tab" class="tab-content" style="display: none;">
+            <div class="dashboard-header">
+                <h2>🎓 Campus Informativo</h2>
+                <p>Recursos académicos, guías y módulos teóricos.</p>
+            </div>
             <div class="placeholder-card">
                 <div class="placeholder-icon">🎓</div>
-                <h2>Campus Informativo</h2>
-                <p style="color: var(--text-muted); margin-top: 8px;">Próximamente encontrarás aquí todo el material educativo, módulos temáticos y recursos teóricos de la plataforma.</p>
+                <h2>Campus en Desarrollo</h2>
+                <p style="color: var(--text-muted); margin-top: 8px;">Próximamente encontrarás aquí todo el contenido educativo y recursos exclusivos.</p>
             </div>
         </div>
 
-        <!-- 4. BLOQUE SLACK -->
+        <!-- 4. PESTAÑA SLACK -->
         <div id="slack-tab" class="tab-content" style="display: none;">
+            <div class="dashboard-header">
+                <h2>💬 Comunidad Slack</h2>
+                <p>Canal directo de comunicación y resolución de dudas.</p>
+            </div>
             <div class="placeholder-card">
                 <div class="placeholder-icon">💬</div>
                 <h2>Comunidad en Slack</h2>
-                <p style="color: var(--text-muted); margin-top: 8px;">Espacio de comunidad en preparación. En cuanto esté creada, integraremos aquí el enlace de acceso a nuestro espacio exclusivo.</p>
+                <p style="color: var(--text-muted); margin-top: 8px;">En cuanto esté activo el espacio, aquí aparecerá tu botón de acceso directo al grupo.</p>
             </div>
         </div>
 
@@ -403,7 +423,6 @@
             location.reload();
         }
 
-        /* FUNCIÓN DE CAMBIO DE PESTAÑAS MEJORADA */
         function switchTab(tab) {
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
             document.querySelectorAll('.tab-content').forEach(c => c.style.display = 'none');
