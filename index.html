@@ -38,7 +38,8 @@
         .auth-btn { background: linear-gradient(135deg, #00f2fe, #3b82f6); color: #090d16; border: none; padding: 8px 16px; border-radius: 8px; font-weight: 700; font-size: 13px; cursor: pointer; transition: all 0.2s; }
         .auth-btn:hover { box-shadow: 0 0 12px rgba(0, 242, 254, 0.4); }
 
-        .nav-tabs { display: flex; gap: 12px; margin-bottom: 24px; }
+        /* NAVEGACIÓN PRINCIPAL DE 4 PESTAÑAS */
+        .nav-tabs { display: flex; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; }
         .tab-btn { background: var(--card-bg); border: 1px solid var(--border-color); color: var(--text-muted); padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
         .tab-btn.active { background: rgba(0, 242, 254, 0.1); border-color: var(--accent-cyan); color: var(--accent-cyan); box-shadow: 0 0 15px var(--glow-color); }
 
@@ -81,7 +82,10 @@
         .training-badge { font-size: 10px; font-weight: 700; text-transform: uppercase; padding: 4px 8px; border-radius: 4px; margin-bottom: 12px; display: inline-block; }
         .badge-cyan { background: rgba(0,242,254,0.15); color: var(--accent-cyan); }
 
-        /* Estilos del Modal Popup */
+        .placeholder-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 40px; text-align: center; }
+        .placeholder-icon { font-size: 48px; margin-bottom: 16px; }
+
+        /* ESTILOS MODAL POPUP */
         .modal-overlay { position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(9, 13, 22, 0.85); backdrop-filter: blur(8px); display: none; justify-content: center; align-items: center; z-index: 1000; }
         .modal-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 32px; width: 100%; max-width: 420px; box-shadow: 0 20px 40px rgba(0,0,0,0.8); position: relative; }
         .modal-close { position: absolute; top: 16px; right: 20px; background: none; border: none; color: var(--text-muted); font-size: 20px; cursor: pointer; }
@@ -97,6 +101,7 @@
 <body>
 
     <div class="container">
+        <!-- HEADER -->
         <header class="header">
             <div class="brand">
                 <div class="brand-logo">M</div>
@@ -111,11 +116,15 @@
             </div>
         </header>
 
+        <!-- PESTAÑAS DE NAVEGACIÓN SOLICITADAS -->
         <div class="nav-tabs">
-            <button class="tab-btn active" onclick="switchTab('nutrition')">🥗 Calculadora de Nutrición</button>
-            <button class="tab-btn" onclick="switchTab('training')">🏋️ Programas de Entrenamiento</button>
+            <button class="tab-btn active" onclick="switchTab('nutrition')">🥗 Nutrición</button>
+            <button class="tab-btn" onclick="switchTab('training')">🏋️ Programas</button>
+            <button class="tab-btn" onclick="switchTab('campus')">🎓 Campus</button>
+            <button class="tab-btn" onclick="switchTab('slack')">💬 Slack</button>
         </div>
 
+        <!-- 1. BLOQUE NUTRICIÓN -->
         <div id="nutrition-tab" class="tab-content">
             <div class="main-card">
                 <div class="card-header-title">📊 Planificador Metabólico de Macronutrientes</div>
@@ -188,19 +197,60 @@
             </div>
         </div>
 
+        <!-- 2. BLOQUE PROGRAMAS -->
         <div id="training-tab" class="tab-content" style="display: none;">
             <div class="training-grid">
                 <div class="training-card">
                     <span class="training-badge badge-cyan">Rendimiento</span>
                     <h3>Entrenamiento Funcional</h3>
-                    <p style="font-size:13px; color:var(--text-muted); margin: 12px 0;">Rutinas dinámicas enfocadas en fuerza aplicada.</p>
-                    <button class="auth-btn" style="width: 100%;" onclick="alert('Acceso verificado para tu usuario.')">Ver Rutina Completa</button>
+                    <p style="font-size:13px; color:var(--text-muted); margin: 12px 0;">Rutinas dinámicas enfocadas en fuerza aplicada, movilidad y acondicionamiento general.</p>
+                    <button class="auth-btn" style="width: 100%;" onclick="alert('Acceso verificado. Sección de vídeos en desarrollo.')">Ver Rutina Completa</button>
+                </div>
+
+                <div class="training-card">
+                    <span class="training-badge" style="background: rgba(236,72,153,0.15); color: var(--accent-magenta);">Masa Muscular</span>
+                    <h3>Hipertrofia & Fuerza</h3>
+                    <p style="font-size:13px; color:var(--text-muted); margin: 12px 0;">Programación basada en sobrecarga progresiva para ganancia muscular eficiente.</p>
+                    <button class="auth-btn" style="width: 100%;" onclick="alert('Acceso verificado. Sección de vídeos en desarrollo.')">Ver Rutina Completa</button>
+                </div>
+
+                <div class="training-card">
+                    <span class="training-badge" style="background: rgba(245,158,11,0.15); color: var(--accent-orange);">Quema Energética</span>
+                    <h3>Pérdida de Grasa & HIIT</h3>
+                    <p style="font-size:13px; color:var(--text-muted); margin: 12px 0;">Circuitos de alta intensidad para maximizar el gasto calórico postural.</p>
+                    <button class="auth-btn" style="width: 100%;" onclick="alert('Acceso verificado. Sección de vídeos en desarrollo.')">Ver Rutina Completa</button>
+                </div>
+
+                <div class="training-card">
+                    <span class="training-badge" style="background: rgba(139,92,246,0.15); color: var(--accent-purple);">Salud Integral</span>
+                    <h3>Movilidad & Postural</h3>
+                    <p style="font-size:13px; color:var(--text-muted); margin: 12px 0;">Sesiones dirigidas a mejorar rango articular, flexibilidad y salud de la espalda.</p>
+                    <button class="auth-btn" style="width: 100%;" onclick="alert('Acceso verificado. Sección de vídeos en desarrollo.')">Ver Rutina Completa</button>
                 </div>
             </div>
         </div>
+
+        <!-- 3. BLOQUE CAMPUS -->
+        <div id="campus-tab" class="tab-content" style="display: none;">
+            <div class="placeholder-card">
+                <div class="placeholder-icon">🎓</div>
+                <h2>Campus Informativo</h2>
+                <p style="color: var(--text-muted); margin-top: 8px;">Próximamente encontrarás aquí todo el material educativo, módulos temáticos y recursos teóricos de la plataforma.</p>
+            </div>
+        </div>
+
+        <!-- 4. BLOQUE SLACK -->
+        <div id="slack-tab" class="tab-content" style="display: none;">
+            <div class="placeholder-card">
+                <div class="placeholder-icon">💬</div>
+                <h2>Comunidad en Slack</h2>
+                <p style="color: var(--text-muted); margin-top: 8px;">Espacio de comunidad en preparación. En cuanto esté creada, integraremos aquí el enlace de acceso a nuestro espacio exclusivo.</p>
+            </div>
+        </div>
+
     </div>
 
-    <!-- MODAL POPUP DE AUTENTICACIÓN Y CÓDIGO VIP -->
+    <!-- MODAL POPUP DE AUTENTICACIÓN -->
     <div class="modal-overlay" id="auth-modal">
         <div class="modal-card">
             <button class="modal-close" onclick="closeModal()">✕</button>
@@ -221,12 +271,11 @@
                     <input type="password" id="auth-password" class="form-input" placeholder="••••••••" required>
                 </div>
 
-                <!-- SECCIÓN CÓDIGO ESPECIAL VIP -->
                 <div id="vip-section">
                     <button type="button" class="vip-toggle-btn" onclick="toggleVipInput()">🎁 ¿Tienes un Código Especial / VIP?</button>
                     <div class="form-group" id="group-vip" style="display: none;">
                         <label class="form-label" style="color: var(--accent-purple);">Código de Acceso VIP</label>
-                        <input type="text" id="auth-vip-code" class="form-input" placeholder="Ej: Introduce tu código aquí" style="border-color: var(--accent-purple); text-transform: uppercase;">
+                        <input type="text" id="auth-vip-code" class="form-input" placeholder="Introduce tu código" style="border-color: var(--accent-purple); text-transform: uppercase;">
                     </div>
                 </div>
 
@@ -241,7 +290,7 @@
 
     <script>
         const SUPABASE_URL = "https://kcasbojmakirccxorxqy.supabase.co";
-        const SUPABASE_ANON_KEY = "sb_publishable_eY7BuhBUPfOShDFJSUYvcA_F0mZm-Da"; // Clave pública
+        const SUPABASE_ANON_KEY = "sb_publishable_eY7BuhBUPfOShDFJSUYvcA_F0mZm-Da";
         const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
         const MASTER_VIP_CODE = "VIP1416M";
@@ -354,15 +403,21 @@
             location.reload();
         }
 
+        /* FUNCIÓN DE CAMBIO DE PESTAÑAS MEJORADA */
         function switchTab(tab) {
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
             document.querySelectorAll('.tab-content').forEach(c => c.style.display = 'none');
-            if (tab === 'nutrition') {
-                document.querySelectorAll('.tab-btn')[0].classList.add('active');
-                document.getElementById('nutrition-tab').style.display = 'block';
-            } else {
-                document.querySelectorAll('.tab-btn')[1].classList.add('active');
-                document.getElementById('training-tab').style.display = 'block';
+            
+            const tabMap = {
+                'nutrition': { btnIndex: 0, contentId: 'nutrition-tab' },
+                'training': { btnIndex: 1, contentId: 'training-tab' },
+                'campus': { btnIndex: 2, contentId: 'campus-tab' },
+                'slack': { btnIndex: 3, contentId: 'slack-tab' }
+            };
+
+            if (tabMap[tab]) {
+                document.querySelectorAll('.tab-btn')[tabMap[tab].btnIndex].classList.add('active');
+                document.getElementById(tabMap[tab].contentId).style.display = 'block';
             }
         }
 
