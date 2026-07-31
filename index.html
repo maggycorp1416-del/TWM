@@ -363,11 +363,69 @@
 
     <!-- SECCIÓN CAMPUS -->
     <div class="wide-container" id="view-campus">
-        <button class="back-btn" onclick="goBack()">⬅️ Volver al Menú</button>
-        <div class="placeholder-card">
-            <div style="font-size: 50px; margin-bottom: 12px;">🎓</div>
-            <h2>Campus Virtual</h2>
-            <p style="color: var(--text-muted); margin-top: 8px;">Aquí encontrarás próximamente todos los módulos teóricos y material exclusivo.</p>
+        <button class="back-btn" onclick="goBack()">⬅️ Volver al Menú Principal</button>
+        
+        <div style="margin-bottom: 24px;">
+            <h2 style="font-size: 24px; font-weight: 800;">🎓 Campus Virtual</h2>
+            <p style="color: var(--text-muted); font-size: 14px;">Formación teórica y módulos interactivos.</p>
+        </div>
+
+        <!-- 1. CATÁLOGO DE MÓDULOS -->
+        <div id="campus-grid" class="training-grid">
+            
+            <!-- MÓDULO 1 -->
+            <div class="training-card">
+                <div>
+                    <span class="training-badge" style="background: rgba(184,165,254,0.15); color: var(--accent-lavender);">Módulo 1</span>
+                    <h3>Introducción a la Nutrición</h3>
+                    <p style="font-size:13px; color:var(--text-muted); margin: 12px 0;">Bases fundamentales, requerimientos energéticos y conceptos clave.</p>
+                </div>
+                <!-- Sustituye el enlace de Netlify correspondiente -->
+                <button class="auth-btn" style="width: 100%;" onclick="openModule('https://modulo1intronutrideportiva.netlify.app', 'Módulo 1: Introducción a la Nutrición')">Ver Módulo ➔</button>
+            </div>
+
+            <!-- MÓDULO 2 -->
+            <div class="training-card">
+                <div>
+                    <span class="training-badge" style="background: rgba(184,165,254,0.15); color: var(--accent-lavender);">Módulo 2</span>
+                    <h3>Nutrición Deportiva II</h3>
+                    <p style="font-size:13px; color:var(--text-muted); margin: 12px 0;">Planificación avanzada e individualización de la dieta.</p>
+                </div>
+                <button class="auth-btn" style="width: 100%;" onclick="openModule('https://modulo2nutrideportiva.netlify.app', 'Módulo 2: Nutrición Deportiva II')">Ver Módulo ➔</button>
+            </div>
+
+            <!-- MÓDULO 3 -->
+            <div class="training-card">
+                <div>
+                    <span class="training-badge" style="background: rgba(112,243,255,0.15); color: var(--accent-cyan);">Módulo 3</span>
+                    <h3>Tipos de Dietas</h3>
+                    <p style="font-size:13px; color:var(--text-muted); margin: 12px 0;">Análisis detallado de diferentes enfoques nutricionales.</p>
+                </div>
+                <button class="auth-btn" style="width: 100%;" onclick="openModule('https://modulo3nutrideportiva.netlify.app', 'Módulo 3: Tipos de Dietas')">Ver Módulo ➔</button>
+            </div>
+
+            <!-- MÓDULO 4 -->
+            <div class="training-card">
+                <div>
+                    <span class="training-badge" style="background: rgba(112,243,255,0.15); color: var(--accent-cyan);">Módulo 4</span>
+                    <h3>Nutrición Avanzada</h3>
+                    <p style="font-size:13px; color:var(--text-muted); margin: 12px 0;">Suplementación, timing nutricional y rendimiento.</p>
+                </div>
+                <button class="auth-btn" style="width: 100%;" onclick="openModule('https://modulo4nutrideportiva.netlify.app', 'Módulo 4: Nutrición Avanzada')">Ver Módulo ➔</button>
+            </div>
+
+        </div>
+
+        <!-- 2. REPRODUCTOR INTEGRADO (OCULTO POR DEFECTO) -->
+        <div id="campus-viewer" style="display: none;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
+                <button class="back-btn" style="margin-bottom: 0;" onclick="closeModule()">🔙 Volver a Módulos</button>
+                <h3 id="module-viewer-title" style="font-size: 16px; font-weight: 700; color: var(--accent-lavender);">Cargando módulo...</h3>
+            </div>
+            
+            <div style="width: 100%; height: 78vh; border-radius: 16px; overflow: hidden; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+                <iframe id="module-iframe" src="" style="width: 100%; height: 100%; border: none;"></iframe>
+            </div>
         </div>
     </div>
 
