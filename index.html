@@ -8,58 +8,94 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
         :root {
-            --bg-dark: #090d16;
-            --card-bg: #111827;
-            --panel-bg: #131b2e;
-            --input-bg: #0b101d;
-            --accent-cyan: #00f2fe;
-            --accent-blue: #3b82f6;
-            --accent-purple: #8b5cf6;
-            --accent-magenta: #ec4899;
-            --accent-orange: #f59e0b;
-            --text-main: #f3f4f6;
-            --text-muted: #9ca3af;
-            --border-color: #1e293b;
+            /* PALETA FUTURISMO MINIMALISTA & BIENESTAR VITAL */
+            --bg-dark: #0e0c1a;             /* Fondo violeta oscuro aterciopelado */
+            --card-bg: #161226;           /* Tarjeta principal */
+            --panel-bg: #1d1733;          /* Contenedor de paneles */
+            --input-bg: #120e22;          /* Fondo de inputs */
+            
+            --accent-lavender: #b8a5fe;   /* Lavanda Aurora */
+            --accent-cyan: #70f3ff;       /* Cian Aurora */
+            --accent-steel: #e2e8f0;      /* Acero Pulido */
+            
+            --accent-magenta: #f472b6;    /* Rosa suave */
+            --accent-orange: #fbbf24;     /* Cálido para grasas/detalles */
+            
+            --text-main: #f8fafc;
+            --text-muted: #a0a5ba;
+            --border-color: rgba(184, 165, 254, 0.2);
+            --glow-combined: rgba(112, 243, 255, 0.25);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
-        body { background-color: var(--bg-dark); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 20px; }
+        body { 
+            background-color: var(--bg-dark); 
+            background-image: radial-gradient(circle at 50% 0%, rgba(184, 165, 254, 0.12) 0%, transparent 60%);
+            color: var(--text-main); 
+            min-height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            padding: 20px; 
+        }
         
         .app-container { max-width: 500px; width: 100%; margin: 0 auto; }
         .wide-container { max-width: 1000px; width: 100%; margin: 0 auto; display: none; }
 
         /* HEADER SUPERIOR CON SESIÓN */
         .top-bar { display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 30px; }
-        .trial-badge { background: rgba(0, 242, 254, 0.1); border: 1px solid var(--accent-cyan); color: var(--accent-cyan); padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; }
-        .auth-btn { background: linear-gradient(135deg, #00f2fe, #3b82f6); color: #090d16; border: none; padding: 8px 18px; border-radius: 8px; font-weight: 700; font-size: 13px; cursor: pointer; transition: all 0.2s; }
-        .auth-btn:hover { box-shadow: 0 0 15px rgba(0, 242, 254, 0.4); }
+        .trial-badge { 
+            background: rgba(184, 165, 254, 0.12); 
+            border: 1px solid var(--accent-lavender); 
+            color: var(--accent-lavender); 
+            padding: 6px 16px; 
+            border-radius: 20px; 
+            font-size: 12px; 
+            font-weight: 600; 
+        }
+        .auth-btn { 
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-lavender)); 
+            color: #0d0b18; 
+            border: none; 
+            padding: 9px 20px; 
+            border-radius: 10px; 
+            font-weight: 700; 
+            font-size: 13px; 
+            cursor: pointer; 
+            transition: all 0.25s ease; 
+        }
+        .auth-btn:hover { 
+            box-shadow: 0 0 20px rgba(112, 243, 255, 0.4); 
+            transform: translateY(-1px);
+        }
 
-        /* VISTA PRINCIPAL (HUB CON LOGO Y COLORES ORIGINALES) */
+        /* VISTA PRINCIPAL HUB */
         .hub-profile { text-align: center; margin-bottom: 36px; }
         
         .hub-logo-img {
-            width: 120px;
-            height: 120px;
-            border-radius: 20px;
+            width: 130px;
+            height: 130px;
+            border-radius: 24px;
             object-fit: cover;
-            margin: 0 auto 16px;
-            box-shadow: 0 0 25px rgba(0, 242, 254, 0.25);
-            border: 1px solid rgba(0, 242, 254, 0.3);
+            margin: 0 auto 18px;
+            box-shadow: 0 0 30px rgba(184, 165, 254, 0.3), 0 0 10px rgba(112, 243, 255, 0.2);
+            border: 1px solid rgba(248, 250, 252, 0.4);
             display: block;
         }
 
-        .hub-title { font-size: 24px; font-weight: 800; color: #ffffff; letter-spacing: -0.5px; }
-        .hub-subtitle { font-size: 11px; color: var(--accent-cyan); letter-spacing: 2px; text-transform: uppercase; margin-top: 6px; font-weight: 700; }
+        .hub-title { font-size: 26px; font-weight: 800; color: #ffffff; letter-spacing: -0.5px; }
+        .hub-subtitle { font-size: 11px; color: var(--accent-lavender); letter-spacing: 2px; text-transform: uppercase; margin-top: 6px; font-weight: 700; }
 
         .button-stack { display: flex; flex-direction: column; gap: 16px; width: 100%; }
         
-        /* BOTONES CON LA PALETA DE COLORES CIAN/AZUL ORIGINAL */
+        /* BOTONES CON LAVANDA & CIAN AURORA */
         .hub-btn {
-            background: rgba(0, 242, 254, 0.05);
+            background: rgba(29, 23, 51, 0.6);
+            backdrop-filter: blur(10px);
             color: #ffffff;
-            border: 1px solid rgba(0, 242, 254, 0.4);
+            border: 1px solid rgba(184, 165, 254, 0.35);
             padding: 18px 24px;
-            border-radius: 14px;
+            border-radius: 16px;
             font-size: 15px;
             font-weight: 800;
             letter-spacing: 1.5px;
@@ -69,70 +105,84 @@
             align-items: center;
             justify-content: center;
             gap: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            transition: all 0.25s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .hub-btn:hover {
-            background: linear-gradient(135deg, #00f2fe, #3b82f6);
-            color: #090d16;
+            background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-lavender) 100%);
+            color: #0e0c1a;
             border-color: transparent;
             transform: translateY(-2px);
-            box-shadow: 0 0 25px rgba(0, 242, 254, 0.4);
+            box-shadow: 0 0 25px rgba(184, 165, 254, 0.45);
         }
 
         /* BOTÓN VOLVER */
-        .back-btn { background: var(--panel-bg); border: 1px solid var(--border-color); color: var(--text-main); padding: 10px 18px; border-radius: 10px; font-weight: 700; font-size: 13px; cursor: pointer; margin-bottom: 24px; display: inline-flex; align-items: center; gap: 8px; }
+        .back-btn { 
+            background: var(--panel-bg); 
+            border: 1px solid var(--border-color); 
+            color: var(--text-main); 
+            padding: 10px 18px; 
+            border-radius: 10px; 
+            font-weight: 700; 
+            font-size: 13px; 
+            cursor: pointer; 
+            margin-bottom: 24px; 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 8px; 
+            transition: all 0.2s;
+        }
         .back-btn:hover { border-color: var(--accent-cyan); color: var(--accent-cyan); }
 
         /* WIDGETS DE NUTRICIÓN */
         .dashboard-grid { display: grid; grid-template-columns: 340px 1fr; gap: 24px; }
         @media (max-width: 850px) { .dashboard-grid { grid-template-columns: 1fr; } }
         
-        .widget-card { background: var(--panel-bg); border: 1px solid var(--border-color); border-radius: 14px; padding: 24px; }
-        .panel-title { font-size: 11px; font-weight: 700; color: var(--accent-cyan); letter-spacing: 1px; margin-bottom: 20px; text-transform: uppercase; }
+        .widget-card { background: var(--panel-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 24px; }
+        .panel-title { font-size: 11px; font-weight: 700; color: var(--accent-lavender); letter-spacing: 1px; margin-bottom: 20px; text-transform: uppercase; }
 
         .form-group { margin-bottom: 18px; }
         .form-label { display: block; font-size: 12px; font-weight: 600; color: #d1d5db; margin-bottom: 8px; }
         .gender-selector { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
         .gender-btn { background: var(--input-bg); border: 1px solid var(--border-color); color: var(--text-muted); padding: 10px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 13px; text-align: center; }
-        .gender-btn.active { background: rgba(0, 242, 254, 0.15); border-color: var(--accent-cyan); color: #ffffff; }
+        .gender-btn.active { background: rgba(184, 165, 254, 0.2); border-color: var(--accent-lavender); color: #ffffff; }
 
         .input-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
         .form-input, .form-select { width: 100%; background: var(--input-bg); border: 1px solid var(--border-color); color: #ffffff; padding: 10px 12px; border-radius: 8px; font-size: 14px; outline: none; }
 
         .results-panel { display: flex; flex-direction: column; gap: 24px; }
         .energy-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-        .energy-card { background: var(--panel-bg); border: 1px solid var(--border-color); border-radius: 14px; padding: 24px; }
+        .energy-card { background: var(--panel-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 24px; }
         .energy-card-title { font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 12px; }
         .energy-value { font-size: 34px; font-weight: 800; color: #ffffff; }
         .energy-unit { font-size: 14px; font-weight: 500; color: var(--text-muted); margin-left: 4px; }
 
-        .macros-card { background: var(--panel-bg); border: 1px solid var(--border-color); border-radius: 14px; padding: 28px; }
+        .macros-card { background: var(--panel-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 28px; }
         .macro-row { margin-bottom: 22px; }
         .macro-row:last-child { margin-bottom: 0; }
         .macro-header { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 13px; font-weight: 600; }
         .macro-bar-bg { width: 100%; height: 10px; background: var(--input-bg); border-radius: 6px; overflow: hidden; }
         .macro-bar-fill { height: 100%; border-radius: 6px; transition: width 0.4s ease; }
-        .bar-carbs { background: linear-gradient(90deg, #00f2fe, #4facfe); }
-        .bar-protein { background: linear-gradient(90deg, #ec4899, #8b5cf6); }
+        .bar-carbs { background: linear-gradient(90deg, var(--accent-cyan), #38bdf8); }
+        .bar-protein { background: linear-gradient(90deg, var(--accent-lavender), var(--accent-magenta)); }
         .bar-fats { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
 
         .training-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
-        .training-card { background: var(--panel-bg); border: 1px solid var(--border-color); border-radius: 14px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; }
+        .training-card { background: var(--panel-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; }
         .training-badge { font-size: 10px; font-weight: 700; text-transform: uppercase; padding: 4px 8px; border-radius: 4px; margin-bottom: 12px; display: inline-block; }
 
         .placeholder-card { background: var(--panel-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 80px 20px; text-align: center; }
 
         /* MODAL AUTENTICACIÓN */
-        .modal-overlay { position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(9, 13, 22, 0.85); backdrop-filter: blur(8px); display: none; justify-content: center; align-items: center; z-index: 1000; }
-        .modal-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 32px; width: 100%; max-width: 420px; position: relative; }
+        .modal-overlay { position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(14, 12, 26, 0.88); backdrop-filter: blur(10px); display: none; justify-content: center; align-items: center; z-index: 1000; }
+        .modal-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 20px; padding: 32px; width: 100%; max-width: 420px; position: relative; box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
         .modal-close { position: absolute; top: 16px; right: 20px; background: none; border: none; color: var(--text-muted); font-size: 20px; cursor: pointer; }
         .modal-title { font-size: 20px; font-weight: 800; margin-bottom: 8px; text-align: center; }
         .modal-sub { font-size: 13px; color: var(--text-muted); text-align: center; margin-bottom: 20px; }
-        .modal-submit-btn { width: 100%; background: linear-gradient(135deg, #00f2fe, #3b82f6); color: #090d16; border: none; padding: 12px; border-radius: 8px; font-weight: 700; font-size: 14px; cursor: pointer; margin-top: 10px; }
+        .modal-submit-btn { width: 100%; background: linear-gradient(135deg, var(--accent-cyan), var(--accent-lavender)); color: #0e0c1a; border: none; padding: 12px; border-radius: 10px; font-weight: 700; font-size: 14px; cursor: pointer; margin-top: 10px; }
         .modal-toggle { text-align: center; font-size: 12px; color: var(--text-muted); margin-top: 16px; }
         .modal-toggle span { color: var(--accent-cyan); cursor: pointer; font-weight: 600; }
-        .vip-toggle-btn { background: none; border: none; color: var(--accent-purple); font-size: 12px; font-weight: 600; cursor: pointer; margin-bottom: 12px; display: block; text-decoration: underline; }
+        .vip-toggle-btn { background: none; border: none; color: var(--accent-lavender); font-size: 12px; font-weight: 600; cursor: pointer; margin-bottom: 12px; display: block; text-decoration: underline; }
     </style>
 </head>
 <body>
@@ -227,7 +277,7 @@
                         <div class="macro-bar-bg"><div id="bar-carbs" class="macro-bar-fill bar-carbs" style="width: 43%;"></div></div>
                     </div>
                     <div class="macro-row">
-                        <div class="macro-header"><span style="color: var(--accent-magenta);">🥩 Proteínas</span><span id="text-protein">182 g / 728 kcal</span></div>
+                        <div class="macro-header"><span style="color: var(--accent-lavender);">🥩 Proteínas</span><span id="text-protein">182 g / 728 kcal</span></div>
                         <div class="macro-bar-bg"><div id="bar-protein" class="macro-bar-fill bar-protein" style="width: 38%;"></div></div>
                     </div>
                     <div class="macro-row">
@@ -248,13 +298,13 @@
         </div>
         <div class="training-grid">
             <div class="training-card">
-                <span class="training-badge" style="background: rgba(0,242,254,0.15); color: var(--accent-cyan);">Rendimiento</span>
+                <span class="training-badge" style="background: rgba(112,243,255,0.15); color: var(--accent-cyan);">Rendimiento</span>
                 <h3>Entrenamiento Funcional</h3>
                 <p style="font-size:13px; color:var(--text-muted); margin: 12px 0;">Rutinas dinámicas enfocadas en fuerza aplicada y movilidad.</p>
                 <button class="auth-btn" style="width: 100%;" onclick="alert('Sección de vídeos en desarrollo.')">Ver Rutina Completa</button>
             </div>
             <div class="training-card">
-                <span class="training-badge" style="background: rgba(236,72,153,0.15); color: var(--accent-magenta);">Masa Muscular</span>
+                <span class="training-badge" style="background: rgba(184,165,254,0.15); color: var(--accent-lavender);">Masa Muscular</span>
                 <h3>Hipertrofia & Fuerza</h3>
                 <p style="font-size:13px; color:var(--text-muted); margin: 12px 0;">Programación basada en sobrecarga progresiva.</p>
                 <button class="auth-btn" style="width: 100%;" onclick="alert('Sección de vídeos en desarrollo.')">Ver Rutina Completa</button>
@@ -266,7 +316,7 @@
                 <button class="auth-btn" style="width: 100%;" onclick="alert('Sección de vídeos en desarrollo.')">Ver Rutina Completa</button>
             </div>
             <div class="training-card">
-                <span class="training-badge" style="background: rgba(139,92,246,0.15); color: var(--accent-purple);">Salud Integral</span>
+                <span class="training-badge" style="background: rgba(244,114,182,0.15); color: var(--accent-magenta);">Salud Integral</span>
                 <h3>Movilidad & Postural</h3>
                 <p style="font-size:13px; color:var(--text-muted); margin: 12px 0;">Sesiones dirigidas a mejorar rango articular y flexibilidad.</p>
                 <button class="auth-btn" style="width: 100%;" onclick="alert('Sección de vídeos en desarrollo.')">Ver Rutina Completa</button>
@@ -318,8 +368,8 @@
                 <div id="vip-section">
                     <button type="button" class="vip-toggle-btn" onclick="toggleVipInput()">🎁 ¿Tienes un Código Especial / VIP?</button>
                     <div class="form-group" id="group-vip" style="display: none;">
-                        <label class="form-label" style="color: var(--accent-purple);">Código de Acceso VIP</label>
-                        <input type="text" id="auth-vip-code" class="form-input" placeholder="Introduce tu código" style="border-color: var(--accent-purple); text-transform: uppercase;">
+                        <label class="form-label" style="color: var(--accent-lavender);">Código de Acceso VIP</label>
+                        <input type="text" id="auth-vip-code" class="form-input" placeholder="Introduce tu código" style="border-color: var(--accent-lavender); text-transform: uppercase;">
                     </div>
                 </div>
 
@@ -441,8 +491,8 @@
 
                 if (status === 'vip_lifetime') {
                     document.getElementById('trial-badge-text').innerText = "💎 Pase VIP de por Vida";
-                    document.getElementById('trial-badge-text').style.borderColor = "#00f2fe";
-                    document.getElementById('trial-badge-text').style.color = "#00f2fe";
+                    document.getElementById('trial-badge-text').style.borderColor = "var(--accent-cyan)";
+                    document.getElementById('trial-badge-text').style.color = "var(--accent-cyan)";
                 } else {
                     document.getElementById('trial-badge-text').innerText = "⚡ 4 Días de Prueba Activa";
                 }
