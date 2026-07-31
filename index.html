@@ -519,6 +519,20 @@
             document.getElementById('theme-btn').innerText = '🌙';
         }
 
+        /* --- LÓGICA DEL REPRODUCTOR DE CAMPUS --- */
+        function openModule(url, title) {
+            document.getElementById('campus-grid').style.display = 'none';
+            document.getElementById('campus-viewer').style.display = 'block';
+            document.getElementById('module-viewer-title').innerText = title;
+            document.getElementById('module-iframe').src = url;
+        }
+
+        function closeModule() {
+            document.getElementById('module-iframe').src = '';
+            document.getElementById('campus-viewer').style.display = 'none';
+            document.getElementById('campus-grid').style.display = 'grid';
+        }
+        
         /* --- LÓGICA DE NAVEGACIÓN Y MENÚS --- */
         function openSection(section) {
             document.getElementById('view-hub').style.display = 'none';
