@@ -154,12 +154,12 @@
             color: #0e0c1a;
             border-color: transparent;
         }
-        .theme-light .widget-card, .theme-light .energy-card, .theme-light .macros-card, .theme-light .training-card, .theme-light .placeholder-card, .theme-light .modal-card {
+        .theme-light .widget-card, .theme-light .energy-card, .theme-light .macros-card, .theme-light .training-card, .theme-light .placeholder-card, .theme-light .modal-card, .theme-light .m1-card {
             background: #ffffff;
             border: 1px solid #e2e8f0;
             box-shadow: 0 10px 25px rgba(0,0,0,0.05);
         }
-        .theme-light .form-input, .theme-light .form-select, .theme-light .gender-btn {
+        .theme-light .form-input, .theme-light .form-select, .theme-light .gender-btn, .theme-light .m1-input, .theme-light .m1-select {
             background: #f1f5f9;
             border: 1px solid #cbd5e1;
             color: #0f172a;
@@ -171,7 +171,7 @@
         .theme-light .modal-overlay { background: rgba(248, 250, 252, 0.85); }
 
         /* ----------------------------------------------------
-           ELEMENTOS INTERNOS (CALCULADORA Y PESTAÑAS)
+           ELEMENTOS INTERNOS Y CALCULADORA
         ----------------------------------------------------- */
         .back-btn { background: var(--panel-bg); border: 1px solid var(--border-color); color: var(--text-main); padding: 10px 18px; border-radius: 10px; font-weight: 700; font-size: 13px; cursor: pointer; margin-bottom: 24px; display: inline-flex; align-items: center; gap: 8px; transition: all 0.2s; }
         .back-btn:hover { border-color: var(--accent-cyan); color: var(--accent-cyan); }
@@ -208,6 +208,35 @@
         .training-card { background: var(--panel-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; transition: all 0.4s; }
         .training-badge { font-size: 10px; font-weight: 700; text-transform: uppercase; padding: 4px 8px; border-radius: 4px; margin-bottom: 12px; display: inline-block; }
         .placeholder-card { background: var(--panel-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 80px 20px; text-align: center; transition: all 0.4s; }
+
+        /* ----------------------------------------------------
+           ESTILOS NATIVOS DEL MÓDULO 1 (ISOLADOS Y FUTURISTAS)
+        ----------------------------------------------------- */
+        #view-module-1 .m1-nav { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; border-bottom: 1px solid var(--border-color); padding-bottom: 16px; }
+        #view-module-1 .m1-nav-btn { background: var(--card-bg); border: 1px solid var(--border-color); color: var(--text-muted); padding: 10px 18px; border-radius: 10px; font-size: 13px; font-weight: 700; cursor: pointer; transition: all 0.25s ease; display: inline-flex; align-items: center; gap: 6px; }
+        #view-module-1 .m1-nav-btn:hover { color: var(--text-main); border-color: var(--accent-cyan); }
+        #view-module-1 .m1-nav-btn.active { background: var(--panel-bg); border-color: var(--accent-cyan); color: var(--accent-cyan); box-shadow: 0 0 15px rgba(112, 243, 255, 0.15); }
+        
+        #view-module-1 .m1-tab-content { display: none; }
+        #view-module-1 .m1-tab-content.active { display: block; animation: m1Fade 0.3s ease; }
+        @keyframes m1Fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+        .m1-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 24px; margin-bottom: 20px; }
+        .m1-card-title { font-size: 16px; font-weight: 800; color: var(--accent-cyan); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+        .m1-card-sub { font-size: 12px; font-weight: 800; text-transform: uppercase; color: var(--accent-lavender); margin-bottom: 6px; }
+
+        .m1-grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+        .m1-grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+        .m1-grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+
+        .m1-subcard { background: var(--panel-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; }
+        .m1-input, .m1-select { width: 100%; background: var(--input-bg); border: 1px solid var(--border-color); color: var(--text-main); padding: 8px 12px; border-radius: 8px; font-size: 13px; outline: none; margin-top: 4px; }
+
+        .m1-table { width: 100%; border-collapse: collapse; text-align: left; font-size: 12px; }
+        .m1-table th { padding: 12px; border-bottom: 1px solid var(--border-color); color: var(--text-muted); font-weight: 700; text-transform: uppercase; }
+        .m1-table td { padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); color: var(--text-main); }
+
+        .m1-badge-pill { font-size: 10px; font-weight: 800; padding: 3px 8px; border-radius: 6px; text-transform: uppercase; display: inline-block; }
 
         /* MODAL AUTENTICACIÓN */
         .modal-overlay { position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(14, 12, 26, 0.88); backdrop-filter: blur(10px); display: none; justify-content: center; align-items: center; z-index: 1000; transition: all 0.4s; }
@@ -255,7 +284,7 @@
 
     <!-- 2. VISTAS INTERNAS -->
     
-    <!-- SECCIÓN NUTRICIÓN -->
+    <!-- SECCIÓN NUTRICIÓN GLOBAL -->
     <div class="wide-container" id="view-nutrition">
         <button class="back-btn" onclick="goBack()">⬅️ Volver al Menú</button>
         <div style="margin-bottom: 24px;">
@@ -361,7 +390,7 @@
         </div>
     </div>
 
-    <!-- SECCIÓN CAMPUS (SÓLO TARJETAS POR FUERA) -->
+    <!-- SECCIÓN CAMPUS VIRTUAL -->
     <div class="wide-container" id="view-campus">
         <button class="back-btn" onclick="goBack()">⬅️ Volver al Menú Principal</button>
         
@@ -371,15 +400,14 @@
         </div>
 
         <div id="campus-grid" class="training-grid">
-            
-            <!-- MÓDULO 1 -->
+            <!-- MÓDULO 1 (ABRE NATIVO) -->
             <div class="training-card">
                 <div>
                     <span class="training-badge" style="background: rgba(184,165,254,0.15); color: var(--accent-lavender);">Módulo 1</span>
                     <h3>Introducción a la Nutrición</h3>
                     <p style="font-size:13px; color:var(--text-muted); margin: 12px 0;">Bases fundamentales, requerimientos energéticos y conceptos clave.</p>
                 </div>
-                <button class="auth-btn" style="width: 100%;" onclick="alert('Módulo en actualización.')">Ver Módulo ➔</button>
+                <button class="auth-btn" style="width: 100%;" onclick="openSection('module-1')">Ver Módulo ➔</button>
             </div>
 
             <!-- MÓDULO 2 -->
@@ -389,7 +417,7 @@
                     <h3>Nutrición Deportiva II</h3>
                     <p style="font-size:13px; color:var(--text-muted); margin: 12px 0;">Planificación avanzada e individualización de la dieta.</p>
                 </div>
-                <button class="auth-btn" style="width: 100%;" onclick="alert('Módulo en actualización.')">Ver Módulo ➔</button>
+                <button class="auth-btn" style="width: 100%;" onclick="alert('Módulo 2 en preparación.')">Ver Módulo ➔</button>
             </div>
 
             <!-- MÓDULO 3 -->
@@ -399,7 +427,7 @@
                     <h3>Tipos de Dietas</h3>
                     <p style="font-size:13px; color:var(--text-muted); margin: 12px 0;">Análisis detallado de diferentes enfoques nutricionales.</p>
                 </div>
-                <button class="auth-btn" style="width: 100%;" onclick="alert('Módulo en actualización.')">Ver Módulo ➔</button>
+                <button class="auth-btn" style="width: 100%;" onclick="alert('Módulo 3 en preparación.')">Ver Módulo ➔</button>
             </div>
 
             <!-- MÓDULO 4 -->
@@ -409,9 +437,314 @@
                     <h3>Nutrición Avanzada</h3>
                     <p style="font-size:13px; color:var(--text-muted); margin: 12px 0;">Suplementación, timing nutricional y rendimiento.</p>
                 </div>
-                <button class="auth-btn" style="width: 100%;" onclick="alert('Módulo en actualización.')">Ver Módulo ➔</button>
+                <button class="auth-btn" style="width: 100%;" onclick="alert('Módulo 4 en preparación.')">Ver Módulo ➔</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ====================================================
+         SECCIÓN MÓDULO 1 COMPLETO E INTERACTIVO (NATIVO)
+    ========================================================= -->
+    <div class="wide-container" id="view-module-1">
+        <button class="back-btn" onclick="openSection('campus')">⬅️ Volver a Módulos</button>
+
+        <div style="margin-bottom: 24px; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 12px;">
+            <div>
+                <span class="training-badge" style="background: rgba(184,165,254,0.15); color: var(--accent-lavender);">Fundamentos Nutrición Deportiva</span>
+                <h2 style="font-size: 26px; font-weight: 800; margin-top: 6px;">Nutrición Deportiva - Introducción <span style="color: var(--accent-cyan);">MÓDULO 1</span></h2>
+                <p style="color: var(--text-muted); font-size: 13px; font-weight: 600;">— GUÍA DE ALTO RENDIMIENTO —</p>
+            </div>
+        </div>
+
+        <!-- NAVEGACIÓN PESTAÑAS MÓDULO 1 -->
+        <div class="m1-nav">
+            <button class="m1-nav-btn active" id="m1-btn-vision" onclick="m1SwitchTab('vision')">⚡ Visión General & Fisiología</button>
+            <button class="m1-nav-btn" id="m1-btn-macros" onclick="m1SwitchTab('macros')">🥗 Macronutrientes & Alimentos</button>
+            <button class="m1-nav-btn" id="m1-btn-hidratacion" onclick="m1SwitchTab('hidratacion')">💧 Hidratación</button>
+            <button class="m1-nav-btn" id="m1-btn-calculadoras" onclick="m1SwitchTab('calculadoras')">🧮 Calculadoras Activas</button>
+            <button class="m1-nav-btn" id="m1-btn-sabias_que" onclick="m1SwitchTab('sabias_que')">💡 Sabías qué?..</button>
+        </div>
+
+        <!-- TAB 1: FISIOLOGÍA -->
+        <div id="m1-tab-vision" class="m1-tab-content active">
+            <div class="m1-grid-3" style="margin-bottom: 20px;">
+                <div class="m1-card" style="margin-bottom: 0;">
+                    <div class="m1-card-sub" style="color: var(--accent-cyan);">01 / CONCEPTO DE NUTRIENTE</div>
+                    <p style="font-size: 13px; color: var(--text-muted); line-height: 1.6;">
+                        Sustancia química indispensable para el organismo que permite obtener energía, formar/mantener estructuras corporales y regular procesos metabólicos. Se dividen en <strong style="color: var(--text-main);">Macronutrientes</strong> (energía estructural) y <strong style="color: var(--text-main);">Micronutrientes</strong> (vitaminas y minerales de control celular).
+                    </p>
+                </div>
+                <div class="m1-card" style="margin-bottom: 0;">
+                    <div class="m1-card-sub" style="color: var(--accent-lavender);">02 / EL COMBUSTIBLE GLUCÍDICO</div>
+                    <p style="font-size: 13px; color: var(--text-muted); line-height: 1.6;">
+                        Los carbohidratos son el sustrato preferido por el músculo esquelético durante esfuerzos de intensidad moderada y alta (&gt;60-70% VO2max). Su almacenamiento en forma de glucógeno muscular y hepático es limitado, lo que exige una reposición constante para evitar la deplesión.
+                    </p>
+                </div>
+                <div class="m1-card" style="margin-bottom: 0;">
+                    <div class="m1-card-sub" style="color: var(--text-main);">03 / ESTRUCTURA PROTEICA ACTIVA</div>
+                    <p style="font-size: 13px; color: var(--text-muted); line-height: 1.6;">
+                        Lejos de ser un combustible principal, las proteínas aportan la materia prima (aminoácidos) indispensable para reparar las microfibras dañadas por el estrés del entrenamiento mecánico. Una ingesta pautada es crucial para inducir el anabolismo muscular.
+                    </p>
+                </div>
             </div>
 
+            <div class="m1-card">
+                <div class="m1-card-title">⚡ Fisiología Cardiovascular & Adaptaciones de Alto Rendimiento</div>
+                <div class="m1-grid-4">
+                    <div class="m1-subcard">
+                        <span class="m1-badge-pill" style="background: rgba(112,243,255,0.15); color: var(--accent-cyan);">Gasto Cardíaco</span>
+                        <h4 style="font-size: 16px; margin: 8px 0; font-weight: 800;">FC × Vol Latido</h4>
+                        <p style="font-size: 12px; color: var(--text-muted);">En reposo oscila entre <strong>4-5 L/min</strong>. Durante entrenamiento intenso aumenta hasta los <strong>25 L/min</strong> en deportistas.</p>
+                    </div>
+                    <div class="m1-subcard">
+                        <span class="m1-badge-pill" style="background: rgba(184,165,254,0.15); color: var(--accent-lavender);">Redistribución</span>
+                        <h4 style="font-size: 16px; margin: 8px 0; font-weight: 800;">Flujo Splicnico</h4>
+                        <p style="font-size: 12px; color: var(--text-muted);">La sangre de tejidos menos activos (digestivo) es redirigida masivamente hacia la musculatura activa.</p>
+                    </div>
+                    <div class="m1-subcard">
+                        <span class="m1-badge-pill" style="background: rgba(112,243,255,0.15); color: var(--accent-cyan);">VO2 Máximo</span>
+                        <h4 style="font-size: 16px; margin: 8px 0; font-weight: 800;">Límite Oxígeno</h4>
+                        <p style="font-size: 12px; color: var(--text-muted);">Medida cuantitativa de la potencia cardiorrespiratoria (hasta <strong>80-85 ml/kg/min</strong> en élite).</p>
+                    </div>
+                    <div class="m1-subcard">
+                        <span class="m1-badge-pill" style="background: rgba(244,114,182,0.15); color: var(--accent-magenta);">Adaptación</span>
+                        <h4 style="font-size: 16px; margin: 8px 0; font-weight: 800;">Anemia Útil</h4>
+                        <p style="font-size: 12px; color: var(--text-muted);">El volumen plasmático se expande para mejorar la fluidez sanguínea y la regulación térmica.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 2: MACRONUTRIENTES & ALIMENTOS -->
+        <div id="m1-tab-macros" class="m1-tab-content">
+            <div class="m1-grid-3" style="margin-bottom: 20px;">
+                <div class="m1-card" style="margin-bottom: 0;">
+                    <div style="font-size: 28px; margin-bottom: 8px;">🍞</div>
+                    <div class="m1-card-title">Reservas de Glucógeno</div>
+                    <p style="font-size: 12px; color: var(--text-muted); line-height: 1.5;">Aportan <strong>4 kcal/g</strong>. Vitales para mantener la glucemia adecuada y retrasar el vaciado de los depósitos corporales. Protegen contra el catabolismo.</p>
+                    <div style="margin-top: 14px; border-top: 1px solid var(--border-color); padding-top: 10px; font-size: 13px; font-weight: 800; color: var(--accent-cyan);">Recomendado: 55 - 60% Total</div>
+                </div>
+
+                <div class="m1-card" style="margin-bottom: 0;">
+                    <div style="font-size: 28px; margin-bottom: 8px;">🥑</div>
+                    <div class="m1-card-title" style="color: var(--accent-lavender);">Combustión Estructural</div>
+                    <p style="font-size: 12px; color: var(--text-muted); line-height: 1.5;">Aportan <strong>9 kcal/g</strong>. Indispensables para membranas celulares, hormonas y transporte de vitaminas liposolubles (A, D, E, K).</p>
+                    <div style="margin-top: 14px; border-top: 1px solid var(--border-color); padding-top: 10px; font-size: 13px; font-weight: 800; color: var(--accent-lavender);">Recomendado: 30 - 35% Total</div>
+                </div>
+
+                <div class="m1-card" style="margin-bottom: 0;">
+                    <div style="font-size: 28px; margin-bottom: 8px;">🥩</div>
+                    <div class="m1-card-title" style="color: var(--accent-magenta);">Bloques de Síntesis</div>
+                    <p style="font-size: 12px; color: var(--text-muted); line-height: 1.5;">Aportan aminoácidos de alto valor biológico (patrón huevo = 100). Esenciales para la reparación tisular y la masa muscular.</p>
+                    <div style="margin-top: 14px; border-top: 1px solid var(--border-color); padding-top: 10px; font-size: 13px; font-weight: 800; color: var(--accent-magenta);">Recomendado: 1.8 - 2.0 g/kg</div>
+                </div>
+            </div>
+
+            <!-- BUSCADOR ÍNDICE GLUCÉMICO -->
+            <div class="m1-card">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 14px;">
+                    <div>
+                        <div class="m1-card-title">🔍 Buscador de Índice Glucémico (IG)</div>
+                        <p style="font-size: 12px; color: var(--text-muted);">Velocidad de absorción de glucosa por alimento.</p>
+                    </div>
+                    <div style="display: flex; gap: 6px;">
+                        <button class="m1-nav-btn active" id="m1-gi-btn-Todos" onclick="m1SetGiFilterCategory('Todos')">Todos</button>
+                        <button class="m1-nav-btn" id="m1-gi-btn-Bajo" onclick="m1SetGiFilterCategory('Bajo')">Bajo</button>
+                        <button class="m1-nav-btn" id="m1-gi-btn-Medio" onclick="m1SetGiFilterCategory('Medio')">Medio</button>
+                        <button class="m1-nav-btn" id="m1-gi-btn-Alto" onclick="m1SetGiFilterCategory('Alto')">Alto</button>
+                    </div>
+                </div>
+
+                <input type="text" id="m1-gi-search" placeholder="Escribe para buscar... (ej. Aguacate, Arroz, Pasta, Glucosa)" class="m1-input" style="margin-bottom: 16px;">
+
+                <div id="m1-gi-container" class="m1-grid-4" style="max-height: 320px; overflow-y: auto; padding-right: 4px;"></div>
+            </div>
+
+            <!-- TABLA RACIONES SENC -->
+            <div class="m1-card">
+                <div class="m1-card-title">📋 Tabla de Medidas y Raciones (SENC)</div>
+                <div style="overflow-x: auto;">
+                    <table class="m1-table">
+                        <thead>
+                            <tr>
+                                <th>Grupo</th>
+                                <th>Frecuencia</th>
+                                <th>Peso Ración (Crudo)</th>
+                                <th>Equivalencia</th>
+                            </tr>
+                        </thead>
+                        <tbody id="m1-food-recommendations-body"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 3: HIDRATACIÓN -->
+        <div id="m1-tab-hidratacion" class="m1-tab-content">
+            <div class="m1-grid-2" style="margin-bottom: 20px;">
+                <div class="m1-card" style="margin-bottom: 0;">
+                    <div class="m1-card-title">💧 La Importancia del Agua</div>
+                    <p style="font-size: 13px; color: var(--text-muted); line-height: 1.6;">
+                        El agua representa entre el <strong>55% y 60% del peso corporal total</strong>. Distribución hídrica en tejidos:
+                    </p>
+                    <div class="m1-grid-3" style="margin: 16px 0; text-align: center;">
+                        <div class="m1-subcard"><span style="font-size: 11px; color: var(--text-muted);">SANGRE</span><h3 style="color: var(--accent-cyan);">80%</h3></div>
+                        <div class="m1-subcard"><span style="font-size: 11px; color: var(--text-muted);">MÚSCULO</span><h3 style="color: var(--accent-lavender);">70%</h3></div>
+                        <div class="m1-subcard"><span style="font-size: 11px; color: var(--text-muted);">GRASA</span><h3>~15%</h3></div>
+                    </div>
+                    <p style="font-size: 12px; color: var(--text-muted);">Un déficit hídrico del 2% provoca fatiga térmica precoz y reduce la capacidad aeróbica.</p>
+                </div>
+
+                <div class="m1-card" style="margin-bottom: 0;">
+                    <div class="m1-card-title">🥤 Estratificación de Bebidas (SENC)</div>
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <div class="m1-subcard"><strong style="color: var(--accent-cyan);">Nivel 1: Agua Mineral</strong><p style="font-size: 11px; color: var(--text-muted);">Base indispensable de hidratación diaria.</p></div>
+                        <div class="m1-subcard"><strong style="color: var(--accent-lavender);">Nivel 2: Bebidas Deportivas / Té / Café</strong><p style="font-size: 11px; color: var(--text-muted);">Isotónicos con sales y carbohidratos.</p></div>
+                        <div class="m1-subcard"><strong>Nivel 3: Zumos Naturales & Caldos</strong><p style="font-size: 11px; color: var(--text-muted);">Aporte de micronutrientes y recuperación.</p></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="m1-card">
+                <div class="m1-card-title">🧪 Composición Recomendada de Reposición</div>
+                <div class="m1-grid-2">
+                    <div class="m1-subcard">
+                        <h4 style="color: var(--accent-cyan); margin-bottom: 8px;">DURANTE EL ESFUERZO</h4>
+                        <ul style="font-size: 12px; color: var(--text-muted); line-height: 1.8; list-style: none;">
+                            <li>• <strong>Calorías:</strong> 80 - 350 kcal/L</li>
+                            <li>• <strong>Carbohidratos alto IG:</strong> ≤ 9% (90g/L)</li>
+                            <li>• <strong>Sodio:</strong> 460 - 1150 mg/L (20-50 mmol/L)</li>
+                        </ul>
+                    </div>
+                    <div class="m1-subcard">
+                        <h4 style="color: var(--accent-lavender); margin-bottom: 8px;">POSTERIOR AL ESFUERZO</h4>
+                        <ul style="font-size: 12px; color: var(--text-muted); line-height: 1.8; list-style: none;">
+                            <li>• <strong>Calorías:</strong> 300 - 350 kcal/L</li>
+                            <li>• <strong>Carbohidratos rápidos:</strong> ~75% de las calorías</li>
+                            <li>• <strong>Sodio:</strong> 920 - 1150 mg/L + Proteína Whey</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 4: CALCULADORAS ACTIVAS MÓDULO 1 -->
+        <div id="m1-tab-calculadoras" class="m1-tab-content">
+            <!-- CALCULADORA MIFFLIN ST JEOR -->
+            <div class="m1-card">
+                <div class="m1-card-title">🧮 Calculadora Mifflin-St Jeor & Macronutrientes</div>
+                <div class="m1-grid-3">
+                    <div class="m1-subcard">
+                        <label class="form-label">Género</label>
+                        <div class="gender-selector">
+                            <button type="button" id="m1-btn-female" class="gender-btn active" onclick="m1SetGender('female')">♀ Mujer</button>
+                            <button type="button" id="m1-btn-male" class="gender-btn" onclick="m1SetGender('male')">♂ Hombre</button>
+                        </div>
+
+                        <div style="margin-top: 12px;">
+                            <label class="form-label">Peso (kg)</label>
+                            <input type="number" id="m1-input-weight" value="70" class="m1-input" oninput="m1RunCalculations()">
+                        </div>
+                        <div style="margin-top: 10px;">
+                            <label class="form-label">Altura (cm)</label>
+                            <input type="number" id="m1-input-height" value="165" class="m1-input" oninput="m1RunCalculations()">
+                        </div>
+                        <div style="margin-top: 10px;">
+                            <label class="form-label">Edad (años)</label>
+                            <input type="number" id="m1-input-age" value="25" class="m1-input" oninput="m1RunCalculations()">
+                        </div>
+                    </div>
+
+                    <div class="m1-subcard">
+                        <label class="form-label">Factor Actividad (TDEE)</label>
+                        <select id="m1-select-activity" class="m1-select" onchange="m1RunCalculations()">
+                            <option value="1.2">1.2 = Sedentario</option>
+                            <option value="1.375">1.375 = Ligero (1-3 días/sem)</option>
+                            <option value="1.55" selected>1.55 = Moderado (3-5 días/sem)</option>
+                            <option value="1.75">1.75 = Muy Activo (+6 días/sem)</option>
+                            <option value="1.9">1.9 = Atleta Élite</option>
+                        </select>
+
+                        <div style="margin-top: 10px;">
+                            <label class="form-label">Objetivo Corporal</label>
+                            <select id="m1-select-objective" class="m1-select" onchange="m1RunCalculations()">
+                                <option value="1.0">Mantenimiento</option>
+                                <option value="0.9" selected>10% Déficit (Recomposición)</option>
+                                <option value="0.85">15% Déficit (Pérdida Grasa)</option>
+                            </select>
+                        </div>
+
+                        <div style="margin-top: 10px;">
+                            <label class="form-label">Proteínas (g/kg)</label>
+                            <select id="m1-select-protein" class="m1-select" onchange="m1RunCalculations()">
+                                <option value="1.6">1.6 g/kg</option>
+                                <option value="1.8">1.8 g/kg</option>
+                                <option value="2.0" selected>2.0 g/kg (Recomendado)</option>
+                                <option value="2.4">2.4 g/kg</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="m1-subcard" style="display: flex; flex-direction: column; justify-content: space-between;">
+                        <div>
+                            <span class="m1-card-sub">DIAGNÓSTICO ENERGÉTICO</span>
+                            <div style="margin: 10px 0;">
+                                <span style="font-size: 11px; color: var(--text-muted);">TMB (Basal):</span>
+                                <div style="font-size: 22px; font-weight: 800;" id="m1-output-tmb">1425 kcal</div>
+                            </div>
+                            <div style="margin-bottom: 10px;">
+                                <span style="font-size: 11px; color: var(--text-muted);">TDEE (Mantenimiento):</span>
+                                <div style="font-size: 22px; font-weight: 800; color: var(--accent-lavender);" id="m1-output-tdee">2208 kcal</div>
+                            </div>
+                        </div>
+
+                        <div style="background: rgba(112, 243, 255, 0.1); border: 1px solid var(--accent-cyan); padding: 14px; border-radius: 10px;">
+                            <span style="font-size: 11px; font-weight: 800; color: var(--accent-cyan);">CALORÍAS OBJETIVO:</span>
+                            <div style="font-size: 28px; font-weight: 800; color: #fff;" id="m1-output-target-calories">1987 kcal</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CALCULADORA METs & AGUA -->
+            <div class="m1-grid-2">
+                <div class="m1-card">
+                    <div class="m1-card-title">⚡ Gasto por Actividad (METs)</div>
+                    <label class="form-label">Selecciona Actividad</label>
+                    <select id="m1-select-met-activity" class="m1-select" onchange="m1RunCalculations()"></select>
+                    
+                    <div style="margin-top: 10px;">
+                        <label class="form-label">Duración (minutos)</label>
+                        <input type="number" id="m1-input-met-minutes" value="60" class="m1-input" oninput="m1RunCalculations()">
+                    </div>
+
+                    <div style="margin-top: 16px; text-align: center; background: var(--panel-bg); padding: 14px; border-radius: 10px; border: 1px solid var(--border-color);">
+                        <span style="font-size: 11px; color: var(--text-muted);">Gasto Estimado:</span>
+                        <div style="font-size: 26px; font-weight: 800; color: var(--accent-cyan);" id="m1-output-mets-calories">0 kcal</div>
+                    </div>
+                </div>
+
+                <div class="m1-card">
+                    <div class="m1-card-title">💧 Reposición Hídrica Práctica</div>
+                    <label class="form-label">Pérdida de Peso Post-Entreno (kg)</label>
+                    <input type="number" id="m1-input-weight-lost" value="1.5" step="0.1" class="m1-input" oninput="m1RunCalculations()">
+
+                    <div class="m1-grid-3" style="margin-top: 14px; text-align: center;">
+                        <div class="m1-subcard"><span style="font-size: 10px; color: var(--accent-cyan);">PREVIO (4h)</span><div style="font-size: 14px; font-weight: 800;" id="m1-water-pre">350 - 490 ml</div></div>
+                        <div class="m1-subcard"><span style="font-size: 10px; color: var(--accent-lavender);">DURANTE (/h)</span><div style="font-size: 14px; font-weight: 800;" id="m1-water-during">420 - 560 ml</div></div>
+                        <div class="m1-subcard"><span style="font-size: 10px; color: var(--accent-magenta);">POSTERIOR</span><div style="font-size: 14px; font-weight: 800;" id="m1-water-post">2250 ml</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 5: SABÍAS QUÉ?.. -->
+        <div id="m1-tab-sabias_que" class="m1-tab-content">
+            <div class="m1-card">
+                <div class="m1-card-title">💡 Sabías qué?.. Datos Curiosos de la Nutrición Deportiva</div>
+                <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">Conceptos metabólicos indispensables de tu temario.</p>
+                <div id="m1-sabias-que-grid" class="m1-grid-3"></div>
+            </div>
         </div>
     </div>
 
@@ -486,20 +819,15 @@
         let currentAuthMode = 'register';
         let selectedGender = 'mujer';
 
-        /* --- LÓGICA MODO CLARO / OSCURO (CON MEMORIA) --- */
+        /* --- LÓGICA MODO CLARO / OSCURO --- */
         function toggleTheme() {
             const body = document.body;
             body.classList.toggle('theme-light');
             const isLight = body.classList.contains('theme-light');
-            
-            // Cambia el icono
             document.getElementById('theme-btn').innerText = isLight ? '🌙' : '☀️';
-            
-            // Guarda la preferencia en el navegador del usuario
             localStorage.setItem('maggy_theme', isLight ? 'light' : 'dark');
         }
 
-        // Al cargar la página, comprueba si el usuario lo dejó en modo claro
         if(localStorage.getItem('maggy_theme') === 'light') {
             document.body.classList.add('theme-light');
             document.getElementById('theme-btn').innerText = '🌙';
@@ -509,7 +837,8 @@
         function openSection(section) {
             document.getElementById('view-hub').style.display = 'none';
             document.querySelectorAll('.wide-container').forEach(el => el.style.display = 'none');
-            document.getElementById('view-' + section).style.display = 'block';
+            const target = document.getElementById('view-' + section);
+            if(target) target.style.display = 'block';
         }
 
         function goBack() {
@@ -565,26 +894,18 @@
                 const { data, error } = await supabaseClient.auth.signUp({
                     email: email,
                     password: password,
-                    options: { 
-                        data: { full_name: name, subscription_status: subscriptionType } 
-                    }
+                    options: { data: { full_name: name, subscription_status: subscriptionType } }
                 });
 
                 if (error) {
                     alert("Error al registrarse: " + error.message);
                 } else {
-                    if (isVip) {
-                        alert("🎉 ¡Código VIP1416M Activado con éxito! Tienes Acceso Ilimitado De Por Vida.");
-                    } else {
-                        alert("¡Cuenta creada! Has comenzado tus 4 días de prueba gratuita.");
-                    }
+                    alert(isVip ? "🎉 ¡Pase VIP Activado con éxito!" : "¡Cuenta creada! Has comenzado tus 4 días gratis.");
                     closeModal();
                     checkUserSession();
                 }
             } else {
-                const { data, error } = await supabaseClient.auth.signInWithPassword({
-                    email: email, password: password
-                });
+                const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
                 if (error) {
                     alert("Error al iniciar sesión: " + error.message);
                 } else {
@@ -620,7 +941,7 @@
             location.reload();
         }
 
-        /* --- CALCULADORA NUTRICIÓN --- */
+        /* --- CALCULADORA GLOBAL NUTRICIÓN --- */
         function setGender(gender) {
             selectedGender = gender;
             document.getElementById('btn-female').classList.toggle('active', gender === 'mujer');
@@ -654,6 +975,200 @@
 
         calculate();
         checkUserSession();
+
+        /* ====================================================
+           LÓGICA E INTERACTIVIDAD DEL MÓDULO 1
+        ========================================================= */
+        let m1CurrentGender = 'female';
+        let m1GiFilterCategory = 'Todos';
+
+        const M1_GLYCEMIC_INDEX_DATA = [
+            { name: 'Aguacate', value: 10, category: 'Bajo' }, { name: 'Nuez', value: 15, category: 'Bajo' },
+            { name: 'Lechuga', value: 15, category: 'Bajo' }, { name: 'Coliflor', value: 15, category: 'Bajo' },
+            { name: 'Chocolate amargo', value: 25, category: 'Bajo' }, { name: 'Cerezas', value: 25, category: 'Bajo' },
+            { name: 'Leche entera', value: 27, category: 'Bajo' }, { name: 'Lentejas', value: 30, category: 'Bajo' },
+            { name: 'Manzana', value: 38, category: 'Bajo' }, { name: 'Avena', value: 40, category: 'Bajo' },
+            { name: 'Plátano', value: 45, category: 'Bajo' }, { name: 'Sushi', value: 52, category: 'Bajo' },
+            { name: 'Melón', value: 60, category: 'Medio' }, { name: 'Miel', value: 60, category: 'Medio' },
+            { name: 'Arroz', value: 64, category: 'Medio' }, { name: 'Pan integral', value: 71, category: 'Alto' },
+            { name: 'Papas a la francesa', value: 75, category: 'Alto' }, { name: 'Sandía', value: 75, category: 'Alto' },
+            { name: 'Pan blanco', value: 85, category: 'Alto' }, { name: 'Glucosa', value: 100, category: 'Alto' }
+        ];
+
+        const M1_METS_ACTIVITIES = [
+            { name: 'Caminar a 4 km/h', mets: 2.8, category: 'Ligera' },
+            { name: 'Bicicleta estática (50W)', mets: 3.3, category: 'Ligera' },
+            { name: 'Caminar rápido a 6.4 km/h', mets: 4.5, category: 'Moderada' },
+            { name: 'Bicicleta estática (100W)', mets: 5.5, category: 'Moderada' },
+            { name: 'Pádel / Tenis dobles', mets: 5.5, category: 'Moderada' },
+            { name: 'Trote / Jogging', mets: 6.0, category: 'Vigorosa' },
+            { name: 'Carrera a pie (8 km/h)', mets: 8.0, category: 'Vigorosa' },
+            { name: 'Nadar estilo libre fuerte', mets: 8.0, category: 'Vigorosa' }
+        ];
+
+        const M1_FOOD_RECOMMENDATIONS = [
+            { group: 'Patatas, arroz, pan, pasta', freq: '4-6 raciones/día', servingSize: '60-80g crudo', example: '1 plato normal' },
+            { group: 'Verduras y hortalizas', freq: '≥ 2 raciones/día', servingSize: '150-200g', example: '1 plato ensalada variada' },
+            { group: 'Frutas', freq: '≥ 3 raciones/día', servingSize: '120-200g', example: '1 pieza mediana' },
+            { group: 'Aceite de oliva', freq: '3-6 raciones/día', servingSize: '10 ml', example: '1 cucharada sopera' },
+            { group: 'Pescados y carnes magras', freq: '3-4 raciones/semana', servingSize: '125-150g', example: '1 filete individual' }
+        ];
+
+        const M1_SABIAS_QUE = [
+            { icon: '🥚', category: 'Nutrientes', title: 'EL MITO DEL HUEVO Y EL COLESTEROL', fact: 'El huevo entero posee un valor biológico de 100. No eleva negativamente el perfil lipídico en sujetos sanos e impulsa la síntesis proteica.' },
+            { icon: '💧', category: 'Hidratación', title: 'LA PELIGROSA HIPONATREMIA', fact: 'Si bebes sólo agua pura en esfuerzos prolongados (&gt;1h), diluyes el sodio en sangre provocando calambres, desorientación o edema.' },
+            { icon: '🔬', category: 'Digestión', title: 'LA VITAMINA B12', fact: 'Requiere del "factor intrínseco" en el estómago para absorberse. El hígado puede almacenarla por años a diferencia de otras hidrosolubles.' },
+            { icon: '⚡', category: 'Metabolismo', title: 'DESTINO DE CARBOHIDRATOS', fact: 'Al saturarse los depósitos de glucógeno en músculo e hígado, el exceso activa la lipogénesis convirtiéndose en grasa corporal.' },
+            { icon: '🥑', category: 'Lípidos', title: 'ÁCIDO OLEICO PROTECTOR', fact: 'El aceite de oliva reduce el LDL y resiste la peroxidación lipídica generada por el alto consumo de oxígeno durante el ejercicio.' },
+            { icon: '🏃‍♂️', category: 'Fisiología', title: 'FALSA ANEMIA DEL ATLETA', fact: 'El volumen del plasma sanguíneo se expande más que los glóbulos rojos. Es una adaptación hemodinámica positiva para refrigerar el cuerpo.' }
+        ];
+
+        function m1SwitchTab(tabId) {
+            document.querySelectorAll('#view-module-1 .m1-tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('#view-module-1 .m1-nav-btn').forEach(btn => btn.classList.remove('active'));
+
+            const target = document.getElementById('m1-tab-' + tabId);
+            const activeBtn = document.getElementById('m1-btn-' + tabId);
+            if(target) target.classList.add('active');
+            if(activeBtn) activeBtn.classList.add('active');
+        }
+
+        function m1SetGender(gender) {
+            m1CurrentGender = gender;
+            document.getElementById('m1-btn-female').classList.toggle('active', gender === 'female');
+            document.getElementById('m1-btn-male').classList.toggle('active', gender === 'male');
+            m1RunCalculations();
+        }
+
+        function m1RunCalculations() {
+            const weight = Math.max(1, Number(document.getElementById('m1-input-weight').value) || 70);
+            const height = Math.max(1, Number(document.getElementById('m1-input-height').value) || 165);
+            const age = Math.max(1, Number(document.getElementById('m1-input-age').value) || 25);
+            const weightLost = Math.max(0, Number(document.getElementById('m1-input-weight-lost').value) || 1.5);
+
+            const activityFactor = Number(document.getElementById('m1-select-activity').value) || 1.55;
+            const objectiveFactor = Number(document.getElementById('m1-select-objective').value) || 0.9;
+
+            let tmb = (m1CurrentGender === 'male')
+                ? (10 * weight) + (6.25 * height) - (5 * age) + 5
+                : (10 * weight) + (6.25 * height) - (5 * age) - 161;
+            tmb = Math.round(tmb);
+
+            const tdee = Math.round(tmb * activityFactor);
+            const targetCalories = Math.round(tdee * objectiveFactor);
+
+            document.getElementById('m1-output-tmb').innerText = tmb + ' kcal';
+            document.getElementById('m1-output-tdee').innerText = tdee + ' kcal';
+            document.getElementById('m1-output-target-calories').innerText = targetCalories + ' kcal';
+
+            /* AGUA */
+            document.getElementById('m1-water-pre').innerText = `${Math.round(weight * 5)} - ${Math.round(weight * 7)} ml`;
+            document.getElementById('m1-water-during').innerText = `${Math.round(weight * 6)} - ${Math.round(weight * 8)} ml`;
+            document.getElementById('m1-water-post').innerText = `${Math.round(weightLost * 1.5 * 1000)} ml`;
+
+            /* METs */
+            const metSelect = document.getElementById('m1-select-met-activity');
+            if(metSelect && metSelect.value !== '') {
+                const metIdx = Number(metSelect.value);
+                const met = M1_METS_ACTIVITIES[metIdx];
+                if(met) {
+                    const minutes = Math.max(1, Number(document.getElementById('m1-input-met-minutes').value) || 60);
+                    const burned = Math.round(met.mets * weight * (minutes / 60));
+                    document.getElementById('m1-output-mets-calories').innerText = burned + ' kcal';
+                }
+            }
+        }
+
+        function m1PopulateMets() {
+            const select = document.getElementById('m1-select-met-activity');
+            if(!select) return;
+            select.innerHTML = '';
+            M1_METS_ACTIVITIES.forEach((act, idx) => {
+                const opt = document.createElement('option');
+                opt.value = idx;
+                opt.text = `[${act.category}] ${act.name} (${act.mets} METs)`;
+                if(idx === 5) opt.selected = true;
+                select.appendChild(opt);
+            });
+        }
+
+        function m1RenderGi() {
+            const container = document.getElementById('m1-gi-container');
+            if(!container) return;
+            const search = document.getElementById('m1-gi-search').value.toLowerCase();
+            container.innerHTML = '';
+
+            const filtered = M1_GLYCEMIC_INDEX_DATA.filter(item => {
+                const matchSearch = item.name.toLowerCase().includes(search);
+                const matchCat = m1GiFilterCategory === 'Todos' || item.category === m1GiFilterCategory;
+                return matchSearch && matchCat;
+            });
+
+            filtered.forEach(item => {
+                let badgeStyle = "background: rgba(112, 243, 255, 0.15); color: var(--accent-cyan);";
+                if(item.category === 'Medio') badgeStyle = "background: rgba(251, 191, 36, 0.15); color: var(--accent-orange);";
+                if(item.category === 'Alto') badgeStyle = "background: rgba(244, 114, 182, 0.15); color: var(--accent-magenta);";
+
+                const div = document.createElement('div');
+                div.className = "m1-subcard";
+                div.innerHTML = `
+                    <div style="font-weight: 700; font-size: 13px; margin-bottom: 6px;">${item.name}</div>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span style="font-size: 20px; font-weight: 800;">${item.value}</span>
+                        <span class="m1-badge-pill" style="${badgeStyle}">${item.category}</span>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function m1SetGiFilterCategory(cat) {
+            m1GiFilterCategory = cat;
+            ['Todos', 'Bajo', 'Medio', 'Alto'].forEach(c => {
+                const btn = document.getElementById('m1-gi-btn-' + c);
+                if(btn) btn.classList.toggle('active', c === cat);
+            });
+            m1RenderGi();
+        }
+
+        function m1Init() {
+            m1PopulateMets();
+            m1RunCalculations();
+            m1RenderGi();
+
+            const tbody = document.getElementById('m1-food-recommendations-body');
+            if(tbody) {
+                tbody.innerHTML = '';
+                M1_FOOD_RECOMMENDATIONS.forEach(r => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `<td><strong>${r.group}</strong></td><td style="color: var(--accent-cyan);">${r.freq}</td><td>${r.servingSize}</td><td style="color: var(--text-muted);">${r.example}</td>`;
+                    tbody.appendChild(tr);
+                });
+            }
+
+            const sabiasGrid = document.getElementById('m1-sabias-que-grid');
+            if(sabiasGrid) {
+                sabiasGrid.innerHTML = '';
+                M1_SABIAS_QUE.forEach(s => {
+                    const card = document.createElement('div');
+                    card.className = "m1-subcard";
+                    card.innerHTML = `
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                            <span style="font-size: 24px;">${s.icon}</span>
+                            <span class="m1-badge-pill" style="background: rgba(184,165,254,0.15); color: var(--accent-lavender);">${s.category}</span>
+                        </div>
+                        <h4 style="font-size: 13px; font-weight: 800; margin-bottom: 6px;">${s.title}</h4>
+                        <p style="font-size: 12px; color: var(--text-muted); line-height: 1.5;">${s.fact}</p>
+                    `;
+                    sabiasGrid.appendChild(card);
+                });
+            }
+
+            const giSearch = document.getElementById('m1-gi-search');
+            if(giSearch) giSearch.addEventListener('input', m1RenderGi);
+        }
+
+        m1Init();
     </script>
 </body>
 </html>
