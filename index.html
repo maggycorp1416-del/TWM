@@ -132,7 +132,7 @@
         }
 
         /* ----------------------------------------------------
-           MODO CLARO (LUXURY WELLNESS)
+           MODO CLARO (LUXURY WELLNESS) - ADAPTACIÓN PERFECTA
         ----------------------------------------------------- */
         body.theme-light {
             background-color: #f8fafc;
@@ -154,12 +154,12 @@
             color: #0e0c1a;
             border-color: transparent;
         }
-        .theme-light .widget-card, .theme-light .energy-card, .theme-light .macros-card, .theme-light .training-card, .theme-light .placeholder-card, .theme-light .modal-card, .theme-light .m1-card {
+        .theme-light .widget-card, .theme-light .energy-card, .theme-light .macros-card, .theme-light .training-card, .theme-light .placeholder-card, .theme-light .modal-card {
             background: #ffffff;
             border: 1px solid #e2e8f0;
             box-shadow: 0 10px 25px rgba(0,0,0,0.05);
         }
-        .theme-light .form-input, .theme-light .form-select, .theme-light .gender-btn, .theme-light .m1-input, .theme-light .m1-select {
+        .theme-light .form-input, .theme-light .form-select, .theme-light .gender-btn {
             background: #f1f5f9;
             border: 1px solid #cbd5e1;
             color: #0f172a;
@@ -169,6 +169,22 @@
         .theme-light .back-btn:hover { border-color: var(--accent-lavender); }
         .theme-light .theme-toggle-btn { background: #ffffff; border: 1px solid #cbd5e1; }
         .theme-light .modal-overlay { background: rgba(248, 250, 252, 0.85); }
+
+        /* REGLAS ESPECÍFICAS DE MÓDULO 1 PARA MODO CLARO */
+        .theme-light #view-module-1 h2, .theme-light #view-module-1 h3, .theme-light #view-module-1 h4 { color: #0f172a; }
+        .theme-light #view-module-1 .m1-card { background: #ffffff; border-color: #e2e8f0; box-shadow: 0 4px 15px rgba(0,0,0,0.04); }
+        .theme-light #view-module-1 .m1-subcard { background: #f8fafc; border-color: #cbd5e1; color: #0f172a; }
+        .theme-light #view-module-1 .m1-subcard h4, .theme-light #view-module-1 .m1-subcard h3 { color: #0f172a; }
+        .theme-light #view-module-1 p, .theme-light #view-module-1 td, .theme-light #view-module-1 li, .theme-light #view-module-1 span { color: #334155; }
+        .theme-light #view-module-1 th { color: #64748b; border-bottom-color: #cbd5e1; }
+        .theme-light #view-module-1 .m1-table td { border-bottom-color: #e2e8f0; color: #1e293b; }
+        .theme-light #view-module-1 .m1-nav-btn { background: #ffffff; border-color: #cbd5e1; color: #475569; }
+        .theme-light #view-module-1 .m1-nav-btn:hover { border-color: #0284c7; color: #0284c7; }
+        .theme-light #view-module-1 .m1-nav-btn.active { background: #e0f2fe; border-color: #0284c7; color: #0284c7; }
+        .theme-light #view-module-1 .m1-card-title { color: #0284c7; }
+        .theme-light #view-module-1 .m1-card-sub { color: #7c3aed; }
+        .theme-light #view-module-1 .m1-input, .theme-light #view-module-1 .m1-select { background: #f1f5f9; border-color: #cbd5e1; color: #0f172a; }
+        .theme-light #view-module-1 .m1-callout-box { background: #e0f2fe; border: 1px solid #7dd3fc; color: #0369a1; }
 
         /* ----------------------------------------------------
            ELEMENTOS INTERNOS Y CALCULADORA
@@ -210,7 +226,7 @@
         .placeholder-card { background: var(--panel-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 80px 20px; text-align: center; transition: all 0.4s; }
 
         /* ----------------------------------------------------
-           ESTILOS NATIVOS DEL MÓDULO 1 (ISOLADOS Y FUTURISTAS)
+           ESTILOS NATIVOS MÓDULO 1
         ----------------------------------------------------- */
         #view-module-1 .m1-nav { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; border-bottom: 1px solid var(--border-color); padding-bottom: 16px; }
         #view-module-1 .m1-nav-btn { background: var(--card-bg); border: 1px solid var(--border-color); color: var(--text-muted); padding: 10px 18px; border-radius: 10px; font-size: 13px; font-weight: 700; cursor: pointer; transition: all 0.25s ease; display: inline-flex; align-items: center; gap: 6px; }
@@ -237,6 +253,7 @@
         .m1-table td { padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); color: var(--text-main); }
 
         .m1-badge-pill { font-size: 10px; font-weight: 800; padding: 3px 8px; border-radius: 6px; text-transform: uppercase; display: inline-block; }
+        .m1-callout-box { background: rgba(112, 243, 255, 0.08); border: 1px solid var(--accent-cyan); padding: 14px; border-radius: 10px; margin-top: 14px; font-size: 12px; color: var(--accent-cyan); line-height: 1.5; }
 
         /* MODAL AUTENTICACIÓN */
         .modal-overlay { position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(14, 12, 26, 0.88); backdrop-filter: blur(10px); display: none; justify-content: center; align-items: center; z-index: 1000; transition: all 0.4s; }
@@ -469,19 +486,19 @@
         <div id="m1-tab-vision" class="m1-tab-content active">
             <div class="m1-grid-3" style="margin-bottom: 20px;">
                 <div class="m1-card" style="margin-bottom: 0;">
-                    <div class="m1-card-sub" style="color: var(--accent-cyan);">01 / CONCEPTO DE NUTRIENTE</div>
+                    <div class="m1-card-sub">01 / CONCEPTO DE NUTRIENTE</div>
                     <p style="font-size: 13px; color: var(--text-muted); line-height: 1.6;">
                         Sustancia química indispensable para el organismo que permite obtener energía, formar/mantener estructuras corporales y regular procesos metabólicos. Se dividen en <strong style="color: var(--text-main);">Macronutrientes</strong> (energía estructural) y <strong style="color: var(--text-main);">Micronutrientes</strong> (vitaminas y minerales de control celular).
                     </p>
                 </div>
                 <div class="m1-card" style="margin-bottom: 0;">
-                    <div class="m1-card-sub" style="color: var(--accent-lavender);">02 / EL COMBUSTIBLE GLUCÍDICO</div>
+                    <div class="m1-card-sub">02 / EL COMBUSTIBLE GLUCÍDICO</div>
                     <p style="font-size: 13px; color: var(--text-muted); line-height: 1.6;">
                         Los carbohidratos son el sustrato preferido por el músculo esquelético durante esfuerzos de intensidad moderada y alta (&gt;60-70% VO2max). Su almacenamiento en forma de glucógeno muscular y hepático es limitado, lo que exige una reposición constante para evitar la deplesión.
                     </p>
                 </div>
                 <div class="m1-card" style="margin-bottom: 0;">
-                    <div class="m1-card-sub" style="color: var(--text-main);">03 / ESTRUCTURA PROTEICA ACTIVA</div>
+                    <div class="m1-card-sub">03 / ESTRUCTURA PROTEICA ACTIVA</div>
                     <p style="font-size: 13px; color: var(--text-muted); line-height: 1.6;">
                         Lejos de ser un combustible principal, las proteínas aportan la materia prima (aminoácidos) indispensable para reparar las microfibras dañadas por el estrés del entrenamiento mecánico. Una ingesta pautada es crucial para inducir el anabolismo muscular.
                     </p>
@@ -498,7 +515,7 @@
                     </div>
                     <div class="m1-subcard">
                         <span class="m1-badge-pill" style="background: rgba(184,165,254,0.15); color: var(--accent-lavender);">Redistribución</span>
-                        <h4 style="font-size: 16px; margin: 8px 0; font-weight: 800;">Flujo Splicnico</h4>
+                        <h4 style="font-size: 16px; margin: 8px 0; font-weight: 800;">Flujo Spláchnico</h4>
                         <p style="font-size: 12px; color: var(--text-muted);">La sangre de tejidos menos activos (digestivo) es redirigida masivamente hacia la musculatura activa.</p>
                     </div>
                     <div class="m1-subcard">
@@ -527,16 +544,16 @@
 
                 <div class="m1-card" style="margin-bottom: 0;">
                     <div style="font-size: 28px; margin-bottom: 8px;">🥑</div>
-                    <div class="m1-card-title" style="color: var(--accent-lavender);">Combustión Estructural</div>
+                    <div class="m1-card-title">Combustión Estructural</div>
                     <p style="font-size: 12px; color: var(--text-muted); line-height: 1.5;">Aportan <strong>9 kcal/g</strong>. Indispensables para membranas celulares, hormonas y transporte de vitaminas liposolubles (A, D, E, K).</p>
                     <div style="margin-top: 14px; border-top: 1px solid var(--border-color); padding-top: 10px; font-size: 13px; font-weight: 800; color: var(--accent-lavender);">Recomendado: 30 - 35% Total</div>
                 </div>
 
                 <div class="m1-card" style="margin-bottom: 0;">
                     <div style="font-size: 28px; margin-bottom: 8px;">🥩</div>
-                    <div class="m1-card-title" style="color: var(--accent-magenta);">Bloques de Síntesis</div>
+                    <div class="m1-card-title">Bloques de Síntesis</div>
                     <p style="font-size: 12px; color: var(--text-muted); line-height: 1.5;">Aportan aminoácidos de alto valor biológico (patrón huevo = 100). Esenciales para la reparación tisular y la masa muscular.</p>
-                    <div style="margin-top: 14px; border-top: 1px solid var(--border-color); padding-top: 10px; font-size: 13px; font-weight: 800; color: var(--accent-magenta);">Recomendado: 1.8 - 2.0 g/kg</div>
+                    <div style="margin-top: 14px; border-top: 1px solid var(--border-color); padding-top: 10px; font-size: 13px; font-weight: 800; color: var(--accent-magenta);">Recomendado: ~10% o 1.8 - 2.0 g/kg</div>
                 </div>
             </div>
 
@@ -568,9 +585,9 @@
                         <thead>
                             <tr>
                                 <th>Grupo</th>
-                                <th>Frecuencia</th>
-                                <th>Peso Ración (Crudo)</th>
-                                <th>Equivalencia</th>
+                                <th>Frecuencia Recomendada</th>
+                                <th>Peso Ración (Crudo y Neto)</th>
+                                <th>Equivalente de Consumo</th>
                             </tr>
                         </thead>
                         <tbody id="m1-food-recommendations-body"></tbody>
@@ -579,49 +596,80 @@
             </div>
         </div>
 
-        <!-- TAB 3: HIDRATACIÓN -->
+        <!-- TAB 3: HIDRATACIÓN COMPLETA -->
         <div id="m1-tab-hidratacion" class="m1-tab-content">
             <div class="m1-grid-2" style="margin-bottom: 20px;">
                 <div class="m1-card" style="margin-bottom: 0;">
                     <div class="m1-card-title">💧 La Importancia del Agua</div>
                     <p style="font-size: 13px; color: var(--text-muted); line-height: 1.6;">
-                        El agua representa entre el <strong>55% y 60% del peso corporal total</strong>. Distribución hídrica en tejidos:
+                        El agua representa aproximadamente el <strong>55-60% del peso corporal total</strong>, distribuyéndose en el espacio intracelular (60%) y extracelular (40%).
                     </p>
                     <div class="m1-grid-3" style="margin: 16px 0; text-align: center;">
-                        <div class="m1-subcard"><span style="font-size: 11px; color: var(--text-muted);">SANGRE</span><h3 style="color: var(--accent-cyan);">80%</h3></div>
-                        <div class="m1-subcard"><span style="font-size: 11px; color: var(--text-muted);">MÚSCULO</span><h3 style="color: var(--accent-lavender);">70%</h3></div>
-                        <div class="m1-subcard"><span style="font-size: 11px; color: var(--text-muted);">GRASA</span><h3>~15%</h3></div>
+                        <div class="m1-subcard"><span style="font-size: 11px; color: var(--text-muted);">SANGRE</span><h3 style="color: var(--accent-cyan); margin-top: 4px;">80%</h3></div>
+                        <div class="m1-subcard"><span style="font-size: 11px; color: var(--text-muted);">MÚSCULO</span><h3 style="color: var(--accent-lavender); margin-top: 4px;">70%</h3></div>
+                        <div class="m1-subcard"><span style="font-size: 11px; color: var(--text-muted);">GRASA</span><h3 style="margin-top: 4px;">~15%</h3></div>
                     </div>
-                    <p style="font-size: 12px; color: var(--text-muted);">Un déficit hídrico del 2% provoca fatiga térmica precoz y reduce la capacidad aeróbica.</p>
+                    <p style="font-size: 12px; color: var(--text-muted); line-height: 1.5;">Un déficit hídrico del 2% del peso del atleta no solo provoca fatiga térmica precoz, sino que afecta el flujo cardiovascular y entorpece la remoción del ácido láctico acumulado.</p>
+                    
+                    <div class="m1-callout-box">
+                        💡 <strong>Dato de Alto Rendimiento:</strong> El sudor es hipotónico respecto al plasma. Durante el esfuerzo prolongado se pierde proporcionalmente más agua que electrolitos, por lo que beber solo agua sin sodio diluye peligrosamente la sangre, desencadenando <strong>hiponatremia</strong>.
+                    </div>
                 </div>
 
                 <div class="m1-card" style="margin-bottom: 0;">
                     <div class="m1-card-title">🥤 Estratificación de Bebidas (SENC)</div>
                     <div style="display: flex; flex-direction: column; gap: 10px;">
-                        <div class="m1-subcard"><strong style="color: var(--accent-cyan);">Nivel 1: Agua Mineral</strong><p style="font-size: 11px; color: var(--text-muted);">Base indispensable de hidratación diaria.</p></div>
-                        <div class="m1-subcard"><strong style="color: var(--accent-lavender);">Nivel 2: Bebidas Deportivas / Té / Café</strong><p style="font-size: 11px; color: var(--text-muted);">Isotónicos con sales y carbohidratos.</p></div>
-                        <div class="m1-subcard"><strong>Nivel 3: Zumos Naturales & Caldos</strong><p style="font-size: 11px; color: var(--text-muted);">Aporte de micronutrientes y recuperación.</p></div>
+                        <div class="m1-subcard" style="display: flex; justify-content: space-between; align-items: flex-start;">
+                            <div>
+                                <strong style="color: var(--accent-cyan);">Nivel 1: Agua de Grifo o Mineral</strong>
+                                <p style="font-size: 11px; color: var(--text-muted); margin-top: 2px;">Aguas de bajo contenido salino. Base indispensable de la hidratación.</p>
+                            </div>
+                            <span class="m1-badge-pill" style="background: rgba(112, 243, 255, 0.15); color: var(--accent-cyan);">Diario</span>
+                        </div>
+                        <div class="m1-subcard" style="display: flex; justify-content: space-between; align-items: flex-start;">
+                            <div>
+                                <strong style="color: var(--accent-lavender);">Nivel 2: Bebidas Deportivas, Té o Café</strong>
+                                <p style="font-size: 11px; color: var(--text-muted); margin-top: 2px;">Isotónicos con carga de sodio y carbohidratos, tés o infusiones.</p>
+                            </div>
+                            <span class="m1-badge-pill" style="background: rgba(184, 165, 254, 0.15); color: var(--accent-lavender);">Frecuente</span>
+                        </div>
+                        <div class="m1-subcard" style="display: flex; justify-content: space-between; align-items: flex-start;">
+                            <div>
+                                <strong>Nivel 3: Zumos Naturales y Caldos</strong>
+                                <p style="font-size: 11px; color: var(--text-muted); margin-top: 2px;">Zumos naturales o caldos desgrasados para reposición de micronutrientes.</p>
+                            </div>
+                            <span class="m1-badge-pill" style="background: rgba(255, 255, 255, 0.1); color: var(--text-main);">Moderado</span>
+                        </div>
+                        <div class="m1-subcard" style="display: flex; justify-content: space-between; align-items: flex-start;">
+                            <div>
+                                <strong style="color: var(--accent-magenta);">Nivel 4: Refrescos o Bebidas Azucaradas</strong>
+                                <p style="font-size: 11px; color: var(--text-muted); margin-top: 2px;">Gaseosas tradicionales, néctares industriales o hiperosmolares.</p>
+                            </div>
+                            <span class="m1-badge-pill" style="background: rgba(244, 114, 182, 0.15); color: var(--accent-magenta);">Ocasional</span>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <div class="m1-card">
-                <div class="m1-card-title">🧪 Composición Recomendada de Reposición</div>
+                <div class="m1-card-title">🧪 Composición Recomendada de las Bebidas de Reposición</div>
                 <div class="m1-grid-2">
                     <div class="m1-subcard">
-                        <h4 style="color: var(--accent-cyan); margin-bottom: 8px;">DURANTE EL ESFUERZO</h4>
+                        <h4 style="color: var(--accent-cyan); margin-bottom: 8px; font-size: 13px;">DURANTE EL ESFUERZO</h4>
                         <ul style="font-size: 12px; color: var(--text-muted); line-height: 1.8; list-style: none;">
-                            <li>• <strong>Calorías:</strong> 80 - 350 kcal/L</li>
-                            <li>• <strong>Carbohidratos alto IG:</strong> ≤ 9% (90g/L)</li>
-                            <li>• <strong>Sodio:</strong> 460 - 1150 mg/L (20-50 mmol/L)</li>
+                            <li>• <strong>Valor calórico:</strong> 80 - 350 kcal/l</li>
+                            <li>• <strong>Carbohidratos de alto IG:</strong> ≤ 9% (90g/l)</li>
+                            <li>• <strong>Sodio:</strong> 460 - 1150 mg/l (20-50 mmol/l)</li>
+                            <li>• <strong>Osmolalidad:</strong> 200 - 330 mosm/kg</li>
                         </ul>
                     </div>
                     <div class="m1-subcard">
-                        <h4 style="color: var(--accent-lavender); margin-bottom: 8px;">POSTERIOR AL ESFUERZO</h4>
+                        <h4 style="color: var(--accent-lavender); margin-bottom: 8px; font-size: 13px;">POSTERIOR AL ESFUERZO</h4>
                         <ul style="font-size: 12px; color: var(--text-muted); line-height: 1.8; list-style: none;">
-                            <li>• <strong>Calorías:</strong> 300 - 350 kcal/L</li>
+                            <li>• <strong>Valor calórico:</strong> 300 - 350 kcal/l</li>
                             <li>• <strong>Carbohidratos rápidos:</strong> ~75% de las calorías</li>
-                            <li>• <strong>Sodio:</strong> 920 - 1150 mg/L + Proteína Whey</li>
+                            <li>• <strong>Sodio:</strong> 920 - 1150 mg/l (40-50 mmol/l)</li>
+                            <li>• <strong>Adición:</strong> Proteína de suero de leche</li>
                         </ul>
                     </div>
                 </div>
@@ -977,7 +1025,7 @@
         checkUserSession();
 
         /* ====================================================
-           LÓGICA E INTERACTIVIDAD DEL MÓDULO 1
+           LÓGICA E INTERACTIVIDAD COMPLETA DEL MÓDULO 1
         ========================================================= */
         let m1CurrentGender = 'female';
         let m1GiFilterCategory = 'Todos';
@@ -985,42 +1033,80 @@
         const M1_GLYCEMIC_INDEX_DATA = [
             { name: 'Aguacate', value: 10, category: 'Bajo' }, { name: 'Nuez', value: 15, category: 'Bajo' },
             { name: 'Lechuga', value: 15, category: 'Bajo' }, { name: 'Coliflor', value: 15, category: 'Bajo' },
-            { name: 'Chocolate amargo', value: 25, category: 'Bajo' }, { name: 'Cerezas', value: 25, category: 'Bajo' },
-            { name: 'Leche entera', value: 27, category: 'Bajo' }, { name: 'Lentejas', value: 30, category: 'Bajo' },
-            { name: 'Manzana', value: 38, category: 'Bajo' }, { name: 'Avena', value: 40, category: 'Bajo' },
-            { name: 'Plátano', value: 45, category: 'Bajo' }, { name: 'Sushi', value: 52, category: 'Bajo' },
+            { name: 'Espárragos', value: 15, category: 'Bajo' }, { name: 'Pepino', value: 15, category: 'Bajo' },
+            { name: 'Almendras', value: 15, category: 'Bajo' }, { name: 'Cacahuates', value: 15, category: 'Bajo' },
+            { name: 'Cebolla', value: 15, category: 'Bajo' }, { name: 'Espinacas', value: 15, category: 'Bajo' },
+            { name: 'Jengibre', value: 19, category: 'Bajo' }, { name: 'Chocolate amargo', value: 25, category: 'Bajo' },
+            { name: 'Cerezas', value: 25, category: 'Bajo' }, { name: 'Leche entera', value: 27, category: 'Bajo' },
+            { name: 'Pizza', value: 28, category: 'Bajo' }, { name: 'Ciruela pasa', value: 29, category: 'Bajo' },
+            { name: 'Ajo', value: 30, category: 'Bajo' }, { name: 'Mandarinas', value: 30, category: 'Bajo' },
+            { name: 'Leche de soja', value: 30, category: 'Bajo' }, { name: 'Lentejas', value: 30, category: 'Bajo' },
+            { name: 'Amaranto', value: 35, category: 'Bajo' }, { name: 'Quinoa', value: 35, category: 'Bajo' },
+            { name: 'Granada', value: 35, category: 'Bajo' }, { name: 'Frijol', value: 35, category: 'Bajo' },
+            { name: 'Mostaza', value: 35, category: 'Bajo' }, { name: 'Yogurt natural', value: 36, category: 'Bajo' },
+            { name: 'Manzana', value: 38, category: 'Bajo' }, { name: 'Peras', value: 38, category: 'Bajo' },
+            { name: 'Fresas', value: 40, category: 'Bajo' }, { name: 'Avena', value: 40, category: 'Bajo' },
+            { name: 'Naranja', value: 42, category: 'Bajo' }, { name: 'Guisantes', value: 45, category: 'Bajo' },
+            { name: 'Piña', value: 45, category: 'Bajo' }, { name: 'Plátano', value: 45, category: 'Bajo' },
+            { name: 'Zanahoria (cruda)', value: 47, category: 'Bajo' }, { name: 'Mango', value: 50, category: 'Bajo' },
+            { name: 'Sushi', value: 52, category: 'Bajo' }, { name: 'Jugo de mango', value: 55, category: 'Medio' },
+            { name: 'Ketchup', value: 55, category: 'Medio' }, { name: 'Papaya', value: 55, category: 'Medio' },
+            { name: 'Uva pasa', value: 55, category: 'Medio' }, { name: 'Mayonesa', value: 60, category: 'Medio' },
             { name: 'Melón', value: 60, category: 'Medio' }, { name: 'Miel', value: 60, category: 'Medio' },
-            { name: 'Arroz', value: 64, category: 'Medio' }, { name: 'Pan integral', value: 71, category: 'Alto' },
-            { name: 'Papas a la francesa', value: 75, category: 'Alto' }, { name: 'Sandía', value: 75, category: 'Alto' },
-            { name: 'Pan blanco', value: 85, category: 'Alto' }, { name: 'Glucosa', value: 100, category: 'Alto' }
+            { name: 'Refresco de cola', value: 63, category: 'Medio' }, { name: 'Arroz', value: 64, category: 'Medio' },
+            { name: 'Panela', value: 65, category: 'Medio' }, { name: 'Azúcar blanca', value: 70, category: 'Alto' },
+            { name: 'Baguette', value: 70, category: 'Alto' }, { name: 'Chocolate', value: 70, category: 'Alto' },
+            { name: 'Palomitas de maíz', value: 70, category: 'Alto' }, { name: 'Pasta de trigo', value: 70, category: 'Alto' },
+            { name: 'Pan integral', value: 71, category: 'Alto' }, { name: 'Gomitas', value: 72, category: 'Alto' },
+            { name: 'Nabo', value: 72, category: 'Alto' }, { name: 'Calabazas', value: 75, category: 'Alto' },
+            { name: 'Papa a la francesa', value: 75, category: 'Alto' }, { name: 'Sandía', value: 75, category: 'Alto' },
+            { name: 'Puré de papa', value: 80, category: 'Alto' }, { name: 'Arroz inflado', value: 85, category: 'Alto' },
+            { name: 'Pan blanco', value: 85, category: 'Alto' }, { name: 'Pan hamburguesa', value: 85, category: 'Alto' },
+            { name: 'Zanahoria (cocida)', value: 85, category: 'Alto' }, { name: 'Papas', value: 95, category: 'Alto' },
+            { name: 'Glucosa', value: 100, category: 'Alto' }, { name: 'Dátil', value: 103, category: 'Alto' },
+            { name: 'Cerveza', value: 110, category: 'Alto' }
         ];
 
         const M1_METS_ACTIVITIES = [
-            { name: 'Caminar a 4 km/h', mets: 2.8, category: 'Ligera' },
+            { name: 'Caminar a 4 km/h (llano)', mets: 2.8, category: 'Ligera' },
+            { name: 'Baile de salón lento (tango, foxtrot)', mets: 3.0, category: 'Ligera' },
             { name: 'Bicicleta estática (50W)', mets: 3.3, category: 'Ligera' },
-            { name: 'Caminar rápido a 6.4 km/h', mets: 4.5, category: 'Moderada' },
+            { name: 'Caminar rápido a 4.8 km/h', mets: 3.8, category: 'Ligera' },
+            { name: 'Bicicleta a ritmo paseo (<16 km/h)', mets: 4.0, category: 'Ligera' },
+            { name: 'Caminar muy rápido a 6.4 km/h', mets: 4.5, category: 'Moderada' },
+            { name: 'Tenis dobles (recreativo)', mets: 5.0, category: 'Moderada' },
             { name: 'Bicicleta estática (100W)', mets: 5.5, category: 'Moderada' },
-            { name: 'Pádel / Tenis dobles', mets: 5.5, category: 'Moderada' },
+            { name: 'Nadar por placer', mets: 5.5, category: 'Moderada' },
+            { name: 'Pádel (sin competir)', mets: 5.5, category: 'Moderada' },
             { name: 'Trote / Jogging', mets: 6.0, category: 'Vigorosa' },
+            { name: 'Bicicleta estática (resistencia 150W)', mets: 6.0, category: 'Vigorosa' },
+            { name: 'Remoergómetro (100W)', mets: 6.0, category: 'Vigorosa' },
+            { name: 'Nadar estilo libre (ritmo fuerte)', mets: 8.0, category: 'Vigorosa' },
             { name: 'Carrera a pie (8 km/h)', mets: 8.0, category: 'Vigorosa' },
-            { name: 'Nadar estilo libre fuerte', mets: 8.0, category: 'Vigorosa' }
+            { name: 'Tenis individual', mets: 8.0, category: 'Vigorosa' }
         ];
 
         const M1_FOOD_RECOMMENDATIONS = [
-            { group: 'Patatas, arroz, pan, pasta', freq: '4-6 raciones/día', servingSize: '60-80g crudo', example: '1 plato normal' },
-            { group: 'Verduras y hortalizas', freq: '≥ 2 raciones/día', servingSize: '150-200g', example: '1 plato ensalada variada' },
-            { group: 'Frutas', freq: '≥ 3 raciones/día', servingSize: '120-200g', example: '1 pieza mediana' },
+            { group: 'Patatas, arroz, pan, pasta', freq: '4-6 raciones/día (priorizar integrales)', servingSize: '60-80g crudo (pasta/arroz), 40-60g pan, 150-200g patata', example: '1 plato normal o 3-4 rebanadas de pan' },
+            { group: 'Verduras y hortalizas', freq: '≥ 2 raciones/día', servingSize: '150-200g', example: '1 plato ensalada variada o verdura cocida' },
+            { group: 'Frutas', freq: '≥ 3 raciones/día', servingSize: '120-200g', example: '1 pieza mediana, 1 taza de fresas, 2 rodajas de melón' },
             { group: 'Aceite de oliva', freq: '3-6 raciones/día', servingSize: '10 ml', example: '1 cucharada sopera' },
-            { group: 'Pescados y carnes magras', freq: '3-4 raciones/semana', servingSize: '125-150g', example: '1 filete individual' }
+            { group: 'Leche y derivados', freq: '2-4 raciones/día', servingSize: '200-250 ml leche, 200-250g yogur, 40-60g queso curado', example: '1 taza de leche, 2 unidades de yogur' },
+            { group: 'Pescados', freq: '3-4 raciones/semana', servingSize: '125-150g', example: '1 filete individual' },
+            { group: 'Carnes magras, aves y huevos', freq: '3-4 raciones de cada/semana', servingSize: '100-125g (carne), 1-2 huevos', example: '1 filete pequeño o 1/4 de pollo' },
+            { group: 'Legumbres', freq: '2-4 raciones/semana', servingSize: '60-80g crudo', example: '1 plato normal individual' },
+            { group: 'Frutos secos', freq: '3-7 raciones/semana', servingSize: '20-30g', example: '1 puñado o ración individual' },
+            { group: 'Embutidos y carnes grasas', freq: 'Ocasional y moderado', servingSize: 'Variable', example: 'Limitar al mínimo' },
+            { group: 'Dulces, snacks y refrescos', freq: 'Ocasional y moderado', servingSize: 'Variable', example: 'Consumo muy esporádico' }
         ];
 
         const M1_SABIAS_QUE = [
-            { icon: '🥚', category: 'Nutrientes', title: 'EL MITO DEL HUEVO Y EL COLESTEROL', fact: 'El huevo entero posee un valor biológico de 100. No eleva negativamente el perfil lipídico en sujetos sanos e impulsa la síntesis proteica.' },
-            { icon: '💧', category: 'Hidratación', title: 'LA PELIGROSA HIPONATREMIA', fact: 'Si bebes sólo agua pura en esfuerzos prolongados (&gt;1h), diluyes el sodio en sangre provocando calambres, desorientación o edema.' },
-            { icon: '🔬', category: 'Digestión', title: 'LA VITAMINA B12', fact: 'Requiere del "factor intrínseco" en el estómago para absorberse. El hígado puede almacenarla por años a diferencia de otras hidrosolubles.' },
-            { icon: '⚡', category: 'Metabolismo', title: 'DESTINO DE CARBOHIDRATOS', fact: 'Al saturarse los depósitos de glucógeno en músculo e hígado, el exceso activa la lipogénesis convirtiéndose en grasa corporal.' },
-            { icon: '🥑', category: 'Lípidos', title: 'ÁCIDO OLEICO PROTECTOR', fact: 'El aceite de oliva reduce el LDL y resiste la peroxidación lipídica generada por el alto consumo de oxígeno durante el ejercicio.' },
-            { icon: '🏃‍♂️', category: 'Fisiología', title: 'FALSA ANEMIA DEL ATLETA', fact: 'El volumen del plasma sanguíneo se expande más que los glóbulos rojos. Es una adaptación hemodinámica positiva para refrigerar el cuerpo.' }
+            { icon: '🥚', category: 'Nutrientes', title: 'EL MITO DEL HUEVO Y EL COLESTEROL', fact: 'El huevo entero se considera el patrón biológico de referencia (valor biológico de 100). Aunque la yema es rica en colesterol, los estudios demuestran que el consumo de huevos enteros no eleva negativamente el perfil lipídico en sujetos sanos e incluso favorece la retención de masa muscular magra gracias a su excelente aminograma.' },
+            { icon: '💧', category: 'Hidratación', title: 'LA PELIGROSA HIPONATREMIA', fact: 'El sudor no es agua pura; es hipotónico (contiene menos sales que la sangre). Si bebes únicamente agua pura en esfuerzos prolongados de más de una hora, diluyes la concentración de sodio en sangre, lo que puede provocar confusión, calambres y, en casos extremos, edema cerebral.' },
+            { icon: '🔬', category: 'Digestión', title: 'LA VITAMINA DE ABSORCIÓN COMPLEJA', fact: 'La Vitamina B12 (cianocobalamina) es la única hidrosoluble que requiere unirse a una proteína específica del estómago llamada "factor intrínseco" para poder ser absorbida en el intestino delgado. Además, a diferencia de otras vitaminas solubles en agua, el hígado puede almacenarla durante meses o años.' },
+            { icon: '⚡', category: 'Metabolismo', title: 'EL VERDADERO DESTINO DE LOS CARBOHIDRATOS', fact: 'Cuando ingieres carbohidratos de sobra, el cuerpo primero llena sus pequeños almacenes de glucógeno (músculo e hígado). Una vez que estos tanques están saturados al 100%, el organismo activa la "lipogénesis", convirtiendo el exceso de glucosa directamente en grasa en el tejido adiposo.' },
+            { icon: '🥑', category: 'Lípidos', title: 'ÁCIDO OLEICO: ESCUDO TÉRMICO Y VASCULAR', fact: 'El Ácido Oleico (AGMI presente en el aceite de oliva) es ideal para los deportistas. No solo reduce el colesterol malo (LDL) y mantiene el bueno (HDL), sino que es sumamente resistente a la peroxidación lipídica causada por el oxígeno consumido durante entrenamientos intensos.' },
+            { icon: '🏃‍♂️', category: 'Fisiología', title: 'LA "FALSA" ANEMIA DEL DEPORTISTA', fact: 'Los deportistas de resistencia suelen presentar valores bajos de hematocrito en sus análisis de sangre. No es una enfermedad, sino una adaptación fisiológica: el volumen del plasma (líquido) se expande más que el de los glóbulos rojos para facilitar que la sangre fluya mejor y disipe el calor térmico en la piel.' }
         ];
 
         function m1SwitchTab(tabId) {
@@ -1087,7 +1173,7 @@
                 const opt = document.createElement('option');
                 opt.value = idx;
                 opt.text = `[${act.category}] ${act.name} (${act.mets} METs)`;
-                if(idx === 5) opt.selected = true;
+                if(idx === 10) opt.selected = true;
                 select.appendChild(opt);
             });
         }
@@ -1141,7 +1227,7 @@
                 tbody.innerHTML = '';
                 M1_FOOD_RECOMMENDATIONS.forEach(r => {
                     const tr = document.createElement('tr');
-                    tr.innerHTML = `<td><strong>${r.group}</strong></td><td style="color: var(--accent-cyan);">${r.freq}</td><td>${r.servingSize}</td><td style="color: var(--text-muted);">${r.example}</td>`;
+                    tr.innerHTML = `<td><strong>${r.group}</strong></td><td style="color: var(--accent-cyan); font-weight: 600;">${r.freq}</td><td>${r.servingSize}</td><td style="color: var(--text-muted); font-style: italic;">${r.example}</td>`;
                     tbody.appendChild(tr);
                 });
             }
