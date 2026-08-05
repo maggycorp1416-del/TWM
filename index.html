@@ -132,7 +132,7 @@
         }
 
         /* ----------------------------------------------------
-           MODO CLARO (LUXURY WELLNESS) - ADAPTACIÓN TOTAL
+           MODO CLARO (LUXURY WELLNESS) - ADAPTACIÓN VÍVIDA
         ----------------------------------------------------- */
         body.theme-light {
             background-color: #f8fafc;
@@ -164,35 +164,33 @@
             border: 1px solid #cbd5e1;
             color: #0f172a;
         }
-        .theme-light .macro-bar-bg { background: #cbd5e1; }
+        .theme-light .macro-bar-bg { background: #e2e8f0; }
         .theme-light .back-btn { background: #ffffff; border: 1px solid #cbd5e1; color: #0f172a; }
         .theme-light .back-btn:hover { border-color: var(--accent-lavender); }
         .theme-light .theme-toggle-btn { background: #ffffff; border: 1px solid #cbd5e1; }
         .theme-light .modal-overlay { background: rgba(248, 250, 252, 0.85); }
 
-        /* REGLAS ESPECÍFICAS DE MÓDULO 1 PARA MODO CLARO */
+        /* REGLAS ESPECÍFICAS DE MÓDULO 1 EN MODO CLARO */
         .theme-light #view-module-1 {
             --accent-cyan: #0284c7;
             --accent-lavender: #7c3aed;
-            --accent-magenta: #c026d3;
+            --accent-magenta: #db2777;
             --accent-orange: #d97706;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
         }
         .theme-light #view-module-1 h2, 
         .theme-light #view-module-1 h3, 
         .theme-light #view-module-1 h4,
         .theme-light #view-module-1 strong,
-        .theme-light #view-module-1 b { color: #0f172a !important; }
+        .theme-light #view-module-1 b { color: #0f172a; }
 
         .theme-light #view-module-1 .m1-card { background: #ffffff !important; border-color: #e2e8f0 !important; box-shadow: 0 4px 15px rgba(0,0,0,0.04); }
-        .theme-light #view-module-1 .m1-subcard { background: #f8fafc !important; border-color: #cbd5e1 !important; color: #0f172a !important; }
-        .theme-light #view-module-1 .m1-subcard h3,
-        .theme-light #view-module-1 .m1-subcard h4,
-        .theme-light #view-module-1 .m1-subcard div { color: #0f172a !important; }
+        .theme-light #view-module-1 .m1-subcard { background: #f8fafc !important; border-color: #cbd5e1 !important; }
 
         .theme-light #view-module-1 p, 
         .theme-light #view-module-1 td, 
-        .theme-light #view-module-1 li, 
-        .theme-light #view-module-1 span { color: #334155; }
+        .theme-light #view-module-1 li { color: #475569; }
 
         .theme-light #view-module-1 th { color: #64748b !important; border-bottom-color: #cbd5e1 !important; }
         .theme-light #view-module-1 .m1-table td { border-bottom-color: #e2e8f0 !important; color: #1e293b !important; }
@@ -205,9 +203,8 @@
         .theme-light #view-module-1 .m1-select { background: #f1f5f9 !important; border-color: #cbd5e1 !important; color: #0f172a !important; }
         .theme-light #view-module-1 .m1-callout-box { background: #e0f2fe !important; border-color: #0284c7 !important; color: #0369a1 !important; }
 
-        /* CAJAS DESTACADAS EN MODO CLARO */
-        .theme-light #m1-target-box { background: #f0f9ff !important; border-color: #0284c7 !important; }
-        .theme-light #m1-target-box div, .theme-light #m1-target-box span { color: #0284c7 !important; }
+        /* CAJAS DESTACADAS MODO CLARO */
+        .theme-light #m1-target-box { background: rgba(2, 132, 199, 0.06) !important; border-color: #0284c7 !important; }
         .theme-light #m1-output-target-calories { color: #0f172a !important; }
         .theme-light #m1-mets-result-box { background: #f8fafc !important; border-color: #cbd5e1 !important; }
         .theme-light #m1-output-mets-calories { color: #0284c7 !important; }
@@ -514,7 +511,7 @@
                 <div class="m1-card" style="margin-bottom: 0;">
                     <div class="m1-card-sub">01 / CONCEPTO DE NUTRIENTE</div>
                     <p style="font-size: 13px; color: var(--text-muted); line-height: 1.6;">
-                        Sustancia química indispensable para el organismo que permite obtener energía, formar/mantener estructuras corporales y regular procesos metabólicos. Se dividen en <strong>Macronutrientes</strong> (energía estructural) y <strong>Micronutrientes</strong> (vitaminas y minerales de control celular).
+                        Sustancia química indispensable para el organismo que permite obtener energía, formar/mantener estructuras corporales y regular procesos metabólicos. Se dividen en <strong style="color: var(--accent-cyan);">Macronutrientes</strong> (energía estructural) y <strong style="color: var(--accent-lavender);">Micronutrientes</strong> (vitaminas y minerales de control celular).
                     </p>
                 </div>
                 <div class="m1-card" style="margin-bottom: 0;">
@@ -537,7 +534,7 @@
                     <div class="m1-subcard">
                         <span class="m1-badge-pill" style="background: rgba(112,243,255,0.15); color: var(--accent-cyan);">Gasto Cardíaco</span>
                         <h4 style="font-size: 16px; margin: 8px 0; font-weight: 800;">FC × Vol Latido</h4>
-                        <p style="font-size: 12px; color: var(--text-muted);">En reposo oscila entre <strong>4-5 L/min</strong>. Durante entrenamiento intenso aumenta hasta los <strong>25 L/min</strong> en deportistas.</p>
+                        <p style="font-size: 12px; color: var(--text-muted);">En reposo oscila entre <strong style="color: var(--accent-cyan);">4-5 L/min</strong>. Durante entrenamiento intenso aumenta hasta los <strong style="color: var(--accent-cyan);">25 L/min</strong> en deportistas.</p>
                     </div>
                     <div class="m1-subcard">
                         <span class="m1-badge-pill" style="background: rgba(184,165,254,0.15); color: var(--accent-lavender);">Redistribución</span>
@@ -547,7 +544,7 @@
                     <div class="m1-subcard">
                         <span class="m1-badge-pill" style="background: rgba(112,243,255,0.15); color: var(--accent-cyan);">VO2 Máximo</span>
                         <h4 style="font-size: 16px; margin: 8px 0; font-weight: 800;">Límite Oxígeno</h4>
-                        <p style="font-size: 12px; color: var(--text-muted);">Medida cuantitativa de la potencia cardiorrespiratoria (hasta <strong>80-85 ml/kg/min</strong> en élite).</p>
+                        <p style="font-size: 12px; color: var(--text-muted);">Medida cuantitativa de la potencia cardiorrespiratoria (hasta <strong style="color: var(--accent-cyan);">80-85 ml/kg/min</strong> en élite).</p>
                     </div>
                     <div class="m1-subcard">
                         <span class="m1-badge-pill" style="background: rgba(244,114,182,0.15); color: var(--accent-magenta);">Adaptación</span>
@@ -570,14 +567,14 @@
 
                 <div class="m1-card" style="margin-bottom: 0;">
                     <div style="font-size: 28px; margin-bottom: 8px;">🥑</div>
-                    <div class="m1-card-title">Combustión Estructural</div>
+                    <div class="m1-card-title" style="color: var(--accent-lavender);">Combustión Estructural</div>
                     <p style="font-size: 12px; color: var(--text-muted); line-height: 1.5;">Aportan <strong>9 kcal/g</strong>. Indispensables para membranas celulares, hormonas y transporte de vitaminas liposolubles (A, D, E, K).</p>
                     <div style="margin-top: 14px; border-top: 1px solid var(--border-color); padding-top: 10px; font-size: 13px; font-weight: 800; color: var(--accent-lavender);">Recomendado: 30 - 35% Total</div>
                 </div>
 
                 <div class="m1-card" style="margin-bottom: 0;">
                     <div style="font-size: 28px; margin-bottom: 8px;">🥩</div>
-                    <div class="m1-card-title">Bloques de Síntesis</div>
+                    <div class="m1-card-title" style="color: var(--accent-magenta);">Bloques de Síntesis</div>
                     <p style="font-size: 12px; color: var(--text-muted); line-height: 1.5;">Aportan aminoácidos de alto valor biológico (patrón huevo = 100). Esenciales para la reparación tisular y la masa muscular.</p>
                     <div style="margin-top: 14px; border-top: 1px solid var(--border-color); padding-top: 10px; font-size: 13px; font-weight: 800; color: var(--accent-magenta);">Recomendado: ~10% o 1.8 - 2.0 g/kg</div>
                 </div>
@@ -622,18 +619,27 @@
             </div>
         </div>
 
-        <!-- TAB 3: HIDRATACIÓN COMPLETA -->
+        <!-- TAB 3: HIDRATACIÓN COMPLETA CON COLORES ORIGINALES -->
         <div id="m1-tab-hidratacion" class="m1-tab-content">
             <div class="m1-grid-2" style="margin-bottom: 20px;">
                 <div class="m1-card" style="margin-bottom: 0;">
                     <div class="m1-card-title">💧 La Importancia del Agua</div>
                     <p style="font-size: 13px; color: var(--text-muted); line-height: 1.6;">
-                        El agua representa aproximadamente el <strong>55-60% del peso corporal total</strong>, distribuyéndose en el espacio intracelular (60%) y extracelular (40%).
+                        El agua representa aproximadamente el <strong style="color: var(--accent-cyan);">55-60% del peso corporal total</strong>, distribuyéndose en el espacio intracelular (60%) y extracelular (40%).
                     </p>
                     <div class="m1-grid-3" style="margin: 16px 0; text-align: center;">
-                        <div class="m1-subcard"><span style="font-size: 11px; color: var(--text-muted);">SANGRE</span><h3 style="color: var(--accent-cyan); margin-top: 4px;">80%</h3></div>
-                        <div class="m1-subcard"><span style="font-size: 11px; color: var(--text-muted);">MÚSCULO</span><h3 style="color: var(--accent-lavender); margin-top: 4px;">70%</h3></div>
-                        <div class="m1-subcard"><span style="font-size: 11px; color: var(--text-muted);">GRASA</span><h3 style="margin-top: 4px;">~15%</h3></div>
+                        <div class="m1-subcard">
+                            <span style="font-size: 10px; font-weight: 800; color: var(--text-muted); text-transform: uppercase;">SANGRE</span>
+                            <h3 style="color: var(--accent-cyan); font-size: 22px; font-weight: 800; margin-top: 4px;">80%</h3>
+                        </div>
+                        <div class="m1-subcard">
+                            <span style="font-size: 10px; font-weight: 800; color: var(--text-muted); text-transform: uppercase;">MÚSCULO</span>
+                            <h3 style="color: var(--accent-lavender); font-size: 22px; font-weight: 800; margin-top: 4px;">70%</h3>
+                        </div>
+                        <div class="m1-subcard">
+                            <span style="font-size: 10px; font-weight: 800; color: var(--text-muted); text-transform: uppercase;">GRASA</span>
+                            <h3 style="font-size: 22px; font-weight: 800; margin-top: 4px; color: var(--text-main);">~15%</h3>
+                        </div>
                     </div>
                     <p style="font-size: 12px; color: var(--text-muted); line-height: 1.5;">Un déficit hídrico del 2% del peso del atleta no solo provoca fatiga térmica precoz, sino que afecta el flujo cardiovascular y entorpece la remoción del ácido láctico acumulado.</p>
                     
@@ -647,31 +653,31 @@
                     <div style="display: flex; flex-direction: column; gap: 10px;">
                         <div class="m1-subcard" style="display: flex; justify-content: space-between; align-items: flex-start;">
                             <div>
-                                <strong style="color: var(--accent-cyan);">Nivel 1: Agua de Grifo o Mineral</strong>
+                                <strong style="color: var(--accent-cyan); font-size: 14px;">Nivel 1: Agua de Grifo o Mineral</strong>
                                 <p style="font-size: 11px; color: var(--text-muted); margin-top: 2px;">Aguas de bajo contenido salino. Base indispensable de la hidratación.</p>
                             </div>
-                            <span class="m1-badge-pill" style="background: rgba(112, 243, 255, 0.15); color: var(--accent-cyan);">Diario</span>
+                            <span class="m1-badge-pill" style="background: rgba(2, 132, 199, 0.15); color: var(--accent-cyan);">Diario</span>
                         </div>
                         <div class="m1-subcard" style="display: flex; justify-content: space-between; align-items: flex-start;">
                             <div>
-                                <strong style="color: var(--accent-lavender);">Nivel 2: Bebidas Deportivas, Té o Café</strong>
+                                <strong style="color: var(--accent-lavender); font-size: 14px;">Nivel 2: Bebidas Deportivas, Té o Café</strong>
                                 <p style="font-size: 11px; color: var(--text-muted); margin-top: 2px;">Isotónicos con carga de sodio y carbohidratos, tés o infusiones.</p>
                             </div>
-                            <span class="m1-badge-pill" style="background: rgba(184, 165, 254, 0.15); color: var(--accent-lavender);">Frecuente</span>
+                            <span class="m1-badge-pill" style="background: rgba(124, 58, 237, 0.15); color: var(--accent-lavender);">Frecuente</span>
                         </div>
                         <div class="m1-subcard" style="display: flex; justify-content: space-between; align-items: flex-start;">
                             <div>
-                                <strong>Nivel 3: Zumos Naturales y Caldos</strong>
+                                <strong style="color: var(--text-main); font-size: 14px;">Nivel 3: Zumos Naturales y Caldos</strong>
                                 <p style="font-size: 11px; color: var(--text-muted); margin-top: 2px;">Zumos naturales o caldos desgrasados para reposición de micronutrientes.</p>
                             </div>
-                            <span class="m1-badge-pill" style="background: rgba(255, 255, 255, 0.1); color: var(--text-main);">Moderado</span>
+                            <span class="m1-badge-pill" style="background: rgba(100, 116, 139, 0.15); color: var(--text-muted);">Moderado</span>
                         </div>
                         <div class="m1-subcard" style="display: flex; justify-content: space-between; align-items: flex-start;">
                             <div>
-                                <strong style="color: var(--accent-magenta);">Nivel 4: Refrescos o Bebidas Azucaradas</strong>
+                                <strong style="color: var(--accent-magenta); font-size: 14px;">Nivel 4: Refrescos o Bebidas Azucaradas</strong>
                                 <p style="font-size: 11px; color: var(--text-muted); margin-top: 2px;">Gaseosas tradicionales, néctares industriales o hiperosmolares.</p>
                             </div>
-                            <span class="m1-badge-pill" style="background: rgba(244, 114, 182, 0.15); color: var(--accent-magenta);">Ocasional</span>
+                            <span class="m1-badge-pill" style="background: rgba(219, 39, 119, 0.15); color: var(--accent-magenta);">Ocasional</span>
                         </div>
                     </div>
                 </div>
@@ -681,7 +687,7 @@
                 <div class="m1-card-title">🧪 Composición Recomendada de las Bebidas de Reposición</div>
                 <div class="m1-grid-2">
                     <div class="m1-subcard">
-                        <h4 style="color: var(--accent-cyan); margin-bottom: 8px; font-size: 13px;">DURANTE EL ESFUERZO</h4>
+                        <h4 style="color: var(--accent-cyan); margin-bottom: 8px; font-size: 13px; font-weight: 800;">DURANTE EL ESFUERZO</h4>
                         <ul style="font-size: 12px; color: var(--text-muted); line-height: 1.8; list-style: none;">
                             <li>• <strong>Valor calórico:</strong> 80 - 350 kcal/l</li>
                             <li>• <strong>Carbohidratos de alto IG:</strong> ≤ 9% (90g/l)</li>
@@ -690,7 +696,7 @@
                         </ul>
                     </div>
                     <div class="m1-subcard">
-                        <h4 style="color: var(--accent-lavender); margin-bottom: 8px; font-size: 13px;">POSTERIOR AL ESFUERZO</h4>
+                        <h4 style="color: var(--accent-lavender); margin-bottom: 8px; font-size: 13px; font-weight: 800;">POSTERIOR AL ESFUERZO</h4>
                         <ul style="font-size: 12px; color: var(--text-muted); line-height: 1.8; list-style: none;">
                             <li>• <strong>Valor calórico:</strong> 300 - 350 kcal/l</li>
                             <li>• <strong>Carbohidratos rápidos:</strong> ~75% de las calorías</li>
@@ -702,7 +708,7 @@
             </div>
         </div>
 
-        <!-- TAB 4: CALCULADORAS ACTIVAS COMPLETA -->
+        <!-- TAB 4: CALCULADORAS ACTIVAS COMPLETA Y COLORIDA -->
         <div id="m1-tab-calculadoras" class="m1-tab-content">
             <!-- CALCULADORA MIFFLIN ST JEOR Y MACROS -->
             <div class="m1-card">
@@ -780,17 +786,17 @@
 
                     <!-- DIAGNÓSTICO ENERGÉTICO & MACROS -->
                     <div style="grid-column: span 2; display: flex; flex-direction: column; gap: 16px;">
-                        <div class="m1-card-sub">DIAGNÓSTICO ENERGÉTICO DIARIO</div>
+                        <div class="m1-card-sub" style="color: var(--accent-lavender);">DIAGNÓSTICO ENERGÉTICO DIARIO</div>
 
                         <div class="m1-grid-2">
                             <div class="m1-subcard">
-                                <span style="font-size: 10px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">1. Tasa Metabólica Basal (TMB)</span>
-                                <div style="font-size: 26px; font-weight: 800; margin: 4px 0;"><span id="m1-output-tmb">1445</span> <span style="font-size: 13px; font-weight: 500; color: var(--text-muted);">kcal</span></div>
+                                <span style="font-size: 10px; font-weight: 800; color: var(--text-muted); text-transform: uppercase;">1. TASA METABÓLICA BASAL (TMB)</span>
+                                <div style="font-size: 26px; font-weight: 800; margin: 4px 0; color: var(--text-main);"><span id="m1-output-tmb">1445</span> <span style="font-size: 13px; font-weight: 500; color: var(--text-muted);">kcal</span></div>
                                 <span style="font-size: 10px; color: var(--text-muted);">Calorías en reposo absoluto (fórmula Mifflin-St Jeor).</span>
                             </div>
 
                             <div class="m1-subcard">
-                                <span style="font-size: 10px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">2. Gasto Diario Estimado (TDEE)</span>
+                                <span style="font-size: 10px; font-weight: 800; color: var(--text-muted); text-transform: uppercase;">2. GASTO DIARIO ESTIMADO (TDEE)</span>
                                 <div style="font-size: 26px; font-weight: 800; color: var(--accent-lavender); margin: 4px 0;"><span id="m1-output-tdee">2240</span> <span style="font-size: 13px; font-weight: 500; color: var(--text-muted);">kcal</span></div>
                                 <span style="font-size: 10px; color: var(--text-muted);">TMB multiplicada por factor de actividad diario.</span>
                             </div>
@@ -803,7 +809,7 @@
                             <div style="margin-bottom: 12px;">
                                 <div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 4px;">
                                     <span style="font-weight: 700; color: var(--accent-cyan);">🍞 Carbohidratos (Ajuste regulador)</span>
-                                    <span><strong id="m1-output-carb-grams">207</strong> g / <span id="m1-output-carb-calories">826</span> kcal</span>
+                                    <span><strong id="m1-output-carb-grams" style="color: var(--accent-cyan);">207</strong> g / <span id="m1-output-carb-calories">826</span> kcal</span>
                                 </div>
                                 <div class="macro-bar-bg"><div id="m1-progress-carb" class="macro-bar-fill bar-carbs" style="width: 50%;"></div></div>
                             </div>
@@ -811,7 +817,7 @@
                             <div style="margin-bottom: 12px;">
                                 <div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 4px;">
                                     <span style="font-weight: 700; color: var(--accent-lavender);">🥩 Proteínas</span>
-                                    <span><strong id="m1-output-prot-grams">140</strong> g / <span id="m1-output-prot-calories">560</span> kcal</span>
+                                    <span><strong id="m1-output-prot-grams" style="color: var(--accent-lavender);">140</strong> g / <span id="m1-output-prot-calories">560</span> kcal</span>
                                 </div>
                                 <div class="macro-bar-bg"><div id="m1-progress-prot" class="macro-bar-fill bar-protein" style="width: 30%;"></div></div>
                             </div>
@@ -819,7 +825,7 @@
                             <div>
                                 <div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 4px;">
                                     <span style="font-weight: 700; color: var(--accent-orange);">🥑 Grasas (Lípidos)</span>
-                                    <span><strong id="m1-output-fat-grams">70</strong> g / <span id="m1-output-fat-calories">630</span> kcal</span>
+                                    <span><strong id="m1-output-fat-grams" style="color: var(--accent-orange);">70</strong> g / <span id="m1-output-fat-calories">630</span> kcal</span>
                                 </div>
                                 <div class="macro-bar-bg"><div id="m1-progress-fat" class="macro-bar-fill bar-fats" style="width: 20%;"></div></div>
                             </div>
@@ -828,7 +834,7 @@
                         <!-- CAJA CALORÍAS OBJETIVO -->
                         <div id="m1-target-box" style="background: rgba(112, 243, 255, 0.08); border: 2px solid var(--accent-cyan); border-radius: 12px; padding: 18px;">
                             <div style="font-size: 11px; font-weight: 800; color: var(--accent-cyan); text-transform: uppercase; margin-bottom: 4px;">📊 CALORÍAS OBJETIVO DIARIAS (TENIENDO EN CUENTA EL OBJETIVO)</div>
-                            <div style="font-size: 32px; font-weight: 800; color: #ffffff;" id="m1-output-target-calories">2016 <span style="font-size: 16px; font-weight: 500; color: var(--text-muted);">kcal/día</span></div>
+                            <div style="font-size: 34px; font-weight: 800; color: var(--accent-cyan);" id="m1-output-target-calories">2016 <span style="font-size: 16px; font-weight: 500; color: var(--text-muted);">kcal/día</span></div>
                             <p style="font-size: 11px; color: var(--text-muted); margin-top: 6px; line-height: 1.4;">
                                 Este bloque representa la estimación energética de calorías objetivo diarias para el atleta de acuerdo a la selección de género, peso corporal, altura, edad y el multiplicador de actividad de Mifflin-St Jeor.
                             </p>
@@ -879,7 +885,7 @@
                 <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 16px;">
                     <div>
                         <div class="m1-card-title">💧 Guía Práctica de Reposición de Agua</div>
-                        <p style="font-size: 12px; color: var(--text-muted);">Calculado para un peso corporal de <strong style="color: var(--text-main);" id="m1-water-weight-display">70</strong> kg.</p>
+                        <p style="font-size: 12px; color: var(--text-muted);">Calculado para un peso corporal de <strong style="color: var(--accent-cyan);" id="m1-water-weight-display">70</strong> kg.</p>
                     </div>
 
                     <div style="display: flex; align-items: center; gap: 8px;">
@@ -891,7 +897,7 @@
                 <div class="m1-grid-3" style="text-align: center;">
                     <div class="m1-subcard">
                         <span style="font-size: 10px; font-weight: 800; color: var(--accent-cyan); text-transform: uppercase;">PREVIO (4H ANTES)</span>
-                        <div style="font-size: 22px; font-weight: 800; margin: 6px 0;" id="m1-water-pre">350 - 490 ml</div>
+                        <div style="font-size: 22px; font-weight: 800; margin: 6px 0; color: var(--accent-cyan);" id="m1-water-pre">350 - 490 ml</div>
                         <span style="font-size: 10px; color: var(--text-muted);">Bebida sugerida con sodio para estimular la solidez electrolítica.</span>
                     </div>
 
