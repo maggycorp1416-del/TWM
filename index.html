@@ -7,30 +7,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
-        /* ESTILOS PESTAÑAS Y CONTENIDOS MÓDULO NATIVO */
-.tab-nav { display: flex; gap: 10px; overflow-x: auto; margin-bottom: 24px; padding-bottom: 6px; }
-.tab-btn {
-    background: var(--card-bg); border: 1px solid var(--border-color); color: var(--text-muted);
-    padding: 10px 18px; border-radius: 12px; font-size: 13px; font-weight: 700; cursor: pointer; white-space: nowrap;
-}
-.tab-btn.active { background: var(--panel-bg); border-color: var(--accent-cyan); color: var(--accent-cyan); }
-.tab-module-content { display: none; }
-.tab-module-content.active { display: block; animation: fadeIn 0.3s ease; }
-
-.content-card {
-    background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 24px; margin-bottom: 20px;
-}
-.card-title { font-size: 17px; font-weight: 800; color: var(--accent-lavender); margin-bottom: 12px; }
-
-.trivia-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 24px; }
-.trivia-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 14px; padding: 18px; }
-.trivia-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-.trivia-tag { font-size: 10px; font-weight: 800; padding: 3px 8px; border-radius: 6px; background: rgba(112, 243, 255, 0.1); color: var(--accent-cyan); }
-.trivia-title { font-size: 13px; font-weight: 800; margin-bottom: 8px; }
-.trivia-text { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
-
-.quote-banner { background: var(--panel-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; text-align: center; font-style: italic; font-size: 13px; color: var(--accent-lavender); }
-.anamnesis-box { background: var(--panel-bg); border-left: 4px solid var(--accent-cyan); padding: 14px; border-radius: 6px; margin-bottom: 12px; }
         :root {
             /* PALETA NEBULOSA OSCURA (POR DEFECTO) */
             --bg-dark: #0e0c1a;             
@@ -39,13 +15,36 @@
             --input-bg: #120e22;          
             
             --accent-lavender: #b8a5fe;   
-            --accent-cyan: #70f3ff;       
+            --accent-cyan: #70f3ff;        
             --accent-magenta: #f472b6;    
             --accent-orange: #fbbf24;     
+            --accent-purple: #8b5cf6;
             
             --text-main: #f8fafc;
             --text-muted: #a0a5ba;
             --border-color: rgba(184, 165, 254, 0.2);
+            --title-color: #ffffff;
+            --shadow-color: rgba(0, 0, 0, 0.3);
+            --trivia-tag-bg: rgba(112, 243, 255, 0.1);
+        }
+
+        /* ----------------------------------------------------
+           MODO CLARO (LUXURY WELLNESS) - SUPER LIGERO
+        ----------------------------------------------------- */
+        body.theme-light {
+            --bg-dark: #f8fafc;
+            --card-bg: #ffffff;
+            --panel-bg: #f1f5f9;
+            --input-bg: #e2e8f0;
+            --accent-lavender: #8b5cf6;
+            --accent-cyan: #0284c7;
+            --accent-purple: #7c3aed;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border-color: #cbd5e1;
+            --title-color: #0f172a;
+            --shadow-color: rgba(0, 0, 0, 0.05);
+            --trivia-tag-bg: rgba(2, 132, 199, 0.1);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
@@ -59,8 +58,10 @@
             flex-direction: column; 
             align-items: center; 
             padding: 20px; 
-            transition: background-color 0.4s ease, color 0.4s ease; /* Transición suave de tema */
+            transition: background-color 0.4s ease, color 0.4s ease;
         }
+
+        body.theme-light { background-image: none; }
         
         .app-container { max-width: 500px; width: 100%; margin: 0 auto; }
         .wide-container { max-width: 1000px; width: 100%; margin: 0 auto; display: none; }
@@ -155,17 +156,10 @@
             box-shadow: 0 0 25px rgba(184, 165, 254, 0.45);
         }
 
-        /* ----------------------------------------------------
-           MODO CLARO (LUXURY WELLNESS) - SUPER LIGERO
-        ----------------------------------------------------- */
-        body.theme-light {
-            background-color: #f8fafc;
-            background-image: none;
-            color: #0f172a;
-        }
+        /* OVERRIDES MODO CLARO */
         .theme-light .hub-title, .theme-light h2, .theme-light h3, .theme-light .energy-value, .theme-light .modal-title { color: #0f172a; }
         .theme-light .text-muted { color: #64748b; }
-        .theme-light .hub-subtitle { color: #8b5cf6 !important; } /* Morado moradito sobre fondo blanco */
+        .theme-light .hub-subtitle { color: #8b5cf6 !important; }
         .theme-light .hub-logo-img { border: 1px solid #e2e8f0; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
         .theme-light .hub-btn {
             background: #ffffff;
@@ -178,7 +172,7 @@
             color: #0e0c1a;
             border-color: transparent;
         }
-        .theme-light .widget-card, .theme-light .energy-card, .theme-light .macros-card, .theme-light .training-card, .theme-light .placeholder-card, .theme-light .modal-card {
+        .theme-light .widget-card, .theme-light .energy-card, .theme-light .macros-card, .theme-light .training-card, .theme-light .placeholder-card, .theme-light .modal-card, .theme-light .content-card, .theme-light .trivia-card {
             background: #ffffff;
             border: 1px solid #e2e8f0;
             box-shadow: 0 10px 25px rgba(0,0,0,0.05);
@@ -193,10 +187,10 @@
         .theme-light .back-btn:hover { border-color: var(--accent-lavender); }
         .theme-light .theme-toggle-btn { background: #ffffff; border: 1px solid #cbd5e1; }
         .theme-light .modal-overlay { background: rgba(248, 250, 252, 0.85); }
+        .theme-light .quote-banner, .theme-light .anamnesis-box { background: #f1f5f9; }
+        .theme-light .trivia-title { color: #0f172a; }
 
-        /* ----------------------------------------------------
-           ELEMENTOS INTERNOS (CALCULADORA Y PESTAÑAS)
-        ----------------------------------------------------- */
+        /* ELEMENTOS INTERNOS (CALCULADORA Y PESTAÑAS) */
         .back-btn { background: var(--panel-bg); border: 1px solid var(--border-color); color: var(--text-main); padding: 10px 18px; border-radius: 10px; font-weight: 700; font-size: 13px; cursor: pointer; margin-bottom: 24px; display: inline-flex; align-items: center; gap: 8px; transition: all 0.2s; }
         .back-btn:hover { border-color: var(--accent-cyan); color: var(--accent-cyan); }
         .dashboard-grid { display: grid; grid-template-columns: 340px 1fr; gap: 24px; }
@@ -232,6 +226,35 @@
         .training-card { background: var(--panel-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; transition: all 0.4s; }
         .training-badge { font-size: 10px; font-weight: 700; text-transform: uppercase; padding: 4px 8px; border-radius: 4px; margin-bottom: 12px; display: inline-block; }
         .placeholder-card { background: var(--panel-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 80px 20px; text-align: center; transition: all 0.4s; }
+
+        /* ESTILOS PESTAÑAS Y CONTENIDOS MÓDULO NATIVO */
+        .tab-nav { display: flex; gap: 10px; overflow-x: auto; margin-bottom: 24px; padding-bottom: 6px; }
+        .tab-btn {
+            background: var(--card-bg); border: 1px solid var(--border-color); color: var(--text-muted);
+            padding: 10px 18px; border-radius: 12px; font-size: 13px; font-weight: 700; cursor: pointer; white-space: nowrap; transition: all 0.2s;
+        }
+        .tab-btn:hover { border-color: var(--accent-cyan); color: var(--text-main); }
+        .tab-btn.active { background: var(--panel-bg); border-color: var(--accent-cyan); color: var(--accent-cyan); }
+        .tab-module-content { display: none; }
+        .tab-module-content.active { display: block; animation: fadeIn 0.3s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+        .content-card {
+            background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 24px; margin-bottom: 20px;
+        }
+        .card-title { font-size: 17px; font-weight: 800; color: var(--accent-lavender); margin-bottom: 12px; }
+
+        .trivia-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 24px; }
+        .trivia-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 14px; padding: 18px; transition: all 0.25s ease; }
+        .trivia-card:hover { transform: translateY(-3px); border-color: var(--accent-cyan); }
+        .trivia-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .trivia-icon { font-size: 22px; }
+        .trivia-tag { font-size: 10px; font-weight: 800; padding: 3px 8px; border-radius: 6px; background: var(--trivia-tag-bg); color: var(--accent-cyan); border: 1px solid var(--border-color); }
+        .trivia-title { font-size: 13px; font-weight: 800; margin-bottom: 8px; color: var(--title-color); }
+        .trivia-text { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+
+        .quote-banner { background: var(--panel-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; text-align: center; font-style: italic; font-size: 13px; color: var(--accent-lavender); }
+        .anamnesis-box { background: var(--panel-bg); border-left: 4px solid var(--accent-cyan); padding: 14px; border-radius: 6px; margin-bottom: 12px; }
 
         /* MODAL AUTENTICACIÓN */
         .modal-overlay { position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(14, 12, 26, 0.88); backdrop-filter: blur(10px); display: none; justify-content: center; align-items: center; z-index: 1000; transition: all 0.4s; }
@@ -385,10 +408,75 @@
         </div>
     </div>
 
-    <!-- SECCIÓN CAMPUS -->
+    <!-- SECCIÓN CAMPUS VIRTUAL -->
     <div class="wide-container" id="view-campus">
-        <!-- SECCIÓN MÓDULO 1 NATIVO -->
-    <div class="wide-container" id="view-module-1" style="display: none;">
+        <button class="back-btn" onclick="goBack()">⬅️ Volver al Menú Principal</button>
+        
+        <div style="margin-bottom: 24px;">
+            <h2 style="font-size: 24px; font-weight: 800;">🎓 Campus Virtual</h2>
+            <p style="color: var(--text-muted); font-size: 14px;">Formación teórica y módulos interactivos.</p>
+        </div>
+
+        <!-- 1. CATÁLOGO DE MÓDULOS -->
+        <div id="campus-grid" class="training-grid">
+            
+            <!-- MÓDULO 1 (NATIVO) -->
+            <div class="training-card">
+                <div>
+                    <span class="training-badge" style="background: rgba(184,165,254,0.15); color: var(--accent-lavender);">Módulo 1</span>
+                    <h3>Introducción a la Nutrición</h3>
+                    <p style="font-size:13px; color:var(--text-muted); margin: 12px 0;">Bases fundamentales, requerimientos energéticos y conceptos clave.</p>
+                </div>
+                <button class="auth-btn" style="width: 100%;" onclick="openSection('module-1')">Ver Módulo ➔</button>
+            </div>
+
+            <!-- MÓDULO 2 -->
+            <div class="training-card">
+                <div>
+                    <span class="training-badge" style="background: rgba(184,165,254,0.15); color: var(--accent-lavender);">Módulo 2</span>
+                    <h3>Nutrición Deportiva II</h3>
+                    <p style="font-size:13px; color:var(--text-muted); margin: 12px 0;">Planificación avanzada e individualización de la dieta.</p>
+                </div>
+                <button class="auth-btn" style="width: 100%;" onclick="openModule('https://modulo2nutrideportiva.netlify.app', 'Módulo 2: Nutrición Deportiva II')">Ver Módulo ➔</button>
+            </div>
+
+            <!-- MÓDULO 3 -->
+            <div class="training-card">
+                <div>
+                    <span class="training-badge" style="background: rgba(112,243,255,0.15); color: var(--accent-cyan);">Módulo 3</span>
+                    <h3>Tipos de Dietas</h3>
+                    <p style="font-size:13px; color:var(--text-muted); margin: 12px 0;">Análisis detallado de diferentes enfoques nutricionales.</p>
+                </div>
+                <button class="auth-btn" style="width: 100%;" onclick="openModule('https://modulo3nutrideportiva.netlify.app', 'Módulo 3: Tipos de Dietas')">Ver Módulo ➔</button>
+            </div>
+
+            <!-- MÓDULO 4 -->
+            <div class="training-card">
+                <div>
+                    <span class="training-badge" style="background: rgba(112,243,255,0.15); color: var(--accent-cyan);">Módulo 4</span>
+                    <h3>Nutrición Avanzada</h3>
+                    <p style="font-size:13px; color:var(--text-muted); margin: 12px 0;">Suplementación, timing nutricional y rendimiento.</p>
+                </div>
+                <button class="auth-btn" style="width: 100%;" onclick="openModule('https://modulo4nutrideportiva.netlify.app', 'Módulo 4: Nutrición Avanzada')">Ver Módulo ➔</button>
+            </div>
+
+        </div>
+
+        <!-- 2. REPRODUCTOR INTEGRADO (OCULTO POR DEFECTO PARA OTROS MÓDULOS) -->
+        <div id="campus-viewer" style="display: none;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
+                <button class="back-btn" style="margin-bottom: 0;" onclick="closeModule()">🔙 Volver a Módulos</button>
+                <h3 id="module-viewer-title" style="font-size: 16px; font-weight: 700; color: var(--accent-lavender);">Cargando módulo...</h3>
+            </div>
+            
+            <div style="width: 100%; height: 78vh; border-radius: 16px; overflow: hidden; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+                <iframe id="module-iframe" src="" style="width: 100%; height: 100%; border: none;"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECCIÓN MÓDULO 1 (CONTENIDO NATIVO) -->
+    <div class="wide-container" id="view-module-1">
         <button class="back-btn" onclick="openSection('campus')">⬅️ Volver a Módulos</button>
         
         <div style="margin-bottom: 24px;">
@@ -530,71 +618,6 @@
             </div>
         </div>
     </div>
-        <button class="back-btn" onclick="goBack()">⬅️ Volver al Menú Principal</button>
-        
-        <div style="margin-bottom: 24px;">
-            <h2 style="font-size: 24px; font-weight: 800;">🎓 Campus Virtual</h2>
-            <p style="color: var(--text-muted); font-size: 14px;">Formación teórica y módulos interactivos.</p>
-        </div>
-
-        <!-- 1. CATÁLOGO DE MÓDULOS -->
-        <div id="campus-grid" class="training-grid">
-            
-            <!-- MÓDULO 1 -->
-            <div class="training-card">
-                <div>
-                    <span class="training-badge" style="background: rgba(184,165,254,0.15); color: var(--accent-lavender);">Módulo 1</span>
-                    <h3>Introducción a la Nutrición</h3>
-                    <p style="font-size:13px; color:var(--text-muted); margin: 12px 0;">Bases fundamentales, requerimientos energéticos y conceptos clave.</p>
-                </div>
-                <!-- Sustituye el enlace de Netlify correspondiente -->
-                <button class="auth-btn" style="width: 100%;" onclick="openModule('https://...','...')">Ver Módulo ➔</button>
-            </div>
-
-            <!-- MÓDULO 2 -->
-            <div class="training-card">
-                <div>
-                    <span class="training-badge" style="background: rgba(184,165,254,0.15); color: var(--accent-lavender);">Módulo 2</span>
-                    <h3>Nutrición Deportiva II</h3>
-                    <p style="font-size:13px; color:var(--text-muted); margin: 12px 0;">Planificación avanzada e individualización de la dieta.</p>
-                </div>
-                <button class="auth-btn" style="width: 100%;" onclick="openModule('https://modulo2nutrideportiva.netlify.app', 'Módulo 2: Nutrición Deportiva II')">Ver Módulo ➔</button>
-            </div>
-
-            <!-- MÓDULO 3 -->
-            <div class="training-card">
-                <div>
-                    <span class="training-badge" style="background: rgba(112,243,255,0.15); color: var(--accent-cyan);">Módulo 3</span>
-                    <h3>Tipos de Dietas</h3>
-                    <p style="font-size:13px; color:var(--text-muted); margin: 12px 0;">Análisis detallado de diferentes enfoques nutricionales.</p>
-                </div>
-                <button class="auth-btn" style="width: 100%;" onclick="openModule('https://modulo3nutrideportiva.netlify.app', 'Módulo 3: Tipos de Dietas')">Ver Módulo ➔</button>
-            </div>
-
-            <!-- MÓDULO 4 -->
-            <div class="training-card">
-                <div>
-                    <span class="training-badge" style="background: rgba(112,243,255,0.15); color: var(--accent-cyan);">Módulo 4</span>
-                    <h3>Nutrición Avanzada</h3>
-                    <p style="font-size:13px; color:var(--text-muted); margin: 12px 0;">Suplementación, timing nutricional y rendimiento.</p>
-                </div>
-                <button class="auth-btn" style="width: 100%;" onclick="openModule('https://modulo4nutrideportiva.netlify.app', 'Módulo 4: Nutrición Avanzada')">Ver Módulo ➔</button>
-            </div>
-
-        </div>
-
-        <!-- 2. REPRODUCTOR INTEGRADO (OCULTO POR DEFECTO) -->
-        <div id="campus-viewer" style="display: none;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
-                <button class="back-btn" style="margin-bottom: 0;" onclick="closeModule()">🔙 Volver a Módulos</button>
-                <h3 id="module-viewer-title" style="font-size: 16px; font-weight: 700; color: var(--accent-lavender);">Cargando módulo...</h3>
-            </div>
-            
-            <div style="width: 100%; height: 78vh; border-radius: 16px; overflow: hidden; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
-                <iframe id="module-iframe" src="" style="width: 100%; height: 100%; border: none;"></iframe>
-            </div>
-        </div>
-    </div>
 
     <!-- SECCIÓN SLACK -->
     <div class="wide-container" id="view-slack">
@@ -686,7 +709,7 @@
             document.getElementById('theme-btn').innerText = '🌙';
         }
 
-        /* --- LÓGICA DEL REPRODUCTOR DE CAMPUS --- */
+        /* --- LÓGICA DEL REPRODUCTOR DE CAMPUS (MÓDULOS 2, 3, 4) --- */
         function openModule(url, title) {
             document.getElementById('campus-grid').style.display = 'none';
             document.getElementById('campus-viewer').style.display = 'block';
@@ -699,12 +722,30 @@
             document.getElementById('campus-viewer').style.display = 'none';
             document.getElementById('campus-grid').style.display = 'grid';
         }
+
+        /* --- LÓGICA DE PESTAÑAS MÓDULO 1 NATIVO --- */
+        function switchModuleTab(evt, tabId) {
+            document.querySelectorAll('#view-module-1 .tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('#view-module-1 .tab-module-content').forEach(content => content.classList.remove('active'));
+
+            evt.currentTarget.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        }
         
         /* --- LÓGICA DE NAVEGACIÓN Y MENÚS --- */
         function openSection(section) {
             document.getElementById('view-hub').style.display = 'none';
             document.querySelectorAll('.wide-container').forEach(el => el.style.display = 'none');
-            document.getElementById('view-' + section).style.display = 'block';
+            
+            // Si volvemos al campus, cerramos también el reproductor de iframe por si acaso
+            if(section === 'campus') {
+                closeModule();
+            }
+
+            const targetSection = document.getElementById('view-' + section);
+            if(targetSection) {
+                targetSection.style.display = 'block';
+            }
         }
 
         function goBack() {
@@ -849,13 +890,6 @@
 
         calculate();
         checkUserSession();
-        function switchModuleTab(evt, tabId) {
-    document.querySelectorAll('#view-module-1 .tab-btn').forEach(btn => btn.classList.remove('active'));
-    document.querySelectorAll('#view-module-1 .tab-module-content').forEach(content => content.classList.remove('active'));
-
-    evt.currentTarget.classList.add('active');
-    document.getElementById(tabId).classList.add('active');
-}
     </script>
 </body>
 </html>
