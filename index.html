@@ -132,7 +132,7 @@
         }
 
         /* ----------------------------------------------------
-           MODO CLARO (LUXURY WELLNESS) - ADAPTACIÓN PERFECTA
+           MODO CLARO (LUXURY WELLNESS) - ADAPTACIÓN TOTAL
         ----------------------------------------------------- */
         body.theme-light {
             background-color: #f8fafc;
@@ -164,27 +164,53 @@
             border: 1px solid #cbd5e1;
             color: #0f172a;
         }
-        .theme-light .macro-bar-bg { background: #e2e8f0; }
+        .theme-light .macro-bar-bg { background: #cbd5e1; }
         .theme-light .back-btn { background: #ffffff; border: 1px solid #cbd5e1; color: #0f172a; }
         .theme-light .back-btn:hover { border-color: var(--accent-lavender); }
         .theme-light .theme-toggle-btn { background: #ffffff; border: 1px solid #cbd5e1; }
         .theme-light .modal-overlay { background: rgba(248, 250, 252, 0.85); }
 
         /* REGLAS ESPECÍFICAS DE MÓDULO 1 PARA MODO CLARO */
-        .theme-light #view-module-1 h2, .theme-light #view-module-1 h3, .theme-light #view-module-1 h4 { color: #0f172a; }
-        .theme-light #view-module-1 .m1-card { background: #ffffff; border-color: #e2e8f0; box-shadow: 0 4px 15px rgba(0,0,0,0.04); }
-        .theme-light #view-module-1 .m1-subcard { background: #f8fafc; border-color: #cbd5e1; color: #0f172a; }
-        .theme-light #view-module-1 .m1-subcard h4, .theme-light #view-module-1 .m1-subcard h3 { color: #0f172a; }
-        .theme-light #view-module-1 p, .theme-light #view-module-1 td, .theme-light #view-module-1 li, .theme-light #view-module-1 span { color: #334155; }
-        .theme-light #view-module-1 th { color: #64748b; border-bottom-color: #cbd5e1; }
-        .theme-light #view-module-1 .m1-table td { border-bottom-color: #e2e8f0; color: #1e293b; }
-        .theme-light #view-module-1 .m1-nav-btn { background: #ffffff; border-color: #cbd5e1; color: #475569; }
-        .theme-light #view-module-1 .m1-nav-btn:hover { border-color: #0284c7; color: #0284c7; }
-        .theme-light #view-module-1 .m1-nav-btn.active { background: #e0f2fe; border-color: #0284c7; color: #0284c7; }
-        .theme-light #view-module-1 .m1-card-title { color: #0284c7; }
-        .theme-light #view-module-1 .m1-card-sub { color: #7c3aed; }
-        .theme-light #view-module-1 .m1-input, .theme-light #view-module-1 .m1-select { background: #f1f5f9; border-color: #cbd5e1; color: #0f172a; }
-        .theme-light #view-module-1 .m1-callout-box { background: #e0f2fe; border: 1px solid #7dd3fc; color: #0369a1; }
+        .theme-light #view-module-1 {
+            --accent-cyan: #0284c7;
+            --accent-lavender: #7c3aed;
+            --accent-magenta: #c026d3;
+            --accent-orange: #d97706;
+        }
+        .theme-light #view-module-1 h2, 
+        .theme-light #view-module-1 h3, 
+        .theme-light #view-module-1 h4,
+        .theme-light #view-module-1 strong,
+        .theme-light #view-module-1 b { color: #0f172a !important; }
+
+        .theme-light #view-module-1 .m1-card { background: #ffffff !important; border-color: #e2e8f0 !important; box-shadow: 0 4px 15px rgba(0,0,0,0.04); }
+        .theme-light #view-module-1 .m1-subcard { background: #f8fafc !important; border-color: #cbd5e1 !important; color: #0f172a !important; }
+        .theme-light #view-module-1 .m1-subcard h3,
+        .theme-light #view-module-1 .m1-subcard h4,
+        .theme-light #view-module-1 .m1-subcard div { color: #0f172a !important; }
+
+        .theme-light #view-module-1 p, 
+        .theme-light #view-module-1 td, 
+        .theme-light #view-module-1 li, 
+        .theme-light #view-module-1 span { color: #334155; }
+
+        .theme-light #view-module-1 th { color: #64748b !important; border-bottom-color: #cbd5e1 !important; }
+        .theme-light #view-module-1 .m1-table td { border-bottom-color: #e2e8f0 !important; color: #1e293b !important; }
+        .theme-light #view-module-1 .m1-nav-btn { background: #ffffff !important; border-color: #cbd5e1 !important; color: #475569 !important; }
+        .theme-light #view-module-1 .m1-nav-btn:hover { border-color: #0284c7 !important; color: #0284c7 !important; }
+        .theme-light #view-module-1 .m1-nav-btn.active { background: #e0f2fe !important; border-color: #0284c7 !important; color: #0284c7 !important; }
+        .theme-light #view-module-1 .m1-card-title { color: #0284c7 !important; }
+        .theme-light #view-module-1 .m1-card-sub { color: #7c3aed !important; }
+        .theme-light #view-module-1 .m1-input, 
+        .theme-light #view-module-1 .m1-select { background: #f1f5f9 !important; border-color: #cbd5e1 !important; color: #0f172a !important; }
+        .theme-light #view-module-1 .m1-callout-box { background: #e0f2fe !important; border-color: #0284c7 !important; color: #0369a1 !important; }
+
+        /* CAJAS DESTACADAS EN MODO CLARO */
+        .theme-light #m1-target-box { background: #f0f9ff !important; border-color: #0284c7 !important; }
+        .theme-light #m1-target-box div, .theme-light #m1-target-box span { color: #0284c7 !important; }
+        .theme-light #m1-output-target-calories { color: #0f172a !important; }
+        .theme-light #m1-mets-result-box { background: #f8fafc !important; border-color: #cbd5e1 !important; }
+        .theme-light #m1-output-mets-calories { color: #0284c7 !important; }
 
         /* ----------------------------------------------------
            ELEMENTOS INTERNOS Y CALCULADORA
@@ -488,7 +514,7 @@
                 <div class="m1-card" style="margin-bottom: 0;">
                     <div class="m1-card-sub">01 / CONCEPTO DE NUTRIENTE</div>
                     <p style="font-size: 13px; color: var(--text-muted); line-height: 1.6;">
-                        Sustancia química indispensable para el organismo que permite obtener energía, formar/mantener estructuras corporales y regular procesos metabólicos. Se dividen en <strong style="color: var(--text-main);">Macronutrientes</strong> (energía estructural) y <strong style="color: var(--text-main);">Micronutrientes</strong> (vitaminas y minerales de control celular).
+                        Sustancia química indispensable para el organismo que permite obtener energía, formar/mantener estructuras corporales y regular procesos metabólicos. Se dividen en <strong>Macronutrientes</strong> (energía estructural) y <strong>Micronutrientes</strong> (vitaminas y minerales de control celular).
                     </p>
                 </div>
                 <div class="m1-card" style="margin-bottom: 0;">
@@ -676,111 +702,209 @@
             </div>
         </div>
 
-        <!-- TAB 4: CALCULADORAS ACTIVAS MÓDULO 1 -->
+        <!-- TAB 4: CALCULADORAS ACTIVAS COMPLETA -->
         <div id="m1-tab-calculadoras" class="m1-tab-content">
-            <!-- CALCULADORA MIFFLIN ST JEOR -->
+            <!-- CALCULADORA MIFFLIN ST JEOR Y MACROS -->
             <div class="m1-card">
-                <div class="m1-card-title">🧮 Calculadora Mifflin-St Jeor & Macronutrientes</div>
+                <div class="m1-card-title">🧮 Calculadora Científica Mifflin-St Jeor & Macronutrientes</div>
+                <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 16px;">Fórmulas metabólicas adaptadas a las diferencias de sexo, factor de actividad (TDEE) y objetivos de recomposición corporal.</p>
+
                 <div class="m1-grid-3">
+                    <!-- DATOS DEL ATLETA -->
                     <div class="m1-subcard">
+                        <div class="m1-card-sub" style="margin-bottom: 12px;">DATOS DEL ATLETA</div>
+                        
                         <label class="form-label">Género</label>
-                        <div class="gender-selector">
+                        <div class="gender-selector" style="margin-bottom: 12px;">
                             <button type="button" id="m1-btn-female" class="gender-btn active" onclick="m1SetGender('female')">♀ Mujer</button>
                             <button type="button" id="m1-btn-male" class="gender-btn" onclick="m1SetGender('male')">♂ Hombre</button>
                         </div>
 
-                        <div style="margin-top: 12px;">
-                            <label class="form-label">Peso (kg)</label>
-                            <input type="number" id="m1-input-weight" value="70" class="m1-input" oninput="m1RunCalculations()">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 12px;">
+                            <div>
+                                <label class="form-label" style="font-size: 10px;">Peso (kg)</label>
+                                <input type="number" id="m1-input-weight" value="70" class="m1-input" oninput="m1RunCalculations()">
+                            </div>
+                            <div>
+                                <label class="form-label" style="font-size: 10px;">Altura (cm)</label>
+                                <input type="number" id="m1-input-height" value="165" class="m1-input" oninput="m1RunCalculations()">
+                            </div>
+                            <div>
+                                <label class="form-label" style="font-size: 10px;">Edad (años)</label>
+                                <input type="number" id="m1-input-age" value="25" class="m1-input" oninput="m1RunCalculations()">
+                            </div>
                         </div>
-                        <div style="margin-top: 10px;">
-                            <label class="form-label">Altura (cm)</label>
-                            <input type="number" id="m1-input-height" value="165" class="m1-input" oninput="m1RunCalculations()">
-                        </div>
-                        <div style="margin-top: 10px;">
-                            <label class="form-label">Edad (años)</label>
-                            <input type="number" id="m1-input-age" value="25" class="m1-input" oninput="m1RunCalculations()">
-                        </div>
-                    </div>
 
-                    <div class="m1-subcard">
-                        <label class="form-label">Factor Actividad (TDEE)</label>
-                        <select id="m1-select-activity" class="m1-select" onchange="m1RunCalculations()">
-                            <option value="1.2">1.2 = Sedentario</option>
-                            <option value="1.375">1.375 = Ligero (1-3 días/sem)</option>
-                            <option value="1.55" selected>1.55 = Moderado (3-5 días/sem)</option>
-                            <option value="1.75">1.75 = Muy Activo (+6 días/sem)</option>
-                            <option value="1.9">1.9 = Atleta Élite</option>
-                        </select>
-
-                        <div style="margin-top: 10px;">
-                            <label class="form-label">Objetivo Corporal</label>
-                            <select id="m1-select-objective" class="m1-select" onchange="m1RunCalculations()">
-                                <option value="1.0">Mantenimiento</option>
-                                <option value="0.9" selected>10% Déficit (Recomposición)</option>
-                                <option value="0.85">15% Déficit (Pérdida Grasa)</option>
+                        <div style="margin-bottom: 10px;">
+                            <label class="form-label">Factor de Actividad (TDEE)</label>
+                            <select id="m1-select-activity" class="m1-select" onchange="m1RunCalculations()">
+                                <option value="1.2">1.2 = Sedentario</option>
+                                <option value="1.375">1.375 = Ligero (1 a 3 días x semana)</option>
+                                <option value="1.55" selected>1.55 = Moderado (3 a 5 días)</option>
+                                <option value="1.75">1.75 = Muy Activo (+6 días)</option>
+                                <option value="1.9">1.9 = Atleta Élite</option>
                             </select>
                         </div>
 
-                        <div style="margin-top: 10px;">
-                            <label class="form-label">Proteínas (g/kg)</label>
+                        <div style="margin-bottom: 10px;">
+                            <label class="form-label">Ajuste de Recomposición / Déficit</label>
+                            <select id="m1-select-objective" class="m1-select" onchange="m1RunCalculations()">
+                                <option value="1.0">Mantenimiento (TDEE Completo)</option>
+                                <option value="0.9" selected>10% Déficit (Recomposición Corporal)</option>
+                                <option value="0.85">15% Déficit (Pérdida de Grasa)</option>
+                            </select>
+                        </div>
+
+                        <div style="margin-bottom: 10px;">
+                            <label class="form-label">Proteínas de la Dieta (g / kg)</label>
                             <select id="m1-select-protein" class="m1-select" onchange="m1RunCalculations()">
+                                <option value="1.4">1.4 g/kg</option>
                                 <option value="1.6">1.6 g/kg</option>
                                 <option value="1.8">1.8 g/kg</option>
                                 <option value="2.0" selected>2.0 g/kg (Recomendado)</option>
+                                <option value="2.2">2.2 g/kg</option>
                                 <option value="2.4">2.4 g/kg</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="form-label">Grasas de la Dieta (g / kg)</label>
+                            <select id="m1-select-fat" class="m1-select" onchange="m1RunCalculations()">
+                                <option value="0.8">0.8 g/kg</option>
+                                <option value="1.0" selected>1.0 g/kg (Recomendado)</option>
+                                <option value="1.2">1.2 g/kg</option>
+                                <option value="1.5">1.5 g/kg</option>
                             </select>
                         </div>
                     </div>
 
-                    <div class="m1-subcard" style="display: flex; flex-direction: column; justify-content: space-between;">
-                        <div>
-                            <span class="m1-card-sub">DIAGNÓSTICO ENERGÉTICO</span>
-                            <div style="margin: 10px 0;">
-                                <span style="font-size: 11px; color: var(--text-muted);">TMB (Basal):</span>
-                                <div style="font-size: 22px; font-weight: 800;" id="m1-output-tmb">1425 kcal</div>
+                    <!-- DIAGNÓSTICO ENERGÉTICO & MACROS -->
+                    <div style="grid-column: span 2; display: flex; flex-direction: column; gap: 16px;">
+                        <div class="m1-card-sub">DIAGNÓSTICO ENERGÉTICO DIARIO</div>
+
+                        <div class="m1-grid-2">
+                            <div class="m1-subcard">
+                                <span style="font-size: 10px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">1. Tasa Metabólica Basal (TMB)</span>
+                                <div style="font-size: 26px; font-weight: 800; margin: 4px 0;"><span id="m1-output-tmb">1445</span> <span style="font-size: 13px; font-weight: 500; color: var(--text-muted);">kcal</span></div>
+                                <span style="font-size: 10px; color: var(--text-muted);">Calorías en reposo absoluto (fórmula Mifflin-St Jeor).</span>
                             </div>
-                            <div style="margin-bottom: 10px;">
-                                <span style="font-size: 11px; color: var(--text-muted);">TDEE (Mantenimiento):</span>
-                                <div style="font-size: 22px; font-weight: 800; color: var(--accent-lavender);" id="m1-output-tdee">2208 kcal</div>
+
+                            <div class="m1-subcard">
+                                <span style="font-size: 10px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">2. Gasto Diario Estimado (TDEE)</span>
+                                <div style="font-size: 26px; font-weight: 800; color: var(--accent-lavender); margin: 4px 0;"><span id="m1-output-tdee">2240</span> <span style="font-size: 13px; font-weight: 500; color: var(--text-muted);">kcal</span></div>
+                                <span style="font-size: 10px; color: var(--text-muted);">TMB multiplicada por factor de actividad diario.</span>
                             </div>
                         </div>
 
-                        <div style="background: rgba(112, 243, 255, 0.1); border: 1px solid var(--accent-cyan); padding: 14px; border-radius: 10px;">
-                            <span style="font-size: 11px; font-weight: 800; color: var(--accent-cyan);">CALORÍAS OBJETIVO:</span>
-                            <div style="font-size: 28px; font-weight: 800; color: #fff;" id="m1-output-target-calories">1987 kcal</div>
+                        <!-- BARRAS DE PROGRESO DE MACROS -->
+                        <div class="m1-subcard">
+                            <div style="font-size: 11px; font-weight: 800; color: var(--text-main); margin-bottom: 12px; text-transform: uppercase;">DISTRIBUCIÓN DE MACRONUTRIENTES</div>
+
+                            <div style="margin-bottom: 12px;">
+                                <div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 4px;">
+                                    <span style="font-weight: 700; color: var(--accent-cyan);">🍞 Carbohidratos (Ajuste regulador)</span>
+                                    <span><strong id="m1-output-carb-grams">207</strong> g / <span id="m1-output-carb-calories">826</span> kcal</span>
+                                </div>
+                                <div class="macro-bar-bg"><div id="m1-progress-carb" class="macro-bar-fill bar-carbs" style="width: 50%;"></div></div>
+                            </div>
+
+                            <div style="margin-bottom: 12px;">
+                                <div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 4px;">
+                                    <span style="font-weight: 700; color: var(--accent-lavender);">🥩 Proteínas</span>
+                                    <span><strong id="m1-output-prot-grams">140</strong> g / <span id="m1-output-prot-calories">560</span> kcal</span>
+                                </div>
+                                <div class="macro-bar-bg"><div id="m1-progress-prot" class="macro-bar-fill bar-protein" style="width: 30%;"></div></div>
+                            </div>
+
+                            <div>
+                                <div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 4px;">
+                                    <span style="font-weight: 700; color: var(--accent-orange);">🥑 Grasas (Lípidos)</span>
+                                    <span><strong id="m1-output-fat-grams">70</strong> g / <span id="m1-output-fat-calories">630</span> kcal</span>
+                                </div>
+                                <div class="macro-bar-bg"><div id="m1-progress-fat" class="macro-bar-fill bar-fats" style="width: 20%;"></div></div>
+                            </div>
+                        </div>
+
+                        <!-- CAJA CALORÍAS OBJETIVO -->
+                        <div id="m1-target-box" style="background: rgba(112, 243, 255, 0.08); border: 2px solid var(--accent-cyan); border-radius: 12px; padding: 18px;">
+                            <div style="font-size: 11px; font-weight: 800; color: var(--accent-cyan); text-transform: uppercase; margin-bottom: 4px;">📊 CALORÍAS OBJETIVO DIARIAS (TENIENDO EN CUENTA EL OBJETIVO)</div>
+                            <div style="font-size: 32px; font-weight: 800; color: #ffffff;" id="m1-output-target-calories">2016 <span style="font-size: 16px; font-weight: 500; color: var(--text-muted);">kcal/día</span></div>
+                            <p style="font-size: 11px; color: var(--text-muted); margin-top: 6px; line-height: 1.4;">
+                                Este bloque representa la estimación energética de calorías objetivo diarias para el atleta de acuerdo a la selección de género, peso corporal, altura, edad y el multiplicador de actividad de Mifflin-St Jeor.
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- CALCULADORA METs & AGUA -->
-            <div class="m1-grid-2">
-                <div class="m1-card">
-                    <div class="m1-card-title">⚡ Gasto por Actividad (METs)</div>
-                    <label class="form-label">Selecciona Actividad</label>
-                    <select id="m1-select-met-activity" class="m1-select" onchange="m1RunCalculations()"></select>
-                    
-                    <div style="margin-top: 10px;">
-                        <label class="form-label">Duración (minutos)</label>
-                        <input type="number" id="m1-input-met-minutes" value="60" class="m1-input" oninput="m1RunCalculations()">
+            <!-- GASTO ENERGÉTICO METs -->
+            <div class="m1-card">
+                <div class="m1-card-title">⚡ Gasto Energético de la Actividad (METs)</div>
+                <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 16px;">Estimación basada en las tablas de equivalentes metabólicos del módulo (Crespo-Salgado y cols., 2015).</p>
+
+                <div class="m1-grid-3">
+                    <div class="m1-subcard">
+                        <div class="m1-card-sub" style="margin-bottom: 10px;">PARÁMETROS DE LA ACTIVIDAD</div>
+                        
+                        <label class="form-label">Selecciona Actividad Física</label>
+                        <select id="m1-select-met-activity" class="m1-select" onchange="m1RunCalculations()"></select>
+
+                        <div style="margin-top: 10px;">
+                            <label class="form-label">Peso del Atleta (kg)</label>
+                            <input type="number" id="m1-input-met-weight" value="70" class="m1-input" oninput="m1RunCalculations()">
+                        </div>
+
+                        <div style="margin-top: 10px;">
+                            <label class="form-label">Duración (minutos)</label>
+                            <input type="number" id="m1-input-met-minutes" value="60" class="m1-input" oninput="m1RunCalculations()">
+                        </div>
                     </div>
 
-                    <div style="margin-top: 16px; text-align: center; background: var(--panel-bg); padding: 14px; border-radius: 10px; border: 1px solid var(--border-color);">
-                        <span style="font-size: 11px; color: var(--text-muted);">Gasto Estimado:</span>
-                        <div style="font-size: 26px; font-weight: 800; color: var(--accent-cyan);" id="m1-output-mets-calories">0 kcal</div>
+                    <div style="grid-column: span 2; display: flex; flex-direction: column; justify-content: space-between; gap: 12px;">
+                        <div id="m1-mets-result-box" class="m1-subcard" style="text-align: center; padding: 24px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                            <span style="font-size: 11px; font-weight: 800; color: var(--text-muted); text-transform: uppercase;">GASTO CALÓRICO ESTIMADO POR EJERCICIO</span>
+                            <div style="font-size: 42px; font-weight: 800; color: var(--accent-cyan); margin: 6px 0;" id="m1-output-mets-calories">420 <span style="font-size: 20px; font-weight: 600;">kcal</span></div>
+                            <span style="font-size: 11px; color: var(--text-muted); font-style: italic;" id="m1-formula-mets-text">Cálculo: 6 METs × 70 kg × (60 min / 60)</span>
+                        </div>
+
+                        <div class="m1-subcard" style="font-size: 11px; color: var(--text-muted);">
+                            ⚠️ <strong>Limitaciones:</strong> El gasto real por METs puede oscilar de acuerdo al nivel real de condición del deportista, su técnica de ejecución y las condiciones climatológicas de calor u humedad.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GUÍA PRÁCTICA REPOSICIÓN DE AGUA -->
+            <div class="m1-card">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 16px;">
+                    <div>
+                        <div class="m1-card-title">💧 Guía Práctica de Reposición de Agua</div>
+                        <p style="font-size: 12px; color: var(--text-muted);">Calculado para un peso corporal de <strong style="color: var(--text-main);" id="m1-water-weight-display">70</strong> kg.</p>
+                    </div>
+
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <label style="font-size: 12px; color: var(--text-muted); font-weight: 600;">Pérdida de peso post-entreno (kg):</label>
+                        <input type="number" id="m1-input-weight-lost" value="1.5" step="0.1" class="m1-input" style="width: 80px; text-align: center; margin-top: 0;" oninput="m1RunCalculations()">
                     </div>
                 </div>
 
-                <div class="m1-card">
-                    <div class="m1-card-title">💧 Reposición Hídrica Práctica</div>
-                    <label class="form-label">Pérdida de Peso Post-Entreno (kg)</label>
-                    <input type="number" id="m1-input-weight-lost" value="1.5" step="0.1" class="m1-input" oninput="m1RunCalculations()">
+                <div class="m1-grid-3" style="text-align: center;">
+                    <div class="m1-subcard">
+                        <span style="font-size: 10px; font-weight: 800; color: var(--accent-cyan); text-transform: uppercase;">PREVIO (4H ANTES)</span>
+                        <div style="font-size: 22px; font-weight: 800; margin: 6px 0;" id="m1-water-pre">350 - 490 ml</div>
+                        <span style="font-size: 10px; color: var(--text-muted);">Bebida sugerida con sodio para estimular la solidez electrolítica.</span>
+                    </div>
 
-                    <div class="m1-grid-3" style="margin-top: 14px; text-align: center;">
-                        <div class="m1-subcard"><span style="font-size: 10px; color: var(--accent-cyan);">PREVIO (4h)</span><div style="font-size: 14px; font-weight: 800;" id="m1-water-pre">350 - 490 ml</div></div>
-                        <div class="m1-subcard"><span style="font-size: 10px; color: var(--accent-lavender);">DURANTE (/h)</span><div style="font-size: 14px; font-weight: 800;" id="m1-water-during">420 - 560 ml</div></div>
-                        <div class="m1-subcard"><span style="font-size: 10px; color: var(--accent-magenta);">POSTERIOR</span><div style="font-size: 14px; font-weight: 800;" id="m1-water-post">2250 ml</div></div>
+                    <div class="m1-subcard">
+                        <span style="font-size: 10px; font-weight: 800; color: var(--accent-lavender); text-transform: uppercase;">DURANTE (POR HORA)</span>
+                        <div style="font-size: 22px; font-weight: 800; color: var(--accent-lavender); margin: 6px 0;" id="m1-water-during">420 - 560 ml</div>
+                        <span style="font-size: 10px; color: var(--text-muted);">Reponer lentamente cada 15 o 20 minutos con azúcares y sales.</span>
+                    </div>
+
+                    <div class="m1-subcard">
+                        <span style="font-size: 10px; font-weight: 800; color: var(--accent-magenta); text-transform: uppercase;">POSTERIOR (6H POST)</span>
+                        <div style="font-size: 22px; font-weight: 800; color: var(--accent-magenta); margin: 6px 0;" id="m1-water-post">2250 ml</div>
+                        <span style="font-size: 10px; color: var(--text-muted);">Equivalente estricto al 150% del peso perdido estimado.</span>
                     </div>
                 </div>
             </div>
@@ -1134,6 +1258,8 @@
 
             const activityFactor = Number(document.getElementById('m1-select-activity').value) || 1.55;
             const objectiveFactor = Number(document.getElementById('m1-select-objective').value) || 0.9;
+            const proteinFactor = Number(document.getElementById('m1-select-protein').value) || 2.0;
+            const fatFactor = Number(document.getElementById('m1-select-fat') ? document.getElementById('m1-select-fat').value : 1.0) || 1.0;
 
             let tmb = (m1CurrentGender === 'male')
                 ? (10 * weight) + (6.25 * height) - (5 * age) + 5
@@ -1143,14 +1269,40 @@
             const tdee = Math.round(tmb * activityFactor);
             const targetCalories = Math.round(tdee * objectiveFactor);
 
-            document.getElementById('m1-output-tmb').innerText = tmb + ' kcal';
-            document.getElementById('m1-output-tdee').innerText = tdee + ' kcal';
-            document.getElementById('m1-output-target-calories').innerText = targetCalories + ' kcal';
+            const protGrams = Math.round(weight * proteinFactor);
+            const protCalories = Math.round(protGrams * 4);
+
+            const fatGrams = Math.round(weight * fatFactor);
+            const fatCalories = Math.round(fatGrams * 9);
+
+            const carbCalories = Math.max(0, targetCalories - protCalories - fatCalories);
+            const carbGrams = Math.round(carbCalories / 4);
+
+            const carbPct = Math.round((carbCalories / targetCalories) * 100) || 0;
+            const protPct = Math.round((protCalories / targetCalories) * 100) || 0;
+            const fatPct = Math.round((fatCalories / targetCalories) * 100) || 0;
+
+            if(document.getElementById('m1-output-tmb')) document.getElementById('m1-output-tmb').innerText = tmb;
+            if(document.getElementById('m1-output-tdee')) document.getElementById('m1-output-tdee').innerText = tdee;
+            if(document.getElementById('m1-output-target-calories')) document.getElementById('m1-output-target-calories').innerText = targetCalories;
+
+            if(document.getElementById('m1-output-carb-grams')) document.getElementById('m1-output-carb-grams').innerText = carbGrams;
+            if(document.getElementById('m1-output-carb-calories')) document.getElementById('m1-output-carb-calories').innerText = carbCalories;
+            if(document.getElementById('m1-progress-carb')) document.getElementById('m1-progress-carb').style.width = carbPct + '%';
+
+            if(document.getElementById('m1-output-prot-grams')) document.getElementById('m1-output-prot-grams').innerText = protGrams;
+            if(document.getElementById('m1-output-prot-calories')) document.getElementById('m1-output-prot-calories').innerText = protCalories;
+            if(document.getElementById('m1-progress-prot')) document.getElementById('m1-progress-prot').style.width = protPct + '%';
+
+            if(document.getElementById('m1-output-fat-grams')) document.getElementById('m1-output-fat-grams').innerText = fatGrams;
+            if(document.getElementById('m1-output-fat-calories')) document.getElementById('m1-output-fat-calories').innerText = fatCalories;
+            if(document.getElementById('m1-progress-fat')) document.getElementById('m1-progress-fat').style.width = fatPct + '%';
 
             /* AGUA */
-            document.getElementById('m1-water-pre').innerText = `${Math.round(weight * 5)} - ${Math.round(weight * 7)} ml`;
-            document.getElementById('m1-water-during').innerText = `${Math.round(weight * 6)} - ${Math.round(weight * 8)} ml`;
-            document.getElementById('m1-water-post').innerText = `${Math.round(weightLost * 1.5 * 1000)} ml`;
+            if(document.getElementById('m1-water-weight-display')) document.getElementById('m1-water-weight-display').innerText = weight;
+            if(document.getElementById('m1-water-pre')) document.getElementById('m1-water-pre').innerText = `${Math.round(weight * 5)} - ${Math.round(weight * 7)} ml`;
+            if(document.getElementById('m1-water-during')) document.getElementById('m1-water-during').innerText = `${Math.round(weight * 6)} - ${Math.round(weight * 8)} ml`;
+            if(document.getElementById('m1-water-post')) document.getElementById('m1-water-post').innerText = `${Math.round(weightLost * 1.5 * 1000)} ml`;
 
             /* METs */
             const metSelect = document.getElementById('m1-select-met-activity');
@@ -1158,9 +1310,11 @@
                 const metIdx = Number(metSelect.value);
                 const met = M1_METS_ACTIVITIES[metIdx];
                 if(met) {
+                    const metWeight = Math.max(1, Number(document.getElementById('m1-input-met-weight') ? document.getElementById('m1-input-met-weight').value : weight) || weight);
                     const minutes = Math.max(1, Number(document.getElementById('m1-input-met-minutes').value) || 60);
-                    const burned = Math.round(met.mets * weight * (minutes / 60));
-                    document.getElementById('m1-output-mets-calories').innerText = burned + ' kcal';
+                    const burned = Math.round(met.mets * metWeight * (minutes / 60));
+                    if(document.getElementById('m1-output-mets-calories')) document.getElementById('m1-output-mets-calories').innerText = burned;
+                    if(document.getElementById('m1-formula-mets-text')) document.getElementById('m1-formula-mets-text').innerText = `Cálculo: ${met.mets} METs × ${metWeight} kg × (${minutes} min / 60)`;
                 }
             }
         }
