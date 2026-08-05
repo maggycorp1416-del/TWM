@@ -15,7 +15,7 @@
             --input-bg: #120e22;          
             
             --accent-lavender: #b8a5fe;   
-            --accent-cyan: #70f3ff;       
+            --accent-cyan: #70f3ff;        
             --accent-magenta: #f472b6;    
             --accent-orange: #fbbf24;     
             
@@ -35,7 +35,7 @@
             flex-direction: column; 
             align-items: center; 
             padding: 20px; 
-            transition: background-color 0.4s ease, color 0.4s ease; /* Transición suave de tema */
+            transition: background-color 0.4s ease, color 0.4s ease;
         }
         
         .app-container { max-width: 500px; width: 100%; margin: 0 auto; }
@@ -132,7 +132,7 @@
         }
 
         /* ----------------------------------------------------
-           MODO CLARO (LUXURY WELLNESS) - SUPER LIGERO
+           MODO CLARO (LUXURY WELLNESS)
         ----------------------------------------------------- */
         body.theme-light {
             background-color: #f8fafc;
@@ -141,7 +141,7 @@
         }
         .theme-light .hub-title, .theme-light h2, .theme-light h3, .theme-light .energy-value, .theme-light .modal-title { color: #0f172a; }
         .theme-light .text-muted { color: #64748b; }
-        .theme-light .hub-subtitle { color: #8b5cf6 !important; } /* Morado moradito sobre fondo blanco */
+        .theme-light .hub-subtitle { color: #8b5cf6 !important; }
         .theme-light .hub-logo-img { border: 1px solid #e2e8f0; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
         .theme-light .hub-btn {
             background: #ffffff;
@@ -361,7 +361,7 @@
         </div>
     </div>
 
-    <!-- SECCIÓN CAMPUS -->
+    <!-- SECCIÓN CAMPUS (SÓLO TARJETAS POR FUERA) -->
     <div class="wide-container" id="view-campus">
         <button class="back-btn" onclick="goBack()">⬅️ Volver al Menú Principal</button>
         
@@ -370,7 +370,6 @@
             <p style="color: var(--text-muted); font-size: 14px;">Formación teórica y módulos interactivos.</p>
         </div>
 
-        <!-- 1. CATÁLOGO DE MÓDULOS -->
         <div id="campus-grid" class="training-grid">
             
             <!-- MÓDULO 1 -->
@@ -380,8 +379,7 @@
                     <h3>Introducción a la Nutrición</h3>
                     <p style="font-size:13px; color:var(--text-muted); margin: 12px 0;">Bases fundamentales, requerimientos energéticos y conceptos clave.</p>
                 </div>
-                <!-- Sustituye el enlace de Netlify correspondiente -->
-                <button class="auth-btn" style="width: 100%;" onclick="openModule('https://modulo1intronutrideportiva.netlify.app', 'Módulo 1: Introducción a la Nutrición')">Ver Módulo ➔</button>
+                <button class="auth-btn" style="width: 100%;" onclick="alert('Módulo en actualización.')">Ver Módulo ➔</button>
             </div>
 
             <!-- MÓDULO 2 -->
@@ -391,7 +389,7 @@
                     <h3>Nutrición Deportiva II</h3>
                     <p style="font-size:13px; color:var(--text-muted); margin: 12px 0;">Planificación avanzada e individualización de la dieta.</p>
                 </div>
-                <button class="auth-btn" style="width: 100%;" onclick="openModule('https://modulo2nutrideportiva.netlify.app', 'Módulo 2: Nutrición Deportiva II')">Ver Módulo ➔</button>
+                <button class="auth-btn" style="width: 100%;" onclick="alert('Módulo en actualización.')">Ver Módulo ➔</button>
             </div>
 
             <!-- MÓDULO 3 -->
@@ -401,7 +399,7 @@
                     <h3>Tipos de Dietas</h3>
                     <p style="font-size:13px; color:var(--text-muted); margin: 12px 0;">Análisis detallado de diferentes enfoques nutricionales.</p>
                 </div>
-                <button class="auth-btn" style="width: 100%;" onclick="openModule('https://modulo3nutrideportiva.netlify.app', 'Módulo 3: Tipos de Dietas')">Ver Módulo ➔</button>
+                <button class="auth-btn" style="width: 100%;" onclick="alert('Módulo en actualización.')">Ver Módulo ➔</button>
             </div>
 
             <!-- MÓDULO 4 -->
@@ -411,21 +409,9 @@
                     <h3>Nutrición Avanzada</h3>
                     <p style="font-size:13px; color:var(--text-muted); margin: 12px 0;">Suplementación, timing nutricional y rendimiento.</p>
                 </div>
-                <button class="auth-btn" style="width: 100%;" onclick="openModule('https://modulo4nutrideportiva.netlify.app', 'Módulo 4: Nutrición Avanzada')">Ver Módulo ➔</button>
+                <button class="auth-btn" style="width: 100%;" onclick="alert('Módulo en actualización.')">Ver Módulo ➔</button>
             </div>
 
-        </div>
-
-        <!-- 2. REPRODUCTOR INTEGRADO (OCULTO POR DEFECTO) -->
-        <div id="campus-viewer" style="display: none;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
-                <button class="back-btn" style="margin-bottom: 0;" onclick="closeModule()">🔙 Volver a Módulos</button>
-                <h3 id="module-viewer-title" style="font-size: 16px; font-weight: 700; color: var(--accent-lavender);">Cargando módulo...</h3>
-            </div>
-            
-            <div style="width: 100%; height: 78vh; border-radius: 16px; overflow: hidden; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
-                <iframe id="module-iframe" src="" style="width: 100%; height: 100%; border: none;"></iframe>
-            </div>
         </div>
     </div>
 
@@ -519,20 +505,6 @@
             document.getElementById('theme-btn').innerText = '🌙';
         }
 
-        /* --- LÓGICA DEL REPRODUCTOR DE CAMPUS --- */
-        function openModule(url, title) {
-            document.getElementById('campus-grid').style.display = 'none';
-            document.getElementById('campus-viewer').style.display = 'block';
-            document.getElementById('module-viewer-title').innerText = title;
-            document.getElementById('module-iframe').src = url;
-        }
-
-        function closeModule() {
-            document.getElementById('module-iframe').src = '';
-            document.getElementById('campus-viewer').style.display = 'none';
-            document.getElementById('campus-grid').style.display = 'grid';
-        }
-        
         /* --- LÓGICA DE NAVEGACIÓN Y MENÚS --- */
         function openSection(section) {
             document.getElementById('view-hub').style.display = 'none';
